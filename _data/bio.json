@@ -1,0 +1,278 @@
+{
+  "basics": {
+    "name": "Mahmoud Ezzat Moustafa",
+    "label": "Backend Software Developer, Programmer",
+    "email": "Mahmoud.Ezzat.Moustafa@Gmail.com",
+    "picture": "img/Profile_pic.jpg",
+    "phone": "+2 01016127655",
+    "website": "https://mammhoud.github.io",
+    "summary": "I am versed in a range of AI and machine learning techniques, including natural language processing, computer vision, and predictive modeling. I deliver high-quality results, communicate effectively, and foster collaborative environments. I actively participate in conferences, workshops, and online courses to stay updated and bring fresh, innovative ideas to every project.",
+    "full_summary": "Hello, my name is Mahmoud Ezzat. I'm from Cairo. I'm studying computer science at Modern Academy and hold a baccalaureate degree. Additionally, I'm studying a data engineering master class from Apprentice and working as a computer counselor at the National Telecommunication Institute. I also study under the guidance of professional instructors and benefit from many courses that help develop my skills in the field of computer science. I believe in the importance of continuous learning and interacting with experts to achieve success in this field. Furthermore, I have started learning through YouTube with some applications that help in development and building. I have also studied how to design business models and projects through Sprintix and ALX, learning to plan and design professional business models. I have also been utilizing social zakat tools, which have helped me learn and improve my technological abilities. These tools have provided access to educational resources and tech communities, helping me enhance my technology skills and interact with experts in my field.",
+    "location": {
+      "city": "Cairo",
+      "countryCode": "EG",
+      "region": "Egypt"
+    },
+    "profiles": [
+      {
+        "network": "GitHub",
+        "username": "mammhoud",
+        "url": "https://github.com/mammhoud"
+      },
+      {
+        "network": "Youtube",
+        "username": "mammhoud",
+        "url": "https://youtube.com/@mammhoud"
+      },
+      {
+        "network": "Facebook",
+        "username": "mammhoud",
+        "url": "https://fb.com/mammhoud"
+      },
+      {
+        "network": "LinkedIn",
+        "username": "mammhoud",
+        "url": "https://linkedin.com/in/mammhoud"
+      }
+    ]
+  },
+  "interests": [
+    {
+      "name": "Artificial Intelligence"
+    },
+    {
+      "name": "Back End"
+    },
+    {
+      "name": "Cloud Computing"
+    },
+    {
+      "name": "AI Tools"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Languages and Frameworks",
+      "keywords": [
+        "Python",
+        "C#",
+        "Java",
+        "C",
+        "C++",
+        "SQL",
+        "Django",
+        "FastAPI",
+        "Ninja",
+        "REST-API",
+        "Networking"
+      ]
+    },
+    {
+      "name": "Tools and Technologies",
+      "keywords": [
+        "Docker",
+        "AI Tools",
+        "Redis",
+        "Microservices",
+        "AWS EC2",
+        "Git/GitHub",
+        "Web-Hook",
+        "Rasa",
+        "MySQL",
+        "MSSQL",
+        "Celery",
+        "CRM Systems",
+        "VS Code"
+      ]
+    },
+    {
+      "name": "Soft Skills",
+      "keywords": [
+        "Project Management",
+        "Communication",
+        "Teamwork",
+        "Problem Solving",
+        "Customer Service",
+        "Presentation",
+        "Fast Learning",
+        "Adaptability"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Modern Academy, Cairo, EG",
+      "area": "Computer Science",
+      "studyType": "B.S.",
+      "startDate": "2016",
+      "endDate": "2021",
+      "courses": [
+        "Computer Architecture",
+        "Artificial Intelligence",
+        "Algorithms",
+        "Data Structures",
+        "Computational Theory",
+        "Networks",
+        "System Design",
+        "Microservices",
+        "Programming"
+      ]
+    }
+  ],
+  "work": [
+    {
+      "company": "SmartPan (FODO Apps)",
+      "position": "Technical Support",
+      "startDate": "2023-08-01",
+      "endDate": "2024-09-01",
+      "summary": "Technical support and customer service for SmartPan applications.",
+      "highlights": [
+        "Communicated with clients via CRM and chat channels.",
+        "Provided app updates and technical support.",
+        "Implemented a POS system and contributed to system issue resolution.",
+        "Managed customer management data changes according to subscriptions."
+      ]
+    },
+    {
+      "company": "Huawei",
+      "position": "Service Engineer Intern",
+      "startDate": "2022-09-01",
+      "endDate": "2022-12-31",
+      "summary": "Supported corporate technology projects and installations.",
+      "highlights": [
+        "Delivered support programs and storage technical training.",
+        "Configured Huawei Idea Hub Smart Office boards.",
+        "Worked with Huawei surveillance software and smart office solutions."
+      ]
+    }
+  ],
+ 
+  "projects": [
+    {
+      "name": "Multi Usage Chatbot Utilize",
+      "summary": "AI chatbot with multi-tenant architecture synchronized with leading chat apps.",
+      "keywords": [
+        "Python",
+        "Rasa",
+        "Web-Hook",
+        "Docker"
+      ]
+    },
+    {
+      "name": "Property Website Data Scraper",
+      "summary": "Scraped property listings and processed historical transaction data.",
+      "keywords": [
+        "Python",
+        "Django",
+        "SQL",
+        "Excel",
+        "Pandas",
+        "Selenium"
+      ]
+    },
+    {
+      "name": "Content Driven Website Builder",
+      "summary": "CMS website with dynamic content management and user permissions.",
+      "keywords": [
+        "Python",
+        "Django",
+        "SQL",
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Wagtail"
+      ]
+    },
+    {
+      "name": "API Gateway with Database Transactions",
+      "summary": "Developed multi-server API gateway with logging and tracking dashboard.",
+      "keywords": [
+        "Python",
+        "Django",
+        "Ninja",
+        "FastAPI",
+        "SQL",
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ]
+    },
+    {
+      "name": "Floppy Bird Game",
+      "summary": "Game application using Java."
+    },
+    {
+      "name": "POS Desktop App",
+      "summary": "POS system using C# and MySQL."
+    },
+    {
+      "name": "Graduation Project",
+      "summary": "Detecting Deaf & Dumb Sign Language Into Recognizable Text using AI and Image Processing.",
+      "keywords": [
+        "AI",
+        "Image Processing",
+        "MediaPipe",
+        "Google SDK",
+        "OpenCV"
+      ]
+    }
+  ],
+  "awards": [
+    {
+      "title": "Second Place - Chatbot App Hackathon",
+      "date": "2023",
+      "awarder": "Lablab Hackathon",
+      "summary": "Awarded badge with 2nd place for a Chatbot tool hackathon out of 500+ entries."
+    }
+  ],
+  "courses": [
+    {
+      "name": "Databases (MySQL, MSSQL)",
+      "source": "Self Learning"
+    },
+    {
+      "name": "Deployment Tools",
+      "source": "Self Learning"
+    },
+    {
+      "name": "Web Development (Django)",
+      "source": "Self Learning"
+    },
+    {
+      "name": "Microservices (Celery, APIs, Redis)",
+      "source": "Self Learning"
+    },
+    {
+      "name": "Cloud Computing (AWS EC2)",
+      "source": "Self Learning"
+    },
+    {
+      "name": "CCNA",
+      "source": "National Telecommunication Institute"
+    },
+    {
+      "name": "Voice Over IP",
+      "source": "National Telecommunication Institute"
+    },
+    {
+      "name": "Big Data",
+      "source": "National Telecommunication Institute"
+    },
+    {
+      "name": "Business Development, Workflow Operations, Problem Solving",
+      "source": "McKinsey Forward Tracks"
+    },
+    {
+      "name": "Data Engineering Master Class (SQL Query, Data Modeling, Data Warehouse, Data Scraping, Cloud Computing, Data Analysis, ML Algorithms)",
+      "source": "Sprints"
+    },
+    {
+      "name": "Founder Academy (Business Development, Budget Planning, Market Research)",
+      "source": "ALX Ventures"
+    }
+  ],
+  "languages": [
+    "Arabic",
+    "English"
+  ]
+}

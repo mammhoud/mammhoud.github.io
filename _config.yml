@@ -1,0 +1,35 @@
+# REQUIRED CHANGES
+# Edit next line to provide your own name.
+title: Mahmoud Ezzat Moustafa | Professional Portfolio
+
+# Edit next line, replacing 'mammhoud' with your github username
+url: "https://mammhoud.github.io"
+
+# Edit next line so that baseurl is "" if your repo is <username>.github.io
+baseurl: ""
+# baseurl: "/template"
+
+# OPTIONAL CHANGES
+main-theme: main.min.css
+
+site-theme: bitter.css
+
+
+# DON'T CHANGE THE FOLLOWING (unless you know what you're doing)
+markdown: kramdown
+kramdown:
+  hard_wrap: false
+  input: GFM
+  syntax_highlighter: github
+strict_front_matter: true
+mathjax: false
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - README.md
+include:
+  - .nojekyll
+  - _data
+plugins:
+  - jekyll-gist

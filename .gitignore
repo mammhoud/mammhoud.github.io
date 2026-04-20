@@ -8,4 +8,4 @@ Gemfile.lock
 .bundle
 vendor
 node_modules
-_data/.bio.json
+_data/.bio.json__pycache__/

@@ -10,6 +10,6 @@
         {% endfor %}
       </p>
     </div>
-      <div class="text-center mb-4"><a href="{% if page.essayurl %}{{ page.essayurl }}{% else %}{{ site.baseurl}}{{ include.page.url }}{% endif %}" class="btn ">Read More</a></div>
+      <div class="text-center mb-4"><a href="{% if include.page.medium_url %}{{ include.page.medium_url }}{% elsif page.essayurl %}{{ page.essayurl }}{% else %}{{ site.baseurl}}{{ include.page.url }}{% endif %}" class="btn ">Read More</a></div>
   </div>
 </div>

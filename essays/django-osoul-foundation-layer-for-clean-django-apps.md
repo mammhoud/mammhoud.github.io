@@ -125,6 +125,7 @@ class BlogPostListFragment(FragmentComponent):
 
 **HTMX template usage:**
 
+{% raw %}
 ```html
 <!-- blog/fragments/post_list.html -->
 <div id="post-list" data-fragment>
@@ -149,6 +150,7 @@ class BlogPostListFragment(FragmentComponent):
   {% include "partials/pagination.html" %}
 </div>
 ```
+{% endraw %}
 
 ### OOB Fragments — Out-of-Band Updates
 

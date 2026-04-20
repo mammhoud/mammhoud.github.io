@@ -8,7 +8,6 @@ labels:
   - Python
   - Pydantic
   - Data Validation
-medium_url: https://medium.com/@mammhoud/pydantic-data-validation
 ---
 
 <img width="80px" class="rounded float-start pe-4" src="https://docs.pydantic.dev/latest/logo-white.svg" alt="Pydantic logo" onerror="this.src='../img/essay/django.jpg'">
@@ -287,4 +286,10 @@ print(post.model_dump_json())
 
 Pydantic is not just a validation library — it is the foundation of type-safe Python. Adopt it at every data boundary and your codebase becomes dramatically easier to reason about, test, and maintain.
 
-👉 Read more on [Medium]({{ page.medium_url }})
+👉 Read more on [Medium](https://medium.com/@mammhoud/pydantic-data-validation)
+
+## References
+
+- [Pydantic Documentation](https://docs.pydantic.dev/) - Official docs
+- [Pydantic GitHub](https://github.com/pydantic/pydantic) - Source code
+- [Python typing module](https://docs.python.org/3/library/typing.html) - Type hints

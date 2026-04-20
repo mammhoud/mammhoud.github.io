@@ -9,7 +9,6 @@ labels:
   - Django
   - Workflows
   - Architecture
-medium_url: https://medium.com/@mammhoud/rseal-workflow-automation
 ---
 
 <img width="80px" class="rounded float-start pe-4" src="https://static.djangoproject.com/img/logos/django-logo-negative.svg" alt="Django-RSeal logo" onerror="this.src='../img/essay/django.jpg'">
@@ -244,4 +243,10 @@ RSeal transforms this pattern. Operations are isolated, testable units. Workflow
 
 Teams that adopt RSeal ship complex business operations with confidence — because every step is tested independently, every failure is handled explicitly, and every workflow is observable from end to end.
 
-👉 Read more on [Medium]({{ page.medium_url }})
+👉 Read more on [Medium](https://medium.com/@mammhoud/rseal-workflow-automation)
+
+## References
+
+- [Django-RSeal GitHub](https://github.com/mammhoud/django-rseal) - Official repository
+- [Django Documentation](https://docs.djangoproject.com/) - Django framework
+- [Stripe Documentation](https://stripe.com/docs) - Payment processing

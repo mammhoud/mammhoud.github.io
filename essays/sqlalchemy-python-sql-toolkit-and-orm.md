@@ -9,7 +9,6 @@ labels:
   - SQLAlchemy
   - Database
   - ORM
-medium_url: https://medium.com/@mammhoud/sqlalchemy-orm-mastery
 ---
 
 <img width="80px" class="rounded float-start pe-4" src="https://www.sqlalchemy.org/img/sqla_logo.png" alt="SQLAlchemy logo" onerror="this.src='../img/essay/django.jpg'">
@@ -252,4 +251,10 @@ The data layer is not an implementation detail — it is the foundation that eve
 
 For applications that need to grow — more complex queries, multiple databases, async support, or framework independence — SQLAlchemy eliminates the ceiling that simpler ORMs impose. The investment in learning its dual-layer architecture pays dividends across every project that follows.
 
-👉 Read more on [Medium]({{ page.medium_url }})
+👉 Read more on [Medium](https://medium.com/@mammhoud/sqlalchemy-orm-mastery)
+
+## References
+
+- [SQLAlchemy Documentation](https://docs.sqlalchemy.org/) - Official docs
+- [SQLAlchemy GitHub](https://github.com/sqlalchemy/sqlalchemy) - Source code
+- [Python DB-API](https://www.python.org/dev/peps/pep-0249/) - Database API specification

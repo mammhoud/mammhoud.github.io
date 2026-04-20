@@ -8,7 +8,6 @@ labels:
   - CLI
   - Typer
   - Fire
-medium_url: https://medium.com/@mammhoud/typer-vs-fire-cli
 ---
 
 <img width="80px" class="rounded float-start pe-4" src="https://typer.tiangolo.com/img/logo-margin/logo-margin-vector.svg" alt="Typer logo" onerror="this.src='../img/essay/django.jpg'">
@@ -354,4 +353,10 @@ The decision between Typer and Fire is a decision about the lifecycle of your CL
 
 Both are excellent tools. Typer is more powerful and feature-rich, while Fire is simpler and more lightweight. Your choice depends on your project's complexity and requirements.
 
-👉 Read more on [Medium]({{ page.medium_url }})
+👉 Read more on [Medium](https://medium.com/@mammhoud/typer-vs-fire-cli)
+
+## References
+
+- [Typer Documentation](https://typer.tiangolo.com/) - Official docs
+- [Google Fire GitHub](https://github.com/google/python-fire) - Source code
+- [Click](https://click.palletsprojects.com/) - Another popular CLI framework

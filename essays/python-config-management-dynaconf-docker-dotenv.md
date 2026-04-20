@@ -10,7 +10,6 @@ labels:
   - Docker
   - Configuration
   - DevOps
-medium_url: https://medium.com/@mammhoud/python-config-management-dynaconf
 ---
 
 <img width="80px" class="rounded float-start pe-4" src="https://www.dynaconf.com/img/logo_400.svg" alt="Dynaconf logo" onerror="this.src='../img/essay/django.jpg'">
@@ -724,4 +723,10 @@ The layered strategy presented here — YAML defaults with Dynaconf, type-valida
 
 Teams that adopt this pattern deploy with confidence. Configuration errors surface at startup, not in production. Secrets are never in the repository. Every environment runs the same code with the right values — automatically.
 
-👉 Read more on [Medium]({{ page.medium_url }})
+👉 Read more on [Medium](https://medium.com/@mammhoud/python-config-management-dynaconf)
+
+## References
+
+- [Dynaconf Documentation](https://dynaconf.com/) - Official docs
+- [Dynaconf GitHub](https://github.com/dynaconf/dynaconf) - Source code
+- [Python-dotenv](https://pypi.org/project/python-dotenv/) - .env file support

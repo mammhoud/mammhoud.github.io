@@ -8,7 +8,6 @@ labels:
   - Python
   - Pytest
   - Testing
-medium_url: https://medium.com/@mammhoud/pytest-testing-framework
 ---
 
 <img width="80px" class="rounded float-start pe-4" src="https://docs.pytest.org/en/stable/_static/pytest_logo_curves.svg" alt="Pytest logo" onerror="this.src='../img/essay/django.jpg'">
@@ -264,4 +263,10 @@ The difference between teams that ship confidently and teams that fear deploymen
 
 The investment is minimal: `pip install pytest`, rename your test files, and start writing plain `assert` statements. The return — caught bugs before production, confident refactoring, and a codebase that scales — is immediate and compounding.
 
-👉 Read more on [Medium]({{ page.medium_url }})
+👉 Read more on [Medium](https://medium.com/@mammhoud/pytest-testing-framework)
+
+## References
+
+- [Pytest Documentation](https://docs.pytest.org/) - Official docs
+- [Pytest GitHub](https://github.com/pytest-dev/pytest) - Source code
+- [Python unittest](https://docs.python.org/3/library/unittest.html) - Built-in testing framework

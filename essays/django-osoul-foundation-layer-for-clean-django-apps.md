@@ -10,7 +10,6 @@ labels:
   - HTMX
   - Architecture
   - Components
-medium_url: https://medium.com/@mammhoud/django-osoul-clean-architecture
 ---
 
 <img width="80px" class="rounded float-start pe-4" src="https://static.djangoproject.com/img/logos/django-logo-negative.svg" alt="Django-Osoul logo" onerror="this.src='../img/essay/django.jpg'">
@@ -442,4 +441,10 @@ Django-Osoul eliminates these patterns structurally. `FragmentComponent` handles
 
 The result is a Django project that stays clean as it scales — where adding a new feature means writing a new component, not untangling an existing view.
 
-👉 Read more on [Medium]({{ page.medium_url }})
+👉 Read more on [Medium](https://medium.com/@mammhoud/django-osoul-clean-architecture)
+
+## References
+
+- [Django-Osoul GitHub](https://github.com/mammhoud/django-osoul) - Official repository
+- [HTMX Documentation](https://htmx.org/) - HTMX library
+- [Django Documentation](https://docs.djangoproject.com/) - Django framework

@@ -7,7 +7,6 @@ labels:
   - Python
   - Rich
   - CLI
-medium_url: https://medium.com/@mammhoud/rich-beautiful-terminal
 ---
 
 <img width="80px" class="rounded float-start pe-4" src="https://raw.githubusercontent.com/Textualize/rich/master/imgs/logo.svg" alt="Rich logo" onerror="this.src='../img/essay/django.jpg'">
@@ -407,4 +406,10 @@ The terminal is a professional interface. Users, operators, and developers judge
 
 The adoption cost is a single `pip install rich`. The return is a terminal experience that communicates intent, surfaces structure, and earns the trust of everyone who runs your code. For any Python project with a CLI or terminal output, Rich is the professional standard.
 
-👉 Read more on [Medium]({{ page.medium_url }})
+👉 Read more on [Medium](https://medium.com/@mammhoud/rich-beautiful-terminal)
+
+## References
+
+- [Rich Documentation](https://rich.readthedocs.io/) - Official docs
+- [Rich GitHub](https://github.com/Textualize/rich) - Source code
+- [Textualize](https://textualize.io/) - TUI framework built on Rich

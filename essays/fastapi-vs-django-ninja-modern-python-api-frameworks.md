@@ -9,7 +9,6 @@ labels:
   - FastAPI
   - Django Ninja
   - API
-medium_url: https://medium.com/@mammhoud/fastapi-vs-django-ninja
 ---
 
 <img width="80px" class="rounded float-start pe-4" src="https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png" alt="FastAPI logo" onerror="this.src='../img/essay/django.jpg'">
@@ -270,4 +269,10 @@ Both frameworks are production-ready and actively maintained. FastAPI wins on ra
 
 The decision is not about which framework is better. It is about which framework eliminates the most friction for your team's specific context.
 
-👉 Read more on [Medium]({{ page.medium_url }})
+👉 Read more on [Medium](https://medium.com/@mammhoud/fastapi-vs-django-ninja)
+
+## References
+
+- [FastAPI Documentation](https://fastapi.tiangolo.com/) - Official docs
+- [Django Ninja GitHub](https://github.com/vitalik/django-ninja) - Source code
+- [Pydantic](https://docs.pydantic.dev/) - Data validation used by both

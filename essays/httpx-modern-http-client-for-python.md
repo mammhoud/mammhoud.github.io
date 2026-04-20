@@ -9,7 +9,6 @@ labels:
   - HTTPX
   - HTTP
   - Async
-medium_url: https://medium.com/@mammhoud/httpx-modern-http-client
 ---
 
 <img width="80px" class="rounded float-start pe-4" src="https://www.python-httpx.org/img/logo.svg" alt="HTTPX logo" onerror="this.src='../img/essay/django.jpg'">
@@ -224,4 +223,10 @@ HTTP communication is at the core of every modern Python application — API int
 
 The migration from `requests` is frictionless — the API is intentionally compatible. The gains are immediate: async concurrency eliminates sequential latency, HTTP/2 reduces connection overhead, and the built-in test client makes integration testing straightforward. For any Python project that makes HTTP calls, HTTPX is the professional standard.
 
-👉 Read more on [Medium]({{ page.medium_url }})
+👉 Read more on [Medium](https://medium.com/@mammhoud/httpx-modern-http-client)
+
+## References
+
+- [HTTPX Documentation](https://www.python-httpx.org/) - Official docs
+- [HTTPX GitHub](https://github.com/encode/httpx) - Source code
+- [ASGI Specification](https://asgi.readthedocs.io/) - Async Server Gateway Interface

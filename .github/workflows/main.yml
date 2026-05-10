@@ -29,12 +29,12 @@ jobs:
           bundler-cache: true
           cache-version: 0
 
-      # - name: Setup Pages
-      #   id: pages
-      #   uses: actions/configure-pages@v4
-      #   with:
-      #     token: ${{ secrets.GITHUB_TOKEN }}
-      #     enablement: true
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          enablement: true
 
       - name: Build with Jekyll
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"

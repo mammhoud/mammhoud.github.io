@@ -1,5 +1,9 @@
 name: Makefile CI
 
+on:
+  push:
+    branches:
+      - github-page
 
 permissions:
   contents: read
@@ -26,7 +30,7 @@ jobs:
         cache-version: 0
 
     - name: Install dependencies
-      run: make build
+      run: make install && make build
       env:
         JEKYLL_ENV: production
     

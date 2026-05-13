@@ -4,7 +4,7 @@
   --theme-amethyst-glow: #6a3caa;
   --theme-electric-violet: #9a4dff;
   --theme-lavender-mist: #ccb8ff;
-  --theme-moon-petal: #f4ebff;
+  --theme-moon-petal: #83a759;
 
   --theme-african-violet: #b284be;
   --theme-soft-terracotta: #be9584;
@@ -19,7 +19,7 @@
 
   --portfolio-color-surface: color-mix(in oklab, var(--theme-midnight-orchid) 65%, black 35%);
   --portfolio-color-surface-soft: color-mix(in oklab, var(--theme-african-violet) 28%, transparent);
-  --portfolio-color-text: #ffffff;
+  --portfolio-color-text: var(--portfolio-color-highlight);
   --portfolio-color-text-muted: #f4ebff;
   --portfolio-color-border: color-mix(in oklab, var(--theme-lavender-mist) 40%, transparent);
 
@@ -31,11 +31,11 @@
 }
 
 .portfolio {
-  background:
-    radial-gradient(circle at 8% 20%, color-mix(in oklab, var(--portfolio-color-highlight) 35%, transparent) 0%, transparent 45%),
-    radial-gradient(circle at 92% 12%, color-mix(in oklab, var(--theme-light-steel-blue) 25%, transparent) 0%, transparent 40%),
-    linear-gradient(140deg, var(--portfolio-color-bg-start) 0%, var(--portfolio-color-bg-mid) 50%, var(--portfolio-color-bg-end) 100%);
-  color: var(--portfolio-color-text);
+    background: radial-gradient(circle at 8% 20%, color-mix(in oklab, var(--portfolio-color-highlight) 35%, transparent) 0%, transparent 45%),
+radial-gradient(circle at 92% 12%, color-mix(in oklab, var(--theme-light-steel-blue) 25%, transparent) 0%, transparent 40%),
+linear-gradient(140deg, var(--portfolio-color-bg-start) 0%, var(--portfolio-color-bg-mid) 50%, var(--portfolio-color-bg-end) 100%);
+    color: var(--portfolio-color-text);
+
 }
 
 .portfolio__surface {
@@ -49,22 +49,23 @@
 .portfolio__heading,
 .portfolio__text,
 .portfolio__link,
-.portfolio a,
-.portfolio .card-title,
-.portfolio .card-text,
-.portfolio .lead,
-.portfolio p,
-.portfolio h1,
-.portfolio h5 {
-  color: var(--portfolio-color-text);
+.portfolio h1 {
+    color: var(--portfolio-color-text);
+
 }
 
+li a,
+p a,
+.btn-primary
+{
+    color: var(--portfolio-color-accent-text); 
+}
 .portfolio a:hover {
-  color: var(--portfolio-color-highlight-soft);
+    color: var(--portfolio-color-highlight-soft);
+
 }
 
-.portfolio__text--muted,
-.portfolio .text-muted {
+.portfolio__text--muted {
   color: var(--portfolio-color-text-muted) !important;
 }
 
@@ -94,10 +95,11 @@
 }
 
 .portfolio__project-image {
-  width: 100%;
-  height: 100%;
-  min-height: 220px;
-  object-fit: cover;
+    width: 100%;
+    height: 100%;
+    min-height: 220px;
+    object-fit: fill;
+
 }
 
 .portfolio__button {
@@ -139,8 +141,11 @@
 }
 
 .portfolio img {
-  max-width: 100%;
-  height: auto;
+    max-width: fit-content;
+    align-content: center;
+    align-items: center;
+    max-height: fit-content;
+
 }
 
 @media (max-width: 768px) {

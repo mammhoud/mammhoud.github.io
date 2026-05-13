@@ -12,7 +12,7 @@ baseurl: ""
 # OPTIONAL CHANGES
 main-theme: main.min.css
 
-site-theme: bitter.css
+site-theme: custom-portfolio.css
 
 
 # DON'T CHANGE THE FOLLOWING (unless you know what you're doing)

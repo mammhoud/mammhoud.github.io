@@ -4,12 +4,12 @@
       <h5 class="card-title">{{ include.page.title }}</h5>
       <p class="card-text"><small class="text-muted">{{ include.page.date | date_to_string }}</small></p>
       <p class="card-text">{{ include.page.content | markdownify | strip_html | truncatewords: 40 }}</p>
-      <p>
+      <p class="mb-3">
         {% for label in include.page.labels %}
-        <span style="background-color: var(--tf-pill-bg)" class="badge rounded-pill">{{ label }}</span>
+        <span class="badge rounded-pill portfolio__badge">{{ label }}</span>
         {% endfor %}
       </p>
     </div>
-      <div class="text-center mb-4"><a href="{% if include.page.medium_url %}{{ include.page.medium_url }}{% elsif page.essayurl %}{{ page.essayurl }}{% else %}{{ site.baseurl}}{{ include.page.url }}{% endif %}" class="btn ">Read More</a></div>
+      <div class="text-center mb-4"><a href="{% if include.page.medium_url %}{{ include.page.medium_url }}{% elsif include.page.essayurl %}{{ include.page.essayurl }}{% else %}{{ site.baseurl}}{{ include.page.url }}{% endif %}" class="btn portfolio__button">Read More</a></div>
   </div>
 </div>

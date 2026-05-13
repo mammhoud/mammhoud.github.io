@@ -1,21 +1,21 @@
-<div class="card mb-3">
+<div class="card mb-3 portfolio__card shadow-lg border-0 portfolio__animate-slide-up">
   <div class="row g-0">
-    <div class="col-sm-6 col-md-4">
-      <img src="{{ site.baseurl }}/{{ include.page.image }}" height="225px" class="rounded-start">
+    <div class="col-12 col-md-4">
+      <img src="{{ site.baseurl }}/{{ include.page.image }}" class="rounded-start portfolio__project-image" alt="{{ include.page.title }}">
     </div>
-    <div class="col-sm-6 col-md-8">
+    <div class="col-12 col-md-8">
       <div class="card-body">
-        <h5 class="card-title">{{ include.page.title }} <small class="text-muted float-end">{{ include.page.date }}</small></h5>
+        <h5 class="card-title">{{ include.page.title }} <small class="portfolio__text--muted d-block d-md-inline float-md-end">{{ include.page.date }}</small></h5>
         <p class="card-text">{{ include.page.summary }}</p>
-        <p>
+        <p class="mb-3">
           {% for label in include.page.labels %}
-          <span style="background-color: var(--tf-pill-bg)" class="badge rounded-pill">{{ label }}</span>
+          <span class="badge rounded-pill portfolio__badge">{{ label }}</span>
           {% endfor %}
         </p>
-        {% if page.projecturl %}
-        <a href="{{ page.projecturl }}" class="btn ">Project Site</a>
+        {% if include.page.projecturl %}
+        <a href="{{ include.page.projecturl }}" class="btn btn-primary portfolio__button">Project Site</a>
         {% else %}
-        <a href="{{ site.baseurl}}{{ include.page.url }}" class="btn ">Read More</a>
+        <a href="{{ site.baseurl}}{{ include.page.url }}" class="btn btn-primary portfolio__button">Read More</a>
         {% endif %}
       </div>
     </div>

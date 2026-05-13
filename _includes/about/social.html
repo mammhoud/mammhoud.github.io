@@ -1,11 +1,11 @@
-<li class="bg-base-100 list-group-item" style="justify-items: center;">
+<li class="bg-base-100 list-group-item flex w-96 flex-col rounded-md *:rounded-md *:p-3 *:shadow-sm *:shadow-base-300/20 portfolio__social-item">
   <svg class="tf-social">
     <use xlink:href="{{ '/img/bootstrap-icons.svg' | prepend: site.baseurl }}#{{- include.name -}}" />
   </svg>
 
-  <div class="flex w-full items-center gap-2" style="justify-content: center;">
+  <div class="flex w-full items-center gap-2 portfolio__social-stack">
     <a href="{{ include.url }}" class="link link-animated" target="_blank">
-      <span>{{ include.label }}</span>
+      <span class="text-center">{{ include.label }}</span>
     </a>
 
   </div>

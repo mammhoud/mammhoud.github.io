@@ -4,7 +4,7 @@
 JEKYLL_ENV=production
 JEKYLL_BASEURL=""
 BUILD_DIR=_site
-BUNDLE := bundle install --path vendor/bundle
+BUNDLE := bundle config set --local path "vendor/bundle" && bundle install
 
 # Commands
 .PHONY: install serve guard build check clean update all

@@ -1,16 +1,16 @@
-<div style="background-color: var(--tf-page-bg-color)" class="bg-gradient py-3">
-  <div class="container">
-    <div class="flex flex-wrap align-content-center align-items-center flex-col">
+<div class="bg-gradient py-5 portfolio__surface portfolio__surface--hero">
+  <div class="container motion-safe:animate-fade-in">
+    <div class="row align-items-center g-4">
       {% if site.data.bio.basics.picture %}
-       <div class="col-lg-2 max-w-[220px]">
+       <div class="col-12 col-lg-3 text-center">
         
-        <img width="300px" src="{{ site.data.bio.basics.picture }}" class="d-block mx-auto rounded-circle">
+        <img width="300" src="{{ site.data.bio.basics.picture }}" class="d-block mx-auto rounded-circle portfolio__avatar" alt="{{ site.data.bio.basics.name }}">
       </div> 
       {% endif %}
-      <div class="col-lg-16">
+      <div class="col-12 col-lg-9">
         <h1 class="display-4 text-center">{{ site.data.bio.basics.name }}</h1>
         <p class="lead text-center">{{ site.data.bio.basics.label }}</p>
-        <p class="lead m-4">{{ site.data.bio.basics.summary }}</p>
+        <p class="lead m-4 text-body-emphasis portfolio__summary">{{ site.data.bio.basics.summary }}</p>
         <hr class="my-4">
         <p class="lead m-0">
           Interests:
@@ -19,20 +19,20 @@
           {% endfor %}
         </p>
         <hr class="my-4">
-        <div class="row">
+        <div class="row g-2">
 
           {% if site.data.bio.basics.website %}
 
             {% capture url %}{{ site.data.bio.basics.website }}{% endcapture %}
 
-            <div class="col text-center">
+            <div class="col-12 col-sm-6 col-lg text-center portfolio__social-tile">
               {% include about/social.html url=url name='house' label='Portfolio' %}
             </div>
           {% endif %}
 
           {% if site.data.bio.basics.email %}
             {% capture url %}mailto:{{ site.data.bio.basics.email }}{% endcapture %}
-            <div class="col text-center">
+            <div class="col-12 col-sm-6 col-lg text-center portfolio__social-tile">
               {% include about/social.html url=url name='envelope'  label='Email' %}
             </div>
           {% endif %}
@@ -42,7 +42,7 @@
           {% capture name %}{{ profile.network | downcase }}{% endcapture %}
           {% capture label %}{{ profile.network }}{% endcapture %}
 
-            <div class="col text-center">
+            <div class="col-12 col-sm-6 col-lg text-center portfolio__social-tile">
               {% include about/social.html url=url name=name label=label %}
             </div>
           {% endfor %}

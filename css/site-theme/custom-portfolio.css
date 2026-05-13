@@ -1,0 +1,161 @@
+:root {
+  /* Theme: Midnight Orchid Garden */
+  --theme-midnight-orchid: #2f0f52;
+  --theme-amethyst-glow: #6a3caa;
+  --theme-electric-violet: #9a4dff;
+  --theme-lavender-mist: #ccb8ff;
+  --theme-moon-petal: #f4ebff;
+
+  --theme-african-violet: #b284be;
+  --theme-soft-terracotta: #be9584;
+  --theme-pastel-green: #90be84;
+  --theme-light-steel-blue: #84adbe;
+
+  --portfolio-color-bg-start: var(--theme-midnight-orchid);
+  --portfolio-color-bg-mid: var(--theme-amethyst-glow);
+  --portfolio-color-bg-end: var(--theme-electric-violet);
+  --portfolio-color-highlight: var(--theme-lavender-mist);
+  --portfolio-color-highlight-soft: var(--theme-moon-petal);
+
+  --portfolio-color-surface: color-mix(in oklab, var(--theme-midnight-orchid) 65%, black 35%);
+  --portfolio-color-surface-soft: color-mix(in oklab, var(--theme-african-violet) 28%, transparent);
+  --portfolio-color-text: #ffffff;
+  --portfolio-color-text-muted: #f4ebff;
+  --portfolio-color-border: color-mix(in oklab, var(--theme-lavender-mist) 40%, transparent);
+
+  --portfolio-color-accent: var(--theme-light-steel-blue);
+  --portfolio-color-accent-hover: var(--theme-pastel-green);
+  --portfolio-color-accent-text: #1f1630;
+  --portfolio-color-accent-text-hover: #10201b;
+  --portfolio-color-badge-bg: color-mix(in oklab, var(--theme-soft-terracotta) 35%, transparent);
+}
+
+.portfolio {
+  background:
+    radial-gradient(circle at 8% 20%, color-mix(in oklab, var(--portfolio-color-highlight) 35%, transparent) 0%, transparent 45%),
+    radial-gradient(circle at 92% 12%, color-mix(in oklab, var(--theme-light-steel-blue) 25%, transparent) 0%, transparent 40%),
+    linear-gradient(140deg, var(--portfolio-color-bg-start) 0%, var(--portfolio-color-bg-mid) 50%, var(--portfolio-color-bg-end) 100%);
+  color: var(--portfolio-color-text);
+}
+
+.portfolio__surface {
+  background:
+    linear-gradient(140deg, color-mix(in oklab, var(--theme-african-violet) 22%, transparent), color-mix(in oklab, var(--theme-light-steel-blue) 18%, transparent));
+  border-top: 1px solid var(--portfolio-color-border);
+  border-bottom: 1px solid var(--portfolio-color-border);
+  backdrop-filter: blur(4px);
+}
+
+.portfolio__heading,
+.portfolio__text,
+.portfolio__link,
+.portfolio a,
+.portfolio .card-title,
+.portfolio .card-text,
+.portfolio .lead,
+.portfolio p,
+.portfolio h1,
+.portfolio h5 {
+  color: var(--portfolio-color-text);
+}
+
+.portfolio a:hover {
+  color: var(--portfolio-color-highlight-soft);
+}
+
+.portfolio__text--muted,
+.portfolio .text-muted {
+  color: var(--portfolio-color-text-muted) !important;
+}
+
+.portfolio__social-tile {
+  background: var(--portfolio-color-surface-soft);
+  border: 1px solid var(--portfolio-color-border);
+  border-radius: 16px;
+  padding: 0.75rem;
+}
+
+.portfolio__avatar {
+  width: min(240px, 75vw);
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border: 2px solid color-mix(in oklab, var(--theme-lavender-mist) 65%, transparent);
+}
+
+.portfolio__card {
+  background-color: var(--portfolio-color-surface);
+  color: var(--portfolio-color-text);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.portfolio__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 28px color-mix(in oklab, var(--theme-midnight-orchid) 70%, transparent) !important;
+}
+
+.portfolio__project-image {
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+  object-fit: cover;
+}
+
+.portfolio__button {
+  background-color: var(--portfolio-color-accent);
+  border-color: var(--portfolio-color-accent);
+  color: var(--portfolio-color-accent-text);
+  font-weight: 600;
+}
+
+.portfolio__button:hover {
+  background-color: var(--portfolio-color-accent-hover);
+  border-color: var(--portfolio-color-accent-hover);
+  color: var(--portfolio-color-accent-text-hover);
+}
+
+.portfolio__badge {
+  background-color: var(--portfolio-color-badge-bg);
+  color: var(--portfolio-color-text);
+  margin: 0.2rem 0.35rem 0.2rem 0;
+  padding: 0.45rem 0.7rem;
+}
+
+.portfolio__social-item {
+  justify-items: center;
+  text-align: center;
+}
+
+.portfolio__social-stack {
+  justify-content: center;
+}
+
+@keyframes portfolio-slide-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.portfolio__animate-slide-up {
+  animation: portfolio-slide-up 500ms ease both;
+}
+
+.portfolio img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .portfolio__surface {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+
+  .portfolio__summary {
+    margin: 1rem 0 !important;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .portfolio__card .card-body {
+    padding: 1rem;
+  }
+}

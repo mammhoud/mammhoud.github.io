@@ -66,6 +66,70 @@
     crossorigin="anonymous"></script>
 </body>
 <style>
+  :root {
+    --brand-bg: #0f172a;
+    --brand-surface: #111827;
+    --brand-accent: #14b8a6;
+    --brand-accent-2: #38bdf8;
+    --brand-text: #e5e7eb;
+    --brand-muted: #cbd5e1;
+  }
+
+  body {
+    background: linear-gradient(180deg, #020617 0%, #0b1120 45%, #111827 100%);
+    color: var(--brand-text);
+  }
+
+  .hero-surface,
+  .projects-surface {
+    background: linear-gradient(135deg, rgba(20, 184, 166, 0.12), rgba(56, 189, 248, 0.10));
+    border-top: 1px solid rgba(148, 163, 184, 0.25);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+  }
+
+  .project-card {
+    background-color: var(--brand-surface);
+    color: var(--brand-text);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 28px rgba(2, 6, 23, 0.45) !important;
+  }
+
+  .social-tile {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    padding: 0.5rem;
+  }
+
+  .card-title, .card-text, .lead, p, h1, h5, a {
+    color: var(--brand-text);
+  }
+
+  .text-muted { color: var(--brand-muted) !important; }
+
+  .btn-primary {
+    background-color: var(--brand-accent);
+    border-color: var(--brand-accent);
+    color: #052e2b;
+    font-weight: 600;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--brand-accent-2);
+    border-color: var(--brand-accent-2);
+    color: #082f49;
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-slide-up { animation: slideUp 500ms ease both; }
+
   img {
     width: -webkit-fill-available;
     height: -webkit-fill-available;

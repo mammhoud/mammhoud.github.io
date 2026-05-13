@@ -1,5 +1,5 @@
-<div style="background-color: var(--tf-page-bg-color)" class="bg-gradient py-3">
-  <div class="container">
+<div style="background-color: var(--tf-page-bg-color)" class="bg-gradient py-5 hero-surface">
+  <div class="container motion-safe:animate-fade-in">
     <div class="flex flex-wrap align-content-center align-items-center flex-col">
       {% if site.data.bio.basics.picture %}
        <div class="col-lg-2 max-w-[220px]">
@@ -10,7 +10,7 @@
       <div class="col-lg-16">
         <h1 class="display-4 text-center">{{ site.data.bio.basics.name }}</h1>
         <p class="lead text-center">{{ site.data.bio.basics.label }}</p>
-        <p class="lead m-4">{{ site.data.bio.basics.summary }}</p>
+        <p class="lead m-4 text-body-emphasis">{{ site.data.bio.basics.summary }}</p>
         <hr class="my-4">
         <p class="lead m-0">
           Interests:
@@ -25,14 +25,14 @@
 
             {% capture url %}{{ site.data.bio.basics.website }}{% endcapture %}
 
-            <div class="col text-center">
+            <div class="col text-center social-tile">
               {% include about/social.html url=url name='house' label='Portfolio' %}
             </div>
           {% endif %}
 
           {% if site.data.bio.basics.email %}
             {% capture url %}mailto:{{ site.data.bio.basics.email }}{% endcapture %}
-            <div class="col text-center">
+            <div class="col text-center social-tile">
               {% include about/social.html url=url name='envelope'  label='Email' %}
             </div>
           {% endif %}
@@ -42,7 +42,7 @@
           {% capture name %}{{ profile.network | downcase }}{% endcapture %}
           {% capture label %}{{ profile.network }}{% endcapture %}
 
-            <div class="col text-center">
+            <div class="col text-center social-tile">
               {% include about/social.html url=url name=name label=label %}
             </div>
           {% endfor %}

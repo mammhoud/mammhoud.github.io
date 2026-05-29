@@ -23,11 +23,14 @@
   --portfolio-color-text-muted: #eadfff;
   --portfolio-color-border: color-mix(in oklab, var(--theme-lavender-mist) 40%, transparent);
 
-  --portfolio-color-accent: #d8f3ff;
-  --portfolio-color-accent-hover: #dbffd6;
-  --portfolio-color-accent-text: #160f26;
-  --portfolio-color-accent-text-hover: #10201b;
-  --portfolio-color-link: #f0f8ff;
+  --portfolio-color-accent: #f2f9ff;
+  --portfolio-color-accent-hover: #e5ffb8;
+  --portfolio-color-accent-text: #180d2d;
+  --portfolio-color-accent-text-hover: #13240d;
+  --portfolio-color-link: #f8fbff;
+  --portfolio-color-nav-text: #1f1630;
+  --portfolio-color-nav-hover: #4a2474;
+  --portfolio-color-focus-ring: rgba(154, 77, 255, 0.42);
   --portfolio-color-badge-bg: color-mix(in oklab, var(--theme-soft-terracotta) 35%, transparent);
 }
 
@@ -105,15 +108,35 @@ linear-gradient(140deg, var(--portfolio-color-bg-start) 0%, var(--portfolio-colo
 
 .portfolio__button {
   background-color: var(--portfolio-color-accent);
-  border-color: var(--portfolio-color-accent);
+  border: 1px solid var(--portfolio-color-accent);
   color: var(--portfolio-color-accent-text);
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  box-shadow: 0 10px 24px color-mix(in oklab, var(--theme-midnight-orchid) 28%, transparent);
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
 .portfolio__button:hover {
   background-color: var(--portfolio-color-accent-hover);
   border-color: var(--portfolio-color-accent-hover);
   color: var(--portfolio-color-accent-text-hover);
+  box-shadow: 0 14px 30px color-mix(in oklab, var(--theme-midnight-orchid) 34%, transparent);
+  transform: translateY(-1px);
+}
+
+.portfolio__button:focus-visible {
+  outline: 3px solid var(--portfolio-color-focus-ring);
+  outline-offset: 3px;
+}
+
+.portfolio__download-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding-inline: 1rem;
+  border-radius: 999px;
+  white-space: nowrap;
 }
 
 .portfolio__badge {
@@ -153,12 +176,23 @@ linear-gradient(140deg, var(--portfolio-color-bg-start) 0%, var(--portfolio-colo
 
 .portfolio__navbar .nav-link,
 .portfolio__navbar .navbar-brand {
-  color: #1f1630;
+  color: var(--portfolio-color-nav-text);
 }
 
 .portfolio__navbar .nav-link:hover,
 .portfolio__navbar .navbar-brand:hover {
-  color: #4a2474;
+  color: var(--portfolio-color-nav-hover);
+}
+
+.portfolio__navbar .portfolio__download-button {
+  margin-inline-start: 0.5rem;
+  min-height: 2.5rem;
+  padding-inline: 1rem;
+}
+
+.portfolio__navbar .portfolio__download-button:hover,
+.portfolio__navbar .portfolio__download-button:focus {
+  color: var(--portfolio-color-accent-text-hover);
 }
 
 .portfolio__navbar .navbar-toggler {
@@ -276,6 +310,11 @@ linear-gradient(140deg, var(--portfolio-color-bg-start) 0%, var(--portfolio-colo
     gap: 0.25rem;
     padding-top: 0.75rem;
     text-align: center;
+  }
+
+  .portfolio__navbar .portfolio__download-button {
+    margin-inline-start: 0;
+    width: 100%;
   }
 
   .portfolio__resume-hero,

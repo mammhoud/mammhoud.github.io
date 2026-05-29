@@ -15,18 +15,19 @@
   --portfolio-color-bg-mid: var(--theme-amethyst-glow);
   --portfolio-color-bg-end: var(--theme-electric-violet);
   --portfolio-color-highlight: var(--theme-lavender-mist);
-  --portfolio-color-highlight-soft: var(--theme-moon-petal);
+  --portfolio-color-highlight-soft: #e5ffb8;
 
   --portfolio-color-surface: color-mix(in oklab, var(--theme-midnight-orchid) 65%, black 35%);
   --portfolio-color-surface-soft: color-mix(in oklab, var(--theme-african-violet) 28%, transparent);
-  --portfolio-color-text: var(--portfolio-color-highlight);
-  --portfolio-color-text-muted: #f4ebff;
+  --portfolio-color-text: #f7f1ff;
+  --portfolio-color-text-muted: #eadfff;
   --portfolio-color-border: color-mix(in oklab, var(--theme-lavender-mist) 40%, transparent);
 
-  --portfolio-color-accent: var(--theme-light-steel-blue);
-  --portfolio-color-accent-hover: var(--theme-pastel-green);
-  --portfolio-color-accent-text: #1f1630;
+  --portfolio-color-accent: #d8f3ff;
+  --portfolio-color-accent-hover: #dbffd6;
+  --portfolio-color-accent-text: #160f26;
   --portfolio-color-accent-text-hover: #10201b;
+  --portfolio-color-link: #f0f8ff;
   --portfolio-color-badge-bg: color-mix(in oklab, var(--theme-soft-terracotta) 35%, transparent);
 }
 
@@ -54,15 +55,15 @@ linear-gradient(140deg, var(--portfolio-color-bg-start) 0%, var(--portfolio-colo
 
 }
 
-li a,
-p a,
-.btn-primary
-{
-    color: var(--portfolio-color-accent-text); 
+.portfolio :where(p, li) a:not(.btn),
+.portfolio__link {
+  color: var(--portfolio-color-link);
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
 }
-.portfolio a:hover {
-    color: var(--portfolio-color-highlight-soft);
 
+.portfolio a:hover {
+  color: var(--portfolio-color-highlight-soft);
 }
 
 .portfolio__text--muted {
@@ -94,12 +95,12 @@ p a,
   box-shadow: 0 16px 28px color-mix(in oklab, var(--theme-midnight-orchid) 70%, transparent) !important;
 }
 
-.portfolio__project-image {
-    width: 100%;
-    height: 100%;
-    min-height: 220px;
-    object-fit: fill;
-
+.portfolio .portfolio__project-image {
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+  object-fit: cover;
+  border-radius: var(--bs-card-inner-border-radius) 0 0 var(--bs-card-inner-border-radius);
 }
 
 .portfolio__button {
@@ -141,11 +142,107 @@ p a,
 }
 
 .portfolio img {
-    max-width: fit-content;
-    align-content: center;
-    align-items: center;
-    max-height: fit-content;
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
 
+.portfolio__navbar .navbar-collapse {
+  flex-grow: 0;
+}
+
+.portfolio__navbar .nav-link,
+.portfolio__navbar .navbar-brand {
+  color: #1f1630;
+}
+
+.portfolio__navbar .nav-link:hover,
+.portfolio__navbar .navbar-brand:hover {
+  color: #4a2474;
+}
+
+.portfolio__navbar .navbar-toggler {
+  border-color: var(--portfolio-color-border);
+}
+
+.portfolio__navbar .navbar-toggler:focus {
+  box-shadow: 0 0 0 0.2rem color-mix(in oklab, var(--portfolio-color-accent) 30%, transparent);
+}
+
+
+.portfolio__resume-page {
+  background:
+    linear-gradient(180deg, color-mix(in oklab, var(--portfolio-color-surface) 72%, transparent), color-mix(in oklab, var(--theme-midnight-orchid) 78%, transparent));
+}
+
+.portfolio__resume-hero,
+.portfolio__resume-section {
+  background: color-mix(in oklab, var(--portfolio-color-surface) 86%, transparent);
+  border: 1px solid var(--portfolio-color-border);
+  border-radius: 24px;
+  box-shadow: 0 16px 36px color-mix(in oklab, var(--theme-midnight-orchid) 45%, transparent);
+}
+
+.portfolio__resume-hero {
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+}
+
+.portfolio__resume-section {
+  margin-bottom: 1rem;
+  padding-left: clamp(1rem, 2vw, 1.5rem);
+  padding-right: clamp(1rem, 2vw, 1.5rem);
+}
+
+.portfolio__eyebrow {
+  color: var(--portfolio-color-highlight-soft);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.portfolio__button--secondary {
+  background-color: transparent;
+  border-color: var(--portfolio-color-accent);
+  color: var(--portfolio-color-link);
+}
+
+.portfolio__button--secondary:hover {
+  background-color: var(--portfolio-color-accent-hover);
+  color: var(--portfolio-color-accent-text-hover);
+}
+
+.portfolio__resume-contact-card {
+  background: color-mix(in oklab, var(--theme-midnight-orchid) 84%, black 16%);
+  border: 1px solid var(--portfolio-color-border);
+  border-radius: 20px;
+  padding: 1rem;
+}
+
+.portfolio__resume-contact-list {
+  gap: 0.65rem;
+}
+
+.portfolio__resume-contact-list .portfolio__social-item {
+  width: 100%;
+  max-width: none;
+  background: color-mix(in oklab, var(--portfolio-color-accent) 12%, transparent);
+  border: 1px solid var(--portfolio-color-border);
+  color: var(--portfolio-color-text);
+}
+
+.portfolio__resume-contact-list .tf-social {
+  margin-inline: auto;
+}
+
+.portfolio__resume-meta,
+.portfolio__resume-date {
+  color: var(--portfolio-color-text-muted);
+}
+
+.portfolio__resume-entry:not(:last-child) {
+  border-bottom: 1px solid color-mix(in oklab, var(--portfolio-color-border) 70%, transparent);
+  padding-bottom: 1rem;
 }
 
 @media (max-width: 768px) {
@@ -162,5 +259,71 @@ p a,
 
   .portfolio__card .card-body {
     padding: 1rem;
+  }
+
+  .portfolio .portfolio__project-image {
+    aspect-ratio: 16 / 9;
+    height: clamp(180px, 45vw, 260px);
+    min-height: 0;
+    border-radius: var(--bs-card-inner-border-radius) var(--bs-card-inner-border-radius) 0 0;
+  }
+
+  .portfolio__navbar .navbar-collapse {
+    width: 100%;
+  }
+
+  .portfolio__navbar .navbar-nav {
+    gap: 0.25rem;
+    padding-top: 0.75rem;
+    text-align: center;
+  }
+
+  .portfolio__resume-hero,
+  .portfolio__resume-section {
+    border-radius: 18px;
+  }
+
+  .portfolio__resume-section h2 {
+    font-size: 1.75rem;
+  }
+
+  .portfolio__resume-contact-card {
+    padding: 0.85rem;
+  }
+
+  .portfolio__resume-entry {
+    overflow-wrap: anywhere;
+  }
+
+}
+
+@media print {
+  .portfolio__navbar,
+  footer,
+  .portfolio__resume-hero .btn {
+    display: none !important;
+  }
+
+  .portfolio,
+  .portfolio__resume-page,
+  .portfolio__resume-hero,
+  .portfolio__resume-section {
+    background: #ffffff !important;
+    color: #111111 !important;
+    box-shadow: none !important;
+  }
+
+  .portfolio__resume-hero,
+  .portfolio__resume-section,
+  .portfolio__resume-contact-card {
+    border-color: #cccccc !important;
+  }
+
+  .portfolio a,
+  .portfolio h1,
+  .portfolio h2,
+  .portfolio__resume-date,
+  .portfolio__resume-meta {
+    color: #111111 !important;
   }
 }

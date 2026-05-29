@@ -12,7 +12,7 @@ layout: home
           <h1 class="display-4 mb-3">{{ site.data.bio.basics.name }}</h1>
           <p class="lead mb-4">{{ site.data.bio.basics.full_summary }}</p>
           <div class="d-flex flex-column flex-sm-row gap-2">
-            <a class="btn portfolio__button" href="{{ '/resume.html' | prepend: site.baseurl }}" download="Mahmoud-Ezzat-Moustafa-CV.html">Download CV</a>
+            <a class="btn portfolio__button portfolio__download-button" href="{{ '/me.pdf' | prepend: site.baseurl }}" download="Mahmoud-Ezzat-Moustafa-CV.pdf" aria-label="Download Mahmoud Ezzat Moustafa CV as a PDF">Download CV</a>
             <button class="btn portfolio__button portfolio__button--secondary" type="button" onclick="window.print()">Print CV</button>
           </div>
         </div>

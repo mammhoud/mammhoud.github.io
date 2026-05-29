@@ -1,12 +1,15 @@
-<header class="navbar navbar-expand navbar-light bg-light bg-gradient border-bottom">
+<header class="navbar navbar-expand-md navbar-light bg-light bg-gradient border-bottom portfolio__navbar">
   <div class="container-fluid">
     <a class="navbar-brand" href="{{ '/' | prepend: site.baseurl }}">{{ site.data.bio.basics.name }}</a>
-    <div class="ms-auto">
-      <ul class="navbar-nav mb-2 mb-lg-0">
-        <a class="nav-link link-animated" href="{{ '/#projects' | prepend: site.baseurl }}">Projects</a>
-        <a class="nav-link link-animated" href="{{ '/#essays' | prepend: site.baseurl }}">Essays</a>
-        <a class="nav-link link-animated" href="{{ '/resume.html' | prepend: site.baseurl }}">Resume</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#portfolioNavbar" aria-controls="portfolioNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <nav class="collapse navbar-collapse" id="portfolioNavbar">
+      <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+        <li class="nav-item"><a class="nav-link link-animated" href="{{ '/#projects' | prepend: site.baseurl }}">Projects</a></li>
+        <li class="nav-item"><a class="nav-link link-animated" href="{{ '/#essays' | prepend: site.baseurl }}">Essays</a></li>
+        <li class="nav-item"><a class="nav-link link-animated" href="{{ '/resume.html' | prepend: site.baseurl }}">Resume</a></li>
       </ul>
-    </div>
+    </nav>
   </div>
 </header>

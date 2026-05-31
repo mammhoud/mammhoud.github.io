@@ -1,5 +1,7 @@
 <div class="bg-gradient py-5 portfolio__surface portfolio__surface--hero">
-  <div class="container motion-safe:animate-fade-in">
+  <div class="portfolio__garden-orb portfolio__garden-orb--moss" aria-hidden="true"></div>
+  <div class="portfolio__garden-orb portfolio__garden-orb--petal" aria-hidden="true"></div>
+  <div class="container motion-safe:animate-fade-in portfolio__hero-content">
     <div class="row align-items-center g-4">
       {% if site.data.bio.basics.picture %}
        <div class="col-12 col-lg-3 text-center">
@@ -8,12 +10,13 @@
       </div> 
       {% endif %}
       <div class="col-12 col-lg-9">
-        <h1 class="display-4 text-center">{{ site.data.bio.basics.name }}</h1>
-        <p class="lead text-center">{{ site.data.bio.basics.label }}</p>
+        <p class="portfolio__eyebrow text-center mb-2">Cultivating thoughtful software</p>
+        <h1 class="display-4 text-center portfolio__hero-title">{{ site.data.bio.basics.name }}</h1>
+        <p class="lead text-center portfolio__hero-label">{{ site.data.bio.basics.label }}</p>
         <p class="lead m-4 text-body-emphasis portfolio__summary">{{ site.data.bio.basics.summary }}</p>
         <hr class="my-4">
-        <p class="lead m-0">
-          Interests:
+        <p class="lead m-0 portfolio__interests">
+          <span class="portfolio__leaf-bullet" aria-hidden="true">✦</span> Interests:
           {% for interest in site.data.bio.interests %}
           {{ interest.name }}{% if forloop.last != true %}, {% endif %}
           {% endfor %}

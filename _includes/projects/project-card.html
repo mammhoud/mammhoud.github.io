@@ -1,19 +1,19 @@
-<div class="card mb-3 portfolio__card shadow-lg portfolio__animate-slide-up">
-  <div class="flex flex-wrap gap-0">
-    <div class="w-full md:w-1/3">
-      <img src="{{ site.baseurl }}/{{ include.page.image }}" class="max-w-full h-auto portfolio__project-image" alt="{{ include.page.title }}">
+<div class="card h-full portfolio__card shadow-lg portfolio__animate-slide-up">
+  <div class="flex flex-wrap gap-0 h-full">
+    <div class="w-full lg:w-2/5">
+      <img src="{{ site.baseurl }}/{{ include.page.image }}" class="max-w-full h-full object-cover portfolio__project-image" alt="{{ include.page.title }}">
     </div>
-    <div class="w-full md:w-2/3">
-      <div class="card-body p-6">
-        <h5 class="card-title text-xl font-semibold">{{ include.page.title }} <small class="portfolio__text--muted block md:inline md:float-right">{{ include.page.date }}</small></h5>
-        <p class="card-text">{{ include.page.summary }}</p>
-        <p class="mb-3">
+    <div class="w-full lg:w-3/5 flex flex-col">
+      <div class="card-body p-6 flex flex-col h-full">
+        <h5 class="card-title text-xl font-semibold mb-2">{{ include.page.title }} <small class="portfolio__text--muted block md:inline md:float-right">{{ include.page.date }}</small></h5>
+        <p class="card-text flex-grow">{{ include.page.summary }}</p>
+        <div class="flex flex-wrap gap-2 mt-3 mb-3">
           {% for label in include.page.labels %}
           <span class="badge rounded-full portfolio__badge">{{ label }}</span>
           {% endfor %}
-        </p>
+        </div>
         {% if include.page.projecturl %}
-        <a href="{{ include.page.projecturl }}" class="portfolio__button portfolio__button--read">
+        <a href="{{ include.page.projecturl }}" class="portfolio__button portfolio__button--read self-start">
           <span>Project Site</span>
           <svg class="portfolio__button-arrow" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="5" y1="12" x2="19" y2="12"/>
@@ -21,7 +21,7 @@
           </svg>
         </a>
         {% else %}
-        <a href="{{ site.baseurl}}{{ include.page.url }}" class="portfolio__button portfolio__button--read">
+        <a href="{{ site.baseurl}}{{ include.page.url }}" class="portfolio__button portfolio__button--read self-start">
           <span>Read More</span>
           <svg class="portfolio__button-arrow" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="5" y1="12" x2="19" y2="12"/>

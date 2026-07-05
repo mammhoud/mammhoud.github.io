@@ -4,11 +4,12 @@
     <div class="flex flex-wrap mb-3">
       <div class="w-full md:w-1/2">
         <p class="portfolio__eyebrow mb-2">Field notes</p>
-        <h1 class="text-5xl md:text-6xl text-left portfolio__section-title">Essays</h1>
+        <h1 class="text-5xl md:text-6xl text-left portfolio__section-title">Blog Posts</h1>
       </div>
     </div>
 
-    <div class="flex flex-wrap gap-3">
+    <!-- Essay grid: responsive CSS grid with generous spacing -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
       {% assign essay_pages = site.pages | where: "type", "essay" | sort: "date" | reverse %}
       {% for page in essay_pages %}
         {% unless page.draft %}
@@ -21,7 +22,7 @@
     </div>
 
     {% if essay_pages.size > include.limit %}
-      <p class="text-center pt-4"><a href="{{ site.baseurl}}/essays/">See all {{ essay_pages.size }} essays</a></p>
+      <p class="text-center pt-8"><a href="{{ site.baseurl}}/essays/">See all {{ essay_pages.size }} posts</a></p>
     {% endif %}
 
   </div>

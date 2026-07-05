@@ -8,7 +8,8 @@
       </div>
     </div>
 
-    <div class="flex flex-col gap-3">
+    <!-- Project grid: responsive with 2 columns on large screens -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 lg:gap-8">
       {% assign project_pages = site.pages | where: "type", "project" | sort: "date" | reverse %}
       {% for page in project_pages %}
         {% unless page.draft %}
@@ -21,7 +22,7 @@
     </div>
 
     {% if project_pages.size > include.limit %}
-      <p class="text-center pt-4"><a href="{{ site.baseurl}}/projects/">See all {{ project_pages.size }} projects</a></p>
+      <p class="text-center pt-8"><a href="{{ site.baseurl}}/projects/">See all {{ project_pages.size }} projects</a></p>
     {% endif %}
 
   </div>

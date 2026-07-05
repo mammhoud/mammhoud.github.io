@@ -10,7 +10,7 @@ layout: default
     <h1 class="display-4">Page Not Found</h1>
     <p>Perhaps you were looking for one of the following:</p>
 
-    <h3>Essays</h3>
+    <h3>Blog Posts</h3>
     <ul>
       {% assign essay_pages = site.pages | where: "type", "essay" | sort: "date" | reverse %}
       {% for page in essay_pages %}

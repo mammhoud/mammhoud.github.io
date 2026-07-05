@@ -41,6 +41,48 @@
   --portfolio-color-glow: rgba(212, 237, 176, 0.12);
 }
 
+/* ─── Light Mode Palette ───
+ * A daytime counterpart to the Midnight Orchid Garden.
+ * Activated by adding .light-mode to <html>.
+ * ──────────────────────────────────────────────────── */
+:root.light-mode {
+  --portfolio-color-bg-start: #f0e8fa;
+  --portfolio-color-bg-mid: #d8edc9;
+  --portfolio-color-bg-end: #e6d5f5;
+  --portfolio-color-highlight: var(--theme-amethyst-glow);
+  --portfolio-color-highlight-soft: var(--theme-soft-terracotta);
+
+  --portfolio-color-surface: color-mix(in oklab, #faf7fc 96%, var(--theme-lavender-mist) 4%);
+  --portfolio-color-surface-soft: color-mix(in oklab, var(--theme-fern) 12%, transparent);
+  --portfolio-color-text: #1d0a33;
+  --portfolio-color-text-muted: #5a4a6b;
+  --portfolio-color-border: color-mix(in oklab, var(--theme-amethyst-glow) 14%, transparent);
+
+  --portfolio-color-accent: var(--theme-amethyst-glow);
+  --portfolio-color-accent-hover: var(--theme-electric-violet);
+  --portfolio-color-accent-text: var(--theme-moon-petal);
+  --portfolio-color-accent-text-hover: var(--theme-moon-petal);
+  --portfolio-color-link: var(--theme-amethyst-glow);
+  --portfolio-color-nav-text: #1d0a33;
+  --portfolio-color-nav-hover: var(--theme-amethyst-glow);
+  --portfolio-color-focus-ring: rgba(107, 68, 184, 0.4);
+  --portfolio-color-badge-bg: color-mix(in oklab, var(--theme-soft-terracotta) 20%, var(--theme-lavender-mist) 15%);
+  --portfolio-color-glow: rgba(107, 68, 184, 0.08);
+}
+
+/* ─── Smooth theme transition helper ───
+ * Added to <html> by JS during toggle, removed after 400 ms.
+ * Only transitions the propreties that differ between themes.
+ * ─────────────────────────────────────────────────────── */
+.theme-transitioning,
+.theme-transitioning * {
+  transition: background 0.35s ease,
+              background-color 0.35s ease,
+              color 0.35s ease,
+              border-color 0.35s ease,
+              box-shadow 0.35s ease !important;
+}
+
 /* ─── Smooth scrollbar ─── */
 ::-webkit-scrollbar {
   width: 8px;
@@ -65,6 +107,25 @@
   color: var(--portfolio-color-text);
 }
 
+@media (max-width: 768px) {
+  .portfolio::before {
+    opacity: 0.2;
+    background-size: clamp(60px, 10vw, 90px) clamp(32px, 5vw, 50px), clamp(90px, 14vw, 130px) clamp(44px, 7vw, 70px);
+  }
+  .portfolio::after {
+    display: none;
+  }
+}
+
+/* Light mode: pattern should be more subtle so it doesn't compete with light palette */
+.light-mode .portfolio::before {
+  opacity: 0.18;
+}
+
+.light-mode .portfolio::after {
+  opacity: 0.02;
+}
+
 .portfolio {
   min-height: 100vh;
   line-height: 1.75;
@@ -72,10 +133,15 @@
   -moz-osx-font-smoothing: grayscale;
   scrollbar-width: thin;
   scrollbar-color: color-mix(in oklab, var(--theme-fern) 55%, transparent) color-mix(in oklab, var(--theme-midnight-orchid) 70%, transparent);
+  /* ── Responsive ambient background ──
+   * Gradient positions shift with viewport via clamp().
+   * On narrower screens the highlights stay visible; on wider
+   * screens they spread organically.
+   * ──────────────────────────────────── */
   background:
-    radial-gradient(circle at 6% 14%, color-mix(in oklab, var(--theme-sage) 28%, transparent) 0%, transparent 36%),
-    radial-gradient(circle at 92% 8%, color-mix(in oklab, var(--theme-rose) 26%, transparent) 0%, transparent 34%),
-    radial-gradient(circle at 48% 96%, color-mix(in oklab, var(--theme-fern) 30%, transparent) 0%, transparent 40%),
+    radial-gradient(circle at clamp(4%, 6vw, 12%) clamp(8%, 14vw, 20%), color-mix(in oklab, var(--theme-sage) 28%, transparent) 0%, transparent min(40vw, 36%)),
+    radial-gradient(circle at clamp(80%, 92vw, 96%) clamp(4%, 8vw, 12%), color-mix(in oklab, var(--theme-rose) 26%, transparent) 0%, transparent min(38vw, 34%)),
+    radial-gradient(circle at clamp(40%, 48vw, 56%) clamp(88%, 96vw, 100%), color-mix(in oklab, var(--theme-fern) 30%, transparent) 0%, transparent min(44vw, 40%)),
     linear-gradient(145deg, var(--portfolio-color-bg-start) 0%, var(--portfolio-color-bg-mid) 46%, var(--portfolio-color-bg-end) 100%);
   color: var(--portfolio-color-text);
 }
@@ -89,6 +155,25 @@
   line-height: 1.75;
 }
 
+/* ── Grain/Noise overlay for depth ──
+ * A very subtle film-grain texture over the entire page.
+ * Only visible on wider screens where detail matters.
+ * ──────────────────────────────────── */
+.portfolio::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+}
+
+/* ── Lattice/diagonal pattern ──
+ * Responsive sizes via clamp(); fades near edges so it never
+ * overwhelms the content.
+ * ─────────────────────────────── */
 .portfolio::before {
   content: "";
   position: fixed;
@@ -97,11 +182,21 @@
   pointer-events: none;
   opacity: 0.35;
   background-image:
-    radial-gradient(ellipse at center, transparent 40%, color-mix(in oklab, var(--theme-sage) 30%, transparent) 41% 44%, transparent 45%),
-    radial-gradient(ellipse at center, transparent 46%, color-mix(in oklab, var(--theme-lavender-mist) 20%, transparent) 47% 50%, transparent 51%);
-  background-size: 130px 72px, 190px 100px;
-  background-position: 0 0, 52px 30px;
-  mask-image: linear-gradient(to bottom, transparent, black 16%, black 86%, transparent);
+    radial-gradient(ellipse at center, transparent clamp(32%, 40vw, 42%), color-mix(in oklab, var(--theme-sage) 30%, transparent) clamp(33%, 41vw, 44%) clamp(35%, 44vw, 46%), transparent clamp(36%, 45vw, 47%)),
+    radial-gradient(ellipse at center, transparent clamp(38%, 46vw, 48%), color-mix(in oklab, var(--theme-lavender-mist) 20%, transparent) clamp(39%, 47vw, 50%) clamp(41%, 50vw, 52%), transparent clamp(42%, 51vw, 53%));
+  background-size: clamp(80px, 13vw, 130px) clamp(44px, 7vw, 72px), clamp(120px, 19vw, 190px) clamp(60px, 10vw, 100px);
+  background-position: 0 0, clamp(30px, 5vw, 52px) clamp(18px, 3vw, 30px);
+  mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+}
+
+@media (max-width: 768px) {
+  .portfolio::before {
+    opacity: 0.2;
+    background-size: clamp(60px, 10vw, 90px) clamp(32px, 5vw, 50px), clamp(90px, 14vw, 130px) clamp(44px, 7vw, 70px);
+  }
+  .portfolio::after {
+    display: none; /* noise is too heavy on mobile */
+  }
 }
 
 /* ─── Section surfaces ─── */
@@ -465,15 +560,19 @@
   height: auto;
 }
 
-/* ─── Navbar ─── */
+/* ─── Navbar ───
+ * Glassmorphism sticky nav with underline hover effect,
+ * current-page indicator, and smooth scroll-shrink.
+ * ──────────────────────────────────────────────────── */
 .portfolio__navbar {
   position: sticky;
   top: 0;
   z-index: 100;
+  /* Base — light sage gradient; on scroll we layer backdrop blur */
   background:
     linear-gradient(90deg, color-mix(in oklab, var(--theme-dew) 94%, white 6%), color-mix(in oklab, var(--theme-sage) 82%, white 18%)) !important;
   box-shadow: 0 8px 32px color-mix(in oklab, var(--theme-midnight-orchid) 26%, transparent);
-  transition: padding 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
+  transition: padding 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease, background 0.3s ease;
 }
 
 .portfolio__navbar--scrolled {
@@ -481,10 +580,12 @@
   padding-bottom: 0.5rem !important;
   box-shadow: 0 4px 24px color-mix(in oklab, var(--theme-midnight-orchid) 36%, transparent);
   backdrop-filter: blur(12px);
+  background:
+    linear-gradient(90deg, color-mix(in oklab, var(--theme-dew) 88%, transparent 12%), color-mix(in oklab, var(--theme-sage) 76%, transparent 24%)) !important;
 }
 
 .portfolio__navbar--scrolled .navbar-brand {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   transition: font-size 0.3s ease;
 }
 
@@ -496,10 +597,43 @@
 .portfolio__navbar .navbar-brand {
   color: var(--portfolio-color-nav-text);
   transition: color 0.2s ease;
+  position: relative;
+}
+
+.portfolio__navbar .navbar-brand {
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+  transition: font-size 0.3s ease;
+}
+
+/* ── Underline hover animation ── */
+.portfolio__navbar .nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--portfolio-color-nav-hover);
+  transition: width 0.25s ease, left 0.25s ease;
+  transform: translateX(-50%);
+}
+
+.portfolio__navbar .nav-link:hover::after,
+.portfolio__navbar .nav-link.active::after {
+  width: 60%;
 }
 
 .portfolio__navbar .nav-link:hover,
 .portfolio__navbar .navbar-brand:hover {
+  color: var(--portfolio-color-nav-hover);
+}
+
+/* ── Active page indicator ── */
+.portfolio__navbar .nav-link.active {
+  font-weight: 600;
   color: var(--portfolio-color-nav-hover);
 }
 
@@ -514,12 +648,54 @@
   color: var(--portfolio-color-accent-text-hover);
 }
 
+/* Adjust toggle placement inside navbar */
+.portfolio__navbar .portfolio__theme-toggle {
+  margin-inline-start: 0.5rem;
+}
+
 .portfolio__navbar .navbar-toggler {
   border-color: var(--portfolio-color-border);
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.portfolio__navbar .navbar-toggler:hover {
+  background: color-mix(in oklab, var(--portfolio-color-accent) 12%, transparent);
 }
 
 .portfolio__navbar .navbar-toggler:focus {
   box-shadow: 0 0 0 0.2rem color-mix(in oklab, var(--portfolio-color-accent) 35%, transparent);
+}
+
+/* Hamburger → X animation */
+.portfolio__navbar .navbar-toggler-icon {
+  transition: transform 0.3s ease;
+}
+
+.portfolio__navbar .navbar-toggler.collapsed .navbar-toggler-icon {
+  transform: rotate(0deg);
+}
+
+.portfolio__navbar .navbar-toggler:not(.collapsed) .navbar-toggler-icon {
+  transform: rotate(90deg);
+}
+
+.portfolio__navbar .navbar-toggler:not(.collapsed) .navbar-toggler-icon::before {
+  top: 0 !important;
+  transform: rotate(45deg);
+}
+
+.portfolio__navbar .navbar-toggler:not(.collapsed) .navbar-toggler-icon::after {
+  top: 0 !important;
+  transform: rotate(-45deg);
+}
+
+.portfolio__navbar .navbar-toggler:not(.collapsed) .navbar-toggler-icon {
+  background: transparent;
 }
 
 /* ─── Contact section ─── */
@@ -556,6 +732,41 @@
   will-change: transform;
   box-shadow: 0 0 6px color-mix(in oklab, var(--theme-sage) 40%, transparent);
 }
+
+/* ─── Theme toggle button ─── */
+.portfolio__theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--portfolio-color-border);
+  background: transparent;
+  color: var(--portfolio-color-nav-text);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  margin-inline-start: 0.5rem;
+}
+
+.portfolio__theme-toggle:hover {
+  background: color-mix(in oklab, var(--portfolio-color-accent) 14%, transparent);
+  border-color: color-mix(in oklab, var(--portfolio-color-accent) 38%, transparent);
+  transform: scale(1.08);
+}
+
+.portfolio__theme-toggle:focus-visible {
+  outline: 2px solid var(--portfolio-color-focus-ring);
+  outline-offset: 2px;
+}
+
+/* Sun icon: visible in dark mode (default), hidden in light mode */
+.portfolio__theme-toggle--sun { display: block; }
+.light-mode .portfolio__theme-toggle--sun { display: none; }
+
+/* Moon icon: hidden in dark mode (default), visible in light mode */
+.portfolio__theme-toggle--moon { display: none; }
+.light-mode .portfolio__theme-toggle--moon { display: block; }
 
 /* ─── Footer ─── */
 .portfolio__footer {
@@ -672,19 +883,55 @@
     border-radius: var(--portfolio-card-inner-radius, 0.75rem) var(--portfolio-card-inner-radius, 0.75rem) 0 0;
   }
 
+  .portfolio__navbar .navbar-collapse.collapse {
+    display: block;
+  }
+
   .portfolio__navbar .navbar-collapse {
     width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, opacity 0.35s ease, padding 0.35s ease;
+    opacity: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .portfolio__navbar .navbar-collapse.show {
+    max-height: 400px;
+    opacity: 1;
+    padding-top: 0.75rem;
+    padding-bottom: 0.5rem;
   }
 
   .portfolio__navbar .navbar-nav {
-    gap: 0.25rem;
-    padding-top: 0.75rem;
+    gap: 0.15rem;
+    padding-top: 0;
     text-align: center;
+  }
+
+  .portfolio__navbar .nav-link {
+    min-height: 44px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .portfolio__navbar .nav-link:hover,
+  .portfolio__navbar .nav-link.active {
+    background: color-mix(in oklab, var(--portfolio-color-accent) 14%, transparent);
+  }
+
+  .portfolio__navbar .portfolio__theme-toggle {
+    margin-inline: auto;
   }
 
   .portfolio__navbar .portfolio__download-button {
     margin-inline-start: 0;
     width: 100%;
+    min-height: 44px;
   }
 
   .portfolio__resume-hero,
@@ -704,6 +951,126 @@
     overflow-wrap: anywhere;
   }
 
+}
+
+/* ─── Light mode: component overrides ───
+ * Elements that reference direct theme colors (not overridable
+ * --portfolio-color-* variables) need explicit light-mode rules.
+ * ────────────────────────────────────────────────────────────── */
+
+/* Section surfaces — lighter gradient overlay */
+.light-mode .portfolio__surface {
+  background:
+    linear-gradient(145deg, color-mix(in oklab, var(--theme-lavender-mist) 30%, transparent), color-mix(in oklab, var(--theme-soft-terracotta) 12%, transparent)),
+    radial-gradient(circle at 22% 0%, color-mix(in oklab, var(--theme-fern) 14%, transparent), transparent 38%);
+}
+
+/* Cards — lighter surface + glow */
+.light-mode .portfolio__card {
+  background:
+    linear-gradient(145deg, color-mix(in oklab, var(--portfolio-color-surface) 94%, transparent), color-mix(in oklab, var(--theme-lavender-mist) 40%, transparent)),
+    radial-gradient(circle at 100% 0%, color-mix(in oklab, var(--theme-amethyst-glow) 8%, transparent), transparent 40%);
+}
+
+.light-mode .portfolio__card:hover {
+  box-shadow: 0 22px 40px color-mix(in oklab, var(--theme-amethyst-glow) 30%, transparent) !important;
+}
+
+.light-mode .portfolio__card::before {
+  background: linear-gradient(120deg, transparent, color-mix(in oklab, var(--theme-lavender-mist) 18%, transparent), transparent 60%);
+}
+
+/* Social items */
+.light-mode .portfolio__social-item {
+  background: color-mix(in oklab, var(--theme-lavender-mist) 40%, transparent) !important;
+  border-color: color-mix(in oklab, var(--theme-amethyst-glow) 18%, transparent);
+}
+
+/* Interests pill */
+.light-mode .portfolio__interests {
+  background: color-mix(in oklab, var(--theme-lavender-mist) 35%, transparent);
+  border-color: color-mix(in oklab, var(--theme-amethyst-glow) 20%, transparent);
+}
+
+/* Footer */
+.light-mode .portfolio__footer {
+  background: color-mix(in oklab, var(--theme-lavender-mist) 60%, white 40%);
+}
+
+/* Scrollbar — light palette */
+.light-mode ::-webkit-scrollbar-track {
+  background: color-mix(in oklab, var(--theme-lavender-mist) 50%, transparent);
+}
+.light-mode ::-webkit-scrollbar-thumb {
+  background: color-mix(in oklab, var(--theme-amethyst-glow) 35%, transparent);
+}
+.light-mode ::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in oklab, var(--theme-amethyst-glow) 45%, transparent);
+}
+
+/* Scrollbar Firefox */
+.light-mode .portfolio {
+  scrollbar-color: color-mix(in oklab, var(--theme-amethyst-glow) 35%, transparent) color-mix(in oklab, var(--theme-lavender-mist) 50%, transparent);
+}
+
+/* Selection */
+.light-mode ::selection {
+  background: color-mix(in oklab, var(--theme-lavender-mist) 65%, transparent);
+  color: #1d0a33;
+}
+
+/* Social tile hover — matched to original @media (hover: hover) pattern */
+@media (hover: hover) {
+  .light-mode .portfolio__social-tile:hover {
+    box-shadow: 0 8px 28px color-mix(in oklab, var(--theme-amethyst-glow) 20%, transparent);
+    border-color: color-mix(in oklab, var(--theme-amethyst-glow) 35%, transparent);
+  }
+}
+
+/* Resume sections */
+.light-mode .portfolio__resume-hero,
+.light-mode .portfolio__resume-section {
+  box-shadow: 0 18px 40px color-mix(in oklab, var(--theme-amethyst-glow) 24%, transparent);
+}
+
+.light-mode .portfolio__resume-contact-card {
+  background: color-mix(in oklab, var(--theme-lavender-mist) 60%, white 40%);
+}
+
+.light-mode .portfolio__resume-page {
+  background:
+    linear-gradient(180deg, color-mix(in oklab, var(--portfolio-color-surface) 76%, transparent), color-mix(in oklab, var(--theme-lavender-mist) 60%, transparent));
+}
+
+/* Avatar */
+.light-mode .portfolio__avatar {
+  border-color: color-mix(in oklab, var(--theme-amethyst-glow) 50%, transparent);
+  box-shadow: 0 0 30px color-mix(in oklab, var(--theme-amethyst-glow) 12%, transparent);
+}
+
+/* Badges */
+.light-mode .portfolio__badge {
+  border-color: color-mix(in oklab, var(--theme-amethyst-glow) 20%, transparent);
+}
+
+@media (hover: hover) {
+  .light-mode .portfolio__badge:hover {
+    background-color: color-mix(in oklab, var(--theme-soft-terracotta) 25%, var(--theme-lavender-mist) 20%);
+    border-color: color-mix(in oklab, var(--theme-amethyst-glow) 35%, transparent);
+  }
+}
+
+/* Button shadows */
+.light-mode .portfolio__button {
+  box-shadow: 0 10px 28px color-mix(in oklab, var(--theme-amethyst-glow) 20%, transparent);
+}
+.light-mode .portfolio__button:hover {
+  box-shadow: 0 16px 34px color-mix(in oklab, var(--theme-amethyst-glow) 28%, transparent);
+}
+
+/* Essay card shadow */
+.light-mode .portfolio__essay-card {
+  box-shadow: 0 14px 32px color-mix(in oklab, var(--theme-amethyst-glow) 22%, transparent);
 }
 
 /* ─── Print ─── */

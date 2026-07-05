@@ -71,23 +71,97 @@
       up.viewport.config.scroll = 'top';
     });
   </script>
+
+  <!-- Dark mode: no-flash theme detection (runs synchronously before paint) -->
+  <script>
+    (function() {
+      var theme = localStorage.getItem('portfolio-theme');
+      if (theme === 'light' || (!theme && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+        document.documentElement.classList.add('light-mode');
+      }
+    })();
+  </script>
 </head>
 
 <body class="portfolio">
   {{ content }}
 
-  <!-- Navbar toggle for mobile -->
+  <!-- Navbar: mobile toggle, active link, Unpoly re-init -->
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    (function() {
       var toggler = document.querySelector('.navbar-toggler');
       var collapse = document.getElementById('portfolioNavbar');
-      if (toggler && collapse) {
-        toggler.addEventListener('click', function () {
-          collapse.classList.toggle('show');
-          toggler.classList.toggle('collapsed');
+
+      function setActiveLink() {
+        var path = window.location.pathname.split('?')[0].replace(/\/$/, '') || '/';
+        document.querySelectorAll('.portfolio__navbar .nav-link').forEach(function(link) {
+          var href = link.getAttribute('href').split('?')[0].replace(/\/$/, '');
+          // Match exact path (e.g. /resume) or hash on home (e.g. /#projects)
+          var isActive = (href === path) || (path === '/' && href.indexOf(path + '#') === 0);
+          link.classList.toggle('active', isActive);
         });
       }
-    });
+
+      // Mobile menu: hamburger ↔ X and collapse
+      function toggleMenu(force) {
+        if (!toggler || !collapse) return;
+        var show = force !== undefined ? force : !collapse.classList.contains('show');
+        collapse.classList.toggle('show', show);
+        toggler.classList.toggle('collapsed', !show);
+      }
+
+      // Close menu after clicking a nav link (mobile)
+      document.querySelectorAll('.portfolio__navbar .nav-link').forEach(function(link) {
+        link.addEventListener('click', function() { toggleMenu(false); });
+      });
+
+      if (toggler) {
+        toggler.addEventListener('click', function() { toggleMenu(); });
+      }
+
+      // Initial active link
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setActiveLink);
+      } else {
+        setActiveLink();
+      }
+
+      // Re-set active link after Unpoly navigation
+      document.addEventListener('up:content:swapped', function() {
+        setActiveLink();
+        // Close mobile menu on navigation
+        toggleMenu(false);
+      });
+    })();
+  </script>
+  <!-- Dark mode toggle handler -->
+  <script>
+    (function() {
+      var toggle = document.getElementById('themeToggle');
+      var themeTimeout = null;
+      if (toggle) {
+        toggle.addEventListener('click', function() {
+          var html = document.documentElement;
+          var transitioning = 'theme-transitioning';
+
+          // Clear any pending timeout so rapid clicks don't break the transition
+          if (themeTimeout) clearTimeout(themeTimeout);
+
+          // Add transition class for smooth switch
+          html.classList.add(transitioning);
+
+          // Toggle light/dark
+          var isLight = html.classList.toggle('light-mode');
+          localStorage.setItem('portfolio-theme', isLight ? 'light' : 'dark');
+
+          // Remove transition class after animation completes
+          themeTimeout = setTimeout(function() {
+            html.classList.remove(transitioning);
+            themeTimeout = null;
+          }, 400);
+        });
+      }
+    })();
   </script>
 </body>
 

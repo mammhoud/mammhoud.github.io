@@ -1,0 +1,90 @@
+<div class="py-5 portfolio__surface portfolio__surface--contact" id="contact">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 portfolio__section-content">
+    <div class="flex flex-wrap mb-6">
+      <div class="w-full">
+        <p class="portfolio__eyebrow mb-2">Get in touch</p>
+        <h2 class="text-5xl md:text-6xl text-left portfolio__section-title mb-2">Contact</h2>
+        <p class="text-base portfolio__text--muted mb-6">Have a question, project idea, or just want to say hello? Drop me a message.</p>
+      </div>
+    </div>
+
+<form
+  action="https://formspree.io/f/{FORM_ID}"
+  class="grid gap-y-6 max-w-lg mx-auto w-full"
+  target="_top"
+  method="POST"
+>
+  <div class="flex flex-col gap-y-2">
+    <label class="block text-sm font-semibold leading-5 portfolio__eyebrow text-left" for="name">
+      Your Name
+    </label>
+    <input
+      class="h-12 w-full appearance-none rounded-full border-0 px-4 text-[--portfolio-color-text] outline-none ring-1 ring-inset ring-[--portfolio-color-border] placeholder:text-[--portfolio-color-text-muted] focus-visible:ring-2 focus-visible:ring-[--portfolio-color-accent] bg-[color-mix(in_oklab,var(--portfolio-color-surface)_90%,transparent)]"
+      id="name"
+      name="name"
+      placeholder="Enter your name"
+      required
+    />
+  </div>
+
+  <div class="flex flex-col gap-y-2">
+    <label class="block text-sm font-semibold leading-5 portfolio__eyebrow text-left" for="email">
+      Email
+    </label>
+    <input
+      class="h-12 w-full appearance-none rounded-full border-0 px-4 text-[--portfolio-color-text] outline-none ring-1 ring-inset ring-[--portfolio-color-border] placeholder:text-[--portfolio-color-text-muted] focus-visible:ring-2 focus-visible:ring-[--portfolio-color-accent] bg-[color-mix(in_oklab,var(--portfolio-color-surface)_90%,transparent)]"
+      id="email"
+      name="email"
+      type="email"
+      placeholder="your@email.com"
+      required
+    />
+    <p class="block text-sm leading-5 portfolio__text--muted">
+      I'll respond to the email you provide.
+    </p>
+  </div>
+
+  <div class="flex flex-col gap-y-2">
+    <label class="block text-sm font-semibold leading-5 portfolio__eyebrow text-left" for="message">
+      Message
+    </label>
+    <textarea
+      class="resize-y w-full appearance-none rounded-xl border-0 px-4 py-3 text-[--portfolio-color-text] outline-none ring-1 ring-inset ring-[--portfolio-color-border] placeholder:text-[--portfolio-color-text-muted] focus-visible:ring-2 focus-visible:ring-[--portfolio-color-accent] bg-[color-mix(in_oklab,var(--portfolio-color-surface)_90%,transparent)] min-h-[120px]"
+      id="message"
+      name="message"
+      placeholder="What would you like to discuss?"
+      required
+    ></textarea>
+  </div>
+
+  <div class="flex flex-row-reverse gap-x-4">
+    <button
+      class="cursor-pointer rounded-full portfolio__button px-8 py-3 text-base font-bold leading-6 transition-all duration-200 hover:scale-[1.02] focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-[--portfolio-color-focus-ring]"
+      type="submit"
+    >
+      Send Message
+    </button>
+  </div>
+
+  <!-- Redirect back to portfolio after submission -->
+  <input type="hidden" name="_next" value="{{ site.url }}/?contact=thanks#contact" />
+  <!-- Honeypot field for spam prevention -->
+  <input type="text" name="_gotcha" style="display:none" />
+</form>
+
+    <!-- Success message (shown after redirect from Formspree) -->
+    <div id="contact-success" class="hidden mt-8 p-4 rounded-xl border border-[--portfolio-color-accent] bg-[color-mix(in_oklab,var(--theme-fern)_20%,transparent)] text-center">
+      <p class="text-lg font-semibold text-[--portfolio-color-accent]">✓ Message sent!</p>
+      <p class="text-sm portfolio__text--muted mt-1">Thanks for reaching out — I'll get back to you soon.</p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // Show success message if redirected from Formspree
+  if (window.location.search.includes('contact=thanks')) {
+    var el = document.getElementById('contact-success');
+    if (el) el.classList.remove('hidden');
+  }
+</script>

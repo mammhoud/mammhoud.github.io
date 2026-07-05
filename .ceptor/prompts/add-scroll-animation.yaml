@@ -1,0 +1,50 @@
+# Add Scroll Animation Prompt
+# Adds a GSAP ScrollTrigger animation to a set of elements
+name: add-scroll-animation
+description: Add a GSAP ScrollTrigger animation to a set of elements
+arguments:
+  - name: selector
+    type: string
+    description: CSS selector for elements to animate
+    required: true
+  - name: animation_type
+    type: string
+    description: Type of animation (fade-up, slide-left, slide-right, scale-in)
+    required: true
+    enum:
+      - fade-up
+      - slide-left
+      - slide-right
+      - scale-in
+  - name: trigger_point
+    type: string
+    description: ScrollTrigger start point
+    default: "top 85%"
+  - name: stagger
+    type: number
+    description: Stagger delay between multiple elements (seconds)
+    default: 0
+    minimum: 0
+    maximum: 1
+  - name: duration
+    type: number
+    description: Animation duration in seconds
+    default: 0.6
+    minimum: 0.2
+    maximum: 2
+context:
+  - js/portfolio-animations.js
+  - css/site-theme/custom-portfolio.css
+tools:
+  - read_files
+  - str_replace
+  - npm run css:build
+validation:
+  - Animation plays once when element scrolls into view
+  - No duplicate ScrollTrigger instances on repeated navigations
+  - Works correctly with Unpoly AJAX content swaps
+  - Respects prefers-reduced-motion (no motion if user prefers)
+
+# Usage:
+# Using the add-scroll-animation prompt, add a scale-in animation to all
+# portfolio__badge elements with a stagger of 0.05 and trigger at top 85%.

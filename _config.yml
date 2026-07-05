@@ -12,7 +12,7 @@ baseurl: ""
 # OPTIONAL CHANGES
 main-theme: main.min.css
 
-site-theme: custom-portfolio.css
+site-theme: garden.css
 
 
 # DON'T CHANGE THE FOLLOWING (unless you know what you're doing)
@@ -28,6 +28,7 @@ exclude:
   - Gemfile.lock
   - LICENSE
   - README.md
+  - .ceptor
 include:
   - .nojekyll
   - _data

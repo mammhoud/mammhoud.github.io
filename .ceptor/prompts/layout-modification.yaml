@@ -1,0 +1,54 @@
+# Layout Modification Prompt
+# Modifies the layout structure of Jekyll templates and includes
+name: layout-modification
+description: Modify the layout structure of a portfolio section or template
+arguments:
+  - name: section
+    type: string
+    description: Section or template to modify
+    required: true
+    enum:
+      - hero
+      - projects
+      - essays
+      - resume
+      - essay-page
+      - project-page
+      - navbar
+      - footer
+      - contact
+  - name: layout_changes
+    type: string
+    description: Description of layout changes to apply (grid, spacing, alignment, etc.)
+    required: true
+  - name: responsive
+    type: boolean
+    description: Whether changes should include responsive variants
+    default: true
+context:
+  - _includes/about/about.html
+  - _includes/projects/projects.html
+  - _includes/essays/essays.html
+  - _includes/projects/project-card.html
+  - _includes/essays/essay-card.html
+  - _includes/header.html
+  - _includes/footer.html
+  - _includes/contact/contact-form.html
+  - _layouts/essay.html
+  - _layouts/project.html
+  - _layouts/home.html
+tools:
+  - read_files
+  - str_replace
+  - write_file
+  - npm run css:build
+validation:
+  - HTML structure is valid
+  - Tailwind classes used are existing or standard
+  - Responsive behavior works on mobile, tablet, desktop
+  - Unpoly content swap does not break the layout
+
+# Usage:
+# Using the layout-modification prompt, update the projects section to
+# display cards in a 2-column grid on tablet and 3-column on desktop,
+# with a centered section title and reduced gap.

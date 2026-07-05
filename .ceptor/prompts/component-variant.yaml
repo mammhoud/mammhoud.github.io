@@ -1,0 +1,36 @@
+# Component Variant Prompt
+# Generates new CSS class variants based on existing components
+name: component-variant
+description: Generate a new CSS class variant from an existing component
+arguments:
+  - name: source_component
+    type: string
+    description: CSS class name of the component to base the variant on
+    required: true
+  - name: variant_name
+    type: string
+    description: Name for the new variant class (e.g., portfolio__card--compact)
+    required: true
+  - name: modifications
+    type: string
+    description: Description of style changes (padding, radius, colors, etc.)
+    required: true
+context:
+  - css/site-theme/custom-portfolio.css
+  - _includes/**/*.html
+tools:
+  - read_files
+  - str_replace
+  - write_file
+  - npm run css:build
+validation:
+  - New class exists in CSS
+  - Variant preserves base component's hover/active/pseudo-element effects
+  - No CSS specificity conflicts with base class
+  - Responsive behavior matches the original component
+
+# Usage:
+# Using the component-variant prompt, generate a variant of the
+# portfolio__card component that is more compact — smaller padding (p-4
+# instead of p-6), reduced border-radius (0.75rem), and a lighter
+# background with 10% more transparency. Name it portfolio__card--compact.

@@ -2,9 +2,52 @@
 layout: home
 ---
 
+<!-- Reading progress bar -->
+<div class="portfolio__progress-bar" aria-hidden="true"></div>
+
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
   <h1 class="text-5xl md:text-6xl">{{ page.title }}</h1>
   <span class="date">{{ page.date | date_to_string }}</span>
   <hr>
   {{ content }}
 </div>
+
+<script>
+  (function () {
+    var bar = document.querySelector('.portfolio__progress-bar');
+    if (!bar) return;
+
+    var ticking = false;
+
+    function updateBar() {
+      var scrollTop = window.scrollY;
+      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      var progress = docHeight > 0 ? scrollTop / docHeight : 0;
+      bar.style.transform = 'scaleX(' + progress + ')';
+      ticking = false;
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        requestAnimationFrame(updateBar);
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    updateBar();
+
+    // Self-cleanup: remove listener when bar is removed from DOM
+    // (handles Unpoly content swaps and other dynamic navigations)
+    var parent = bar.parentElement;
+    if (parent) {
+      var observer = new MutationObserver(function () {
+        if (!document.body.contains(bar)) {
+          window.removeEventListener('scroll', onScroll);
+          observer.disconnect();
+        }
+      });
+      observer.observe(parent, { childList: true });
+    }
+  })();
+</script>

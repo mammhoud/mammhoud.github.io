@@ -1,0 +1,43 @@
+# Add Component Prompt
+# Creates a new reusable Jekyll include component
+name: add-component
+description: Add a new reusable include component to the portfolio
+arguments:
+  - name: component_name
+    type: string
+    description: Name for the new component include file (without .html)
+    required: true
+  - name: requirements
+    type: string
+    description: Description of the component's purpose, structure, and behavior
+    required: true
+  - name: insert_location
+    type: string
+    description: Which page or section to add the component include to
+    required: false
+  - name: needs_css
+    type: boolean
+    description: Whether the component requires new CSS classes
+    default: true
+context:
+  - _includes/
+  - css/site-theme/custom-portfolio.css
+  - _layouts/
+  - index.html
+tools:
+  - read_files
+  - write_file
+  - str_replace
+  - npm run css:build
+validation:
+  - Component renders correctly on all responsive breakpoints
+  - Follows existing component patterns (BEM naming, CSS variable usage)
+  - Works with Unpoly AJAX navigation (content swaps)
+  - Accessible (labels, ARIA attributes if interactive)
+  - No unused CSS after generation
+
+# Usage:
+# Using the add-component prompt, create a testimonial carousel component
+# that displays 3 quotes at a time with auto-rotation every 5 seconds.
+# Style it with the existing card pattern and add it to the bottom of
+# the hero section on the homepage.

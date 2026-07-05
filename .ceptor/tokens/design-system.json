@@ -1,0 +1,75 @@
+{
+  "name": "Midnight Orchid Garden",
+  "version": "1.0",
+  "description": "Design tokens for mammhoud.github.io portfolio theme",
+  "colors": {
+    "theme": {
+      "midnight-orchid": "#24103d",
+      "amethyst-glow": "#5c3b91",
+      "electric-violet": "#8c5cff",
+      "lavender-mist": "#d9c7ff",
+      "moon-petal": "#f6f0ff",
+      "night-leaf": "#16331f",
+      "fern": "#67b26f",
+      "moss": "#b7d77a",
+      "sage": "#d8efbf",
+      "dew": "#e7fff5",
+      "rose": "#ffb7c5",
+      "african-violet": "#b284be",
+      "soft-terracotta": "#d9a17e",
+      "pastel-green": "#90be84",
+      "light-steel-blue": "#84adbe"
+    },
+    "semantic": {
+      "bg-start": "var(--theme-midnight-orchid)",
+      "bg-mid": "#355c3c",
+      "bg-end": "var(--theme-amethyst-glow)",
+      "surface": "color-mix(in oklab, var(--theme-midnight-orchid) 72%, var(--theme-night-leaf) 28%)",
+      "surface-soft": "color-mix(in oklab, var(--theme-fern) 18%, transparent)",
+      "text": "#fbf8ee",
+      "text-muted": "#e9ead3",
+      "border": "color-mix(in oklab, var(--theme-sage) 38%, transparent)",
+      "accent": "var(--theme-sage)",
+      "accent-hover": "var(--theme-moss)",
+      "accent-text": "#193018",
+      "accent-text-hover": "#14240f",
+      "link": "var(--theme-dew)",
+      "nav-text": "#1f2a18",
+      "nav-hover": "#3c6e3e",
+      "focus-ring": "rgba(183, 215, 122, 0.45)",
+      "badge-bg": "color-mix(in oklab, var(--theme-soft-terracotta) 28%, var(--theme-fern) 12%)"
+    }
+  },
+  "typography": {
+    "body-line-height": 1.7,
+    "heading-line-height": 1.2,
+    "heading-letter-spacing": "-0.02em",
+    "font-smoothing": "antialiased"
+  },
+  "spacing": {
+    "section-padding-y": "clamp(1.5rem, 3vw, 2.5rem)",
+    "container-max-width": "80rem",
+    "container-padding-x": "clamp(1rem, 5vw, 2rem)",
+    "card-padding": "1.5rem",
+    "card-border-radius": "1.25rem",
+    "button-border-radius": "999px",
+    "social-tile-radius": "16px"
+  },
+  "animations": {
+    "card-hover-transform": "translateY(-4px)",
+    "card-hover-duration": "0.25s",
+    "button-hover-transform": "translateY(-1px)",
+    "button-hover-duration": "0.2s",
+    "navbar-scroll-blur": "8px",
+    "navbar-scroll-padding": "0.5rem"
+  },
+  "breakpoints": {
+    "mobile": "max-width: 767px",
+    "tablet": "min-width: 768px",
+    "desktop": "min-width: 1024px"
+  },
+  "sources": {
+    "css": "css/site-theme/custom-portfolio.css",
+    "config": "_config.yml"
+  }
+}

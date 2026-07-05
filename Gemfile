@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-ruby "~> 3.1"
+# ruby "~> 3.1"
 
 gem "jekyll", "~> 4.2.0"
 

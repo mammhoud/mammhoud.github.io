@@ -34,7 +34,7 @@ For this portfolio site, Ceptor AI enables:
               (colors, spacing, fonts)
 ```
 
-Ceptor AI reads the existing design tokens from `custom-portfolio.css` and `_config.yml`, then generates targeted edits through MCP-managed tool calls.
+Ceptor AI reads the existing design tokens from `garden.css` and `_config.yml`, then generates targeted edits through MCP-managed tool calls.
 
 ### MCP Agent Integration
 
@@ -57,7 +57,7 @@ the accent green from sage (#d8efbf) to a golden olive (#c4a35a). Keep
 all other tokens unchanged.
 ```
 
-**What happens:** Ceptor AI reads the current `:root` variables in `custom-portfolio.css`, identifies the target tokens (`--theme-amethyst-glow`, `--theme-sage`), and regenerates all derived `color-mix()` values.
+**What happens:** Ceptor AI reads the current `:root` variables in `garden.css`, identifies the target tokens (`--theme-amethyst-glow`, `--theme-sage`), and regenerates all derived `color-mix()` values.
 
 ### 2. Component Variant Generation
 
@@ -78,7 +78,7 @@ activates on hover. The shimmer should be a gradient sweep from left to
 right over 1.5 seconds, using the existing lavender-mist color.
 ```
 
-**What happens:** Ceptor AI generates both the CSS `@keyframes` and the hover selector, injecting them into `custom-portfolio.css` after the hero title rules.
+**What happens:** Ceptor AI generates both the CSS `@keyframes` and the hover selector, injecting them into `garden.css` after the hero title rules.
 
 ### 4. Template Layout Modification
 
@@ -189,4 +189,4 @@ The `ceptor-ai` repository is available at [github.com/mammhoud/ceptor-ai](https
 - [Ceptor AI Repository](https://github.com/mammhoud/ceptor-ai) — Official MCP server implementation
 - [Model Context Protocol Documentation](https://modelcontextprotocol.io/) — MCP standard specification
 - [MCP Prompts Concepts](https://modelcontextprotocol.info/docs/concepts/prompts/) — Prompt templates for MCP agents
-- [Portfolio Color System](https://github.com/mammhoud/mammhoud.github.io/blob/main/css/site-theme/custom-portfolio.css) — Midnight Orchid Garden design tokens
+- [Portfolio Color System](https://github.com/mammhoud/mammhoud.github.io/blob/main/css/site-theme/garden.css) — Midnight Orchid Garden design tokens

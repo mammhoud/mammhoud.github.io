@@ -1,0 +1,33 @@
+# Theme Customization Prompt
+# Updates the color scheme across all theme files
+name: theme-customization
+description: Update the color scheme across all theme files
+arguments:
+  - name: token_changes
+    type: object
+    description: Map of CSS variable names to new color values (e.g., --theme-midnight-orchid: #1a0a2e)
+    required: true
+  - name: regenerate_derived
+    type: boolean
+    description: Whether to recompute color-mix() and derived variables
+    default: true
+context:
+  - css/site-theme/custom-portfolio.css
+  - projects/
+  - _includes/
+tools:
+  - read_files
+  - str_replace
+  - write_file
+  - npm run css:build
+validation:
+  - All --theme-* references updated consistently
+  - color-mix() expressions recomputed for derived values
+  - Contrast ratios preserved against background colors
+  - CSS build completes without errors
+
+# Usage:
+# Using the theme-customization prompt, change these tokens:
+#   --theme-midnight-orchid: #1a0a2e
+#   --theme-fern: #4a9a5a
+#   --theme-sage: #b8d89a

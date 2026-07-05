@@ -92,7 +92,7 @@ arguments:
     description: Map of CSS variable names to new values
     required: true
 context:
-  - css/site-theme/custom-portfolio.css
+  - css/site-theme/garden.css
   - projects/
   - _includes/
 tools:
@@ -178,7 +178,7 @@ arguments:
     required: false
 context:
   - _includes/          # All existing components for reference
-  - css/site-theme/custom-portfolio.css
+  - css/site-theme/garden.css
 tools:
   - read_files
   - write_file          # Create new include
@@ -214,7 +214,7 @@ arguments:
     description: Visual refinements to apply site-wide
     required: true
 context:
-  - css/site-theme/custom-portfolio.css
+  - css/site-theme/garden.css
   - _includes/**
   - _layouts/**
   - js/portfolio-animations.js
@@ -306,4 +306,4 @@ Once configured, the MCP server would make the prompt templates available to any
 - [Model Context Protocol Documentation](https://modelcontextprotocol.io/) — Official MCP specification
 - [MCP Prompts Guide](https://modelcontextprotocol.info/docs/concepts/prompts/) — Prompt template patterns
 - [Ceptor AI Repository](https://github.com/mammhoud/ceptor-ai) — MCP server implementation for design
-- [Custom-Portfolio CSS Theme](https://github.com/mammhoud/mammhoud.github.io/blob/main/css/site-theme/custom-portfolio.css) — Design tokens reference
+- [Custom-Portfolio CSS Theme](https://github.com/mammhoud/mammhoud.github.io/blob/main/css/site-theme/garden.css) — Design tokens reference

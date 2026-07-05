@@ -684,6 +684,29 @@
   transition: font-size 0.3s ease;
 }
 
+/* ── Arrow hover animation ──
+ * A → fades and slides in from the right padding area.
+ * Works alongside the underline ::after.
+ * ─────────────────────────────── */
+.portfolio__navbar .nav-link::before {
+  content: "→";
+  position: absolute;
+  right: 0.6rem;
+  top: 50%;
+  transform: translateY(-50%) translateX(4px);
+  opacity: 0;
+  font-size: 0.8em;
+  line-height: 1;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+
+.portfolio__navbar .nav-link:hover::before,
+.portfolio__navbar .nav-link.active::before {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
 /* ── Underline hover animation ── */
 .portfolio__navbar .nav-link::after {
   content: "";
@@ -706,6 +729,30 @@
 .portfolio__navbar .nav-link:hover,
 .portfolio__navbar .navbar-brand:hover {
   color: var(--portfolio-color-nav-hover);
+}
+
+/* ── Desktop pill background on hover ──
+ * Matches the mobile pill effect for consistency across breakpoints.
+ * ─────────────────────────────────────────── */
+@media (hover: hover) {
+  .portfolio__navbar .nav-link:not(.active):hover {
+    background: color-mix(in oklab, var(--portfolio-color-accent) 12%, transparent);
+    border-radius: 999px;
+  }
+}
+
+.portfolio__navbar .nav-link.active {
+  background: color-mix(in oklab, var(--portfolio-color-accent) 8%, transparent);
+  border-radius: 999px;
+}
+
+/* Reset background on mobile — handled by the mobile media query block */
+@media (min-width: 768px) {
+  .portfolio__navbar .nav-link {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    transition: background-color 0.2s ease, color 0.2s ease, border-radius 0.2s ease;
+  }
 }
 
 /* ── Active page indicator ── */
@@ -903,16 +950,14 @@
   gap: 0.65rem;
 }
 
-.portfolio__resume-contact-list .portfolio__social-item {
-  width: 100%;
-  max-width: none;
+.portfolio__resume-contact-list .portfolio__social-link {
   background: color-mix(in oklab, var(--portfolio-color-accent) 14%, transparent);
-  border: 1px solid var(--portfolio-color-border);
-  color: var(--portfolio-color-text);
+  border-color: var(--portfolio-color-border);
 }
 
-.portfolio__resume-contact-list .tf-social {
-  margin-inline: auto;
+.portfolio__resume-contact-list .portfolio__social-link:hover {
+  background: color-mix(in oklab, var(--portfolio-color-accent) 28%, transparent);
+  border-color: color-mix(in oklab, var(--portfolio-color-accent) 50%, transparent);
 }
 
 .portfolio__resume-meta,
@@ -994,6 +1039,10 @@
     justify-content: center;
     border-radius: 999px;
     transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .portfolio__navbar .nav-link::before {
+    display: none;
   }
 
   .portfolio__navbar .nav-link:hover,

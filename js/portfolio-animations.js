@@ -380,17 +380,17 @@
         });
       });
 
-      // Resume contact card social items hover
-      document.querySelectorAll('.portfolio__resume-contact-list .portfolio__social-item').forEach(function (item) {
-        item.addEventListener('mouseenter', function () {
-          gsap.to(item, {
+      // Resume contact card social links hover
+      document.querySelectorAll('.portfolio__resume-contact-list .portfolio__social-link').forEach(function (link) {
+        link.addEventListener('mouseenter', function () {
+          gsap.to(link, {
             scale: 1.04,
             duration: 0.25,
             ease: 'power2.out'
           });
         });
-        item.addEventListener('mouseleave', function () {
-          gsap.to(item, {
+        link.addEventListener('mouseleave', function () {
+          gsap.to(link, {
             scale: 1,
             duration: 0.25,
             ease: 'power2.out'

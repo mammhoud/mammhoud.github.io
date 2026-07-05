@@ -1,14 +1,14 @@
-<div class="bg-gradient py-5 portfolio__surface portfolio__surface--projects" id="projects">
+<div class="py-5 portfolio__surface portfolio__surface--projects" id="projects">
   <div class="portfolio__vine" aria-hidden="true"></div>
-  <div class="container portfolio__section-content">
-    <div class="row mb-3">
-      <div class="col-md-6">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 portfolio__section-content">
+    <div class="flex flex-wrap mb-3">
+      <div class="w-full md:w-1/2">
         <p class="portfolio__eyebrow mb-2">In bloom</p>
-        <h1 class="display-4 text-start portfolio__section-title">Projects</h1>
+        <h1 class="text-5xl md:text-6xl text-left portfolio__section-title">Projects</h1>
       </div>
     </div>
 
-    <div class="vstack gap-3">
+    <div class="flex flex-col gap-3">
       {% assign project_pages = site.pages | where: "type", "project" | sort: "date" | reverse %}
       {% for page in project_pages %}
         {% unless page.draft %}

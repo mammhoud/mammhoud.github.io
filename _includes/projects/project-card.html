@@ -1,15 +1,15 @@
-<div class="card mb-3 portfolio__card shadow-lg border-0 portfolio__animate-slide-up">
-  <div class="row g-0">
-    <div class="col-12 col-md-4">
-      <img src="{{ site.baseurl }}/{{ include.page.image }}" class="img-fluid portfolio__project-image" alt="{{ include.page.title }}">
+<div class="card mb-3 portfolio__card shadow-lg portfolio__animate-slide-up">
+  <div class="flex flex-wrap gap-0">
+    <div class="w-full md:w-1/3">
+      <img src="{{ site.baseurl }}/{{ include.page.image }}" class="max-w-full h-auto portfolio__project-image" alt="{{ include.page.title }}">
     </div>
-    <div class="col-12 col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">{{ include.page.title }} <small class="portfolio__text--muted d-block d-md-inline float-md-end">{{ include.page.date }}</small></h5>
+    <div class="w-full md:w-2/3">
+      <div class="card-body p-6">
+        <h5 class="card-title text-xl font-semibold">{{ include.page.title }} <small class="portfolio__text--muted block md:inline md:float-right">{{ include.page.date }}</small></h5>
         <p class="card-text">{{ include.page.summary }}</p>
         <p class="mb-3">
           {% for label in include.page.labels %}
-          <span class="badge rounded-pill portfolio__badge">{{ label }}</span>
+          <span class="badge rounded-full portfolio__badge">{{ label }}</span>
           {% endfor %}
         </p>
         {% if include.page.projecturl %}

@@ -1,19 +1,7 @@
-/* @tailwind preflight; */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-@tailwind typography;
+@import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
 
-
-@plugin "flyonui" {
-    themes: soft --default, slack --prefersdark, gourmet;
+@theme {
+  /* Reserved for future theme customization */
 }
-
-@import "../static/preline/variants.css";
-@import "../static/flyonui/variants.css";
-@source "../static/preline/preline.js";
-@source "../static/flyonui/flyonui.js";
-
-@import "tailwindcss-intersect";
-@plugin "tailwindcss-motion";

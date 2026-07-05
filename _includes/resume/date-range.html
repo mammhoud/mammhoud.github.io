@@ -1,0 +1,5 @@
+{%- if include.start %}{{ include.start | slice: 0,4 }}{% endif -%}
+{%- if include.start and include.start != '' and include.end and include.end != '' %} - {% endif -%}
+{%- if include.end -%}
+  {%- if include.end != "Present" -%}{{ include.end | slice: 0,4 }}{%- else -%}{{ include.end }}{%- endif -%}
+{%- endif -%}

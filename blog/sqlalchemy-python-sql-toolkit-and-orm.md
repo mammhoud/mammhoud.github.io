@@ -1,6 +1,6 @@
 ---
-layout: essay
-type: essay
+layout: post
+type: post
 title: "SQLAlchemy: Python SQL Toolkit & ORM"
 date: 2025-04-22
 published: true
@@ -11,7 +11,7 @@ labels:
   - ORM
 ---
 
-<img width="80px" class="rounded float-left pe-4" src="https://www.sqlalchemy.org/img/sqla_logo.png" alt="SQLAlchemy logo" onerror="this.src='../img/essay/django.jpg'">
+<img width="80px" class="rounded float-left pe-4" src="https://www.sqlalchemy.org/img/sqla_logo.png" alt="SQLAlchemy logo" onerror="this.src='../img/post/django.jpg'">
 
 ## Introduction
 

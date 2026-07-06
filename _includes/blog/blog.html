@@ -1,19 +1,19 @@
-<div class="py-5 portfolio__surface portfolio__surface--essays" id="essays">
+<div class="py-8 md:py-12 portfolio__surface portfolio__surface--blog" id="blog">
   <div class="portfolio__vine portfolio__vine--right" aria-hidden="true"></div>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 portfolio__section-content">
-    <div class="flex flex-wrap mb-3">
+    <div class="flex flex-wrap mb-6 md:mb-8">
       <div class="w-full md:w-1/2">
         <p class="portfolio__eyebrow mb-2">Field notes</p>
         <h1 class="text-5xl md:text-6xl text-left portfolio__section-title">Blog Posts</h1>
       </div>
     </div>
 
-    <!-- Essay grid: responsive CSS grid with generous spacing -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
-      {% assign essay_pages = site.pages | where: "type", "essay" | sort: "date" | reverse %}
-      {% for page in essay_pages %}
+    <!-- Post grid: masonry-like layout with featured first card -->
+    {% assign post_pages = site.pages | where: "type", "post" | sort: "date" | reverse %}
+    <div class="portfolio__blog-grid">
+      {% for page in post_pages %}
         {% unless page.draft %}
-          {% include essays/essay-card.html page=page %}
+          {% include blog/blog-card.html page=page index=forloop.index %}
         {% endunless %}
         {% if forloop.index == include.limit %}
           {% break %}
@@ -21,9 +21,9 @@
       {% endfor %}
     </div>
 
-    {% if essay_pages.size > include.limit %}
-      <p class="text-center pt-8"><a href="{{ site.baseurl}}/essays/" class="portfolio__see-all">
-          <span>See all {{ essay_pages.size }} posts</span>
+    {% if include.limit and post_pages.size > include.limit %}
+      <p class="text-center pt-8 md:pt-10"><a href="{{ site.baseurl}}/blog/" class="portfolio__see-all">
+          <span>See all {{ post_pages.size }} posts</span>
           <svg class="portfolio__see-all-arrow" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="5" y1="12" x2="19" y2="12"/>
             <polyline points="12 5 19 12 12 19"/>

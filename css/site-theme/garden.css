@@ -221,7 +221,7 @@
 .portfolio__surface--hero::before,
 .portfolio__surface--hero::after,
 .portfolio__surface--projects::after,
-.portfolio__surface--essays::after {
+.portfolio__surface--blog::after {
   content: "";
   position: absolute;
   pointer-events: none;
@@ -613,7 +613,7 @@
 
 /* ─── Section decorative blobs ─── */
 .portfolio__surface--projects,
-.portfolio__surface--essays {
+.portfolio__surface--blog {
   isolation: isolate;
 }
 
@@ -627,7 +627,7 @@
   transform: rotate(18deg);
 }
 
-.portfolio__surface--essays::after {
+.portfolio__surface--blog::after {
   width: min(42vw, 500px);
   aspect-ratio: 1;
   left: -17vw;
@@ -661,10 +661,58 @@
   transform: scaleX(-1);
 }
 
-/* ─── Essay cards ─── */
-.portfolio__essay-card {
+/* ─── Post cards ─── */
+.portfolio__blog-card {
   border-radius: 1.25rem;
   box-shadow: 0 14px 32px color-mix(in oklab, var(--theme-midnight-orchid) 44%, transparent);
+}
+
+/* ─── Post grid — responsive masonry-like layout ───
+ * First card is featured (spans 2 columns), rest fill naturally.
+ * Sizes scale with viewport for maximum visual impact.
+ * ────────────────────────────────────────────────────── */
+.portfolio__blog-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1rem, 2.5vw, 2rem);
+}
+
+@media (min-width: 640px) {
+  .portfolio__blog-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .portfolio__blog-card-item--featured {
+    grid-column: 1 / -1;
+  }
+  .portfolio__blog-card-item--featured {
+    grid-row: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .portfolio__blog-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .portfolio__blog-card-item--featured {
+    grid-column: 1 / span 2;
+    grid-row: span 2;
+  }
+}
+
+/* Card sizing: scale with viewport */
+.portfolio__blog-card-item {
+  display: flex;
+}
+
+.portfolio__blog-card-item .portfolio__card {
+  width: 100%;
+}
+
+/* Featured card gets extra height on desktop */
+@media (min-width: 1024px) {
+  .portfolio__blog-card-item--featured .portfolio__card {
+    min-height: clamp(320px, 40vw, 480px);
+  }
 }
 
 /* ─── Animations ─── */
@@ -903,7 +951,9 @@
   box-shadow: 0 0 6px color-mix(in oklab, var(--theme-sage) 40%, transparent);
 }
 
-/* ─── Theme toggle button ─── */
+/* ─── Theme toggle button ───
+ * Dark pill on the light navbar so it always reads clearly.
+ * ────────────────────────────────────────────────────── */
 .portfolio__theme-toggle {
   display: inline-flex;
   align-items: center;
@@ -911,18 +961,35 @@
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 999px;
-  border: 1px solid var(--portfolio-color-border);
-  background: transparent;
-  color: var(--portfolio-color-nav-text);
+  border: 1.5px solid color-mix(in oklab, var(--theme-midnight-orchid) 60%, transparent);
+  background: color-mix(in oklab, var(--theme-midnight-orchid) 85%, black 15%);
+  color: var(--theme-sage);
   cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
   margin-inline-start: 0.5rem;
+  box-shadow: 0 2px 8px color-mix(in oklab, var(--theme-midnight-orchid) 28%, transparent);
 }
 
 .portfolio__theme-toggle:hover {
-  background: color-mix(in oklab, var(--portfolio-color-accent) 14%, transparent);
-  border-color: color-mix(in oklab, var(--portfolio-color-accent) 38%, transparent);
+  background: color-mix(in oklab, var(--theme-midnight-orchid) 100%, black 0%);
+  border-color: color-mix(in oklab, var(--theme-sage) 50%, transparent);
+  color: var(--theme-moss);
   transform: scale(1.08);
+  box-shadow: 0 4px 14px color-mix(in oklab, var(--theme-midnight-orchid) 40%, transparent);
+}
+
+.light-mode .portfolio__theme-toggle {
+  border: 1.5px solid color-mix(in oklab, var(--theme-amethyst-glow) 35%, transparent);
+  background: color-mix(in oklab, var(--theme-amethyst-glow) 30%, transparent);
+  color: var(--theme-amethyst-glow);
+  box-shadow: 0 2px 8px color-mix(in oklab, var(--theme-amethyst-glow) 12%, transparent);
+}
+
+.light-mode .portfolio__theme-toggle:hover {
+  background: color-mix(in oklab, var(--theme-amethyst-glow) 28%, transparent);
+  border-color: color-mix(in oklab, var(--theme-amethyst-glow) 45%, transparent);
+  color: var(--theme-electric-violet);
+  box-shadow: 0 4px 14px color-mix(in oklab, var(--theme-amethyst-glow) 20%, transparent);
 }
 
 .portfolio__theme-toggle:focus-visible {
@@ -1245,8 +1312,8 @@
   box-shadow: 0 16px 34px color-mix(in oklab, var(--theme-amethyst-glow) 28%, transparent);
 }
 
-/* Essay card shadow */
-.light-mode .portfolio__essay-card {
+/* Post card shadow */
+.light-mode .portfolio__blog-card {
   box-shadow: 0 14px 32px color-mix(in oklab, var(--theme-amethyst-glow) 22%, transparent);
 }
 

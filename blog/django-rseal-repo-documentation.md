@@ -1,6 +1,6 @@
 ---
-layout: essay
-type: essay
+layout: post
+type: post
 title: "Django-RSeal Repository Documentation: Workflow Automation for Business Logic"
 date: 2026-05-13
 published: true

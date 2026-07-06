@@ -17,7 +17,7 @@ summary: "A single reference article documenting practical use cases for my publ
 This project page defines the intended use cases of my public repositories and forks as a portfolio reference.
 
 ### django-fusion (aka django-osoul)
-**Status:** Active | **Use case:** Building clean Django systems with reusable architecture, HTMX components, ModelViewset CRUD, role-based access control, and Clean Architecture enforcement. The repository is named `django-fusion` on GitHub but documented as `django-osoul` in essays.
+**Status:** Active | **Use case:** Building clean Django systems with reusable architecture, HTMX components, ModelViewset CRUD, role-based access control, and Clean Architecture enforcement. The repository is named `django-fusion` on GitHub but documented as `django-osoul` in posts.
 
 ### django-rseal
 **Status:** ⚠️ Archived (read-only) | **Use case:** Workflow orchestration layer for multi-step business operations. Models operations as composable `Operation` classes with compensation, retry, and parallel execution. No active development.
@@ -35,7 +35,7 @@ This project page defines the intended use cases of my public repositories and f
 **Status:** Active fork | **Use case:** Fork of `django-ninja/django-ninja` for testing async-ready API patterns with type-hints-based views and OpenAPI schema generation.
 
 ### portfolio website (mammhoud.github.io)
-**Status:** Active | **Use case:** Presenting projects, essays, and technical profile in a production-deployed GitHub Pages portfolio with Unpoly smooth navigation, GSAP animations, and AI-enhanced design tooling.
+**Status:** Active | **Use case:** Presenting projects, posts, and technical profile in a production-deployed GitHub Pages portfolio with Unpoly smooth navigation, GSAP animations, and AI-enhanced design tooling.
 
 ### chatbot repositories
 **Status:** Archived | **Use case:** Multi-tenant conversational automation for support, feedback, and lead qualification workflows.

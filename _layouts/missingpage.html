@@ -12,8 +12,8 @@ layout: default
 
     <h3>Blog Posts</h3>
     <ul>
-      {% assign essay_pages = site.pages | where: "type", "essay" | sort: "date" | reverse %}
-      {% for page in essay_pages %}
+      {% assign post_pages = site.pages | where: "type", "post" | sort: "date" | reverse %}
+      {% for page in post_pages %}
       <li><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a></li>
       {% endfor %}
     </ul>

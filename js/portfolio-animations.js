@@ -125,7 +125,7 @@
 
     // ---- Section: "Field notes" heading slide-in ----
     gsap.fromTo(
-      '.portfolio__surface--essays .portfolio__section-title',
+      '.portfolio__surface--blog .portfolio__section-title',
       { x: -40, opacity: 0 },
       {
         x: 0,
@@ -133,7 +133,7 @@
         duration: 0.7,
         ease: 'power2.out',
         scrollTrigger: {
-          trigger: '.portfolio__surface--essays',
+          trigger: '.portfolio__surface--blog',
           start: 'top 80%',
           toggleActions: 'play none none none'
         }
@@ -158,9 +158,9 @@
       }
     );
 
-    // ---- Essay cards staggered entrance ----
+    // ---- Post cards staggered entrance ----
     gsap.fromTo(
-      '.portfolio__surface--essays .portfolio__card',
+      '.portfolio__surface--blog .portfolio__card',
       { y: 40, opacity: 0 },
       {
         y: 0,
@@ -169,7 +169,7 @@
         stagger: 0.1,
         ease: 'power2.out',
         scrollTrigger: {
-          trigger: '.portfolio__surface--essays',
+          trigger: '.portfolio__surface--blog',
           start: 'top 75%',
           toggleActions: 'play none none none'
         }
@@ -235,7 +235,7 @@
       );
     }
 
-    // ---- Essay/project page titles ----
+    // ---- Post/project page titles ----
     gsap.utils.toArray('.portfolio h1:not(.portfolio__hero-title):not(.portfolio__section-title)').forEach(function (title) {
       gsap.fromTo(
         title,

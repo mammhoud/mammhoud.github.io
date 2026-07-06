@@ -1,6 +1,6 @@
 ---
-layout: essay
-type: essay
+layout: post
+type: post
 title: "GitHub Repository Catalog for mammhoud: Projects, Forks, and Use Cases"
 date: 2026-05-13
 published: true

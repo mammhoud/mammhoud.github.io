@@ -1,6 +1,6 @@
 ---
-layout: essay
-type: essay
+layout: post
+type: post
 title: "Pydantic: Data Validation & Settings Management"
 date: 2025-04-15
 published: true
@@ -10,7 +10,7 @@ labels:
   - Data Validation
 ---
 
-<img width="80px" class="rounded float-left pe-4" src="https://docs.pydantic.dev/latest/logo-white.svg" alt="Pydantic logo" onerror="this.src='../img/essay/django.jpg'">
+<img width="80px" class="rounded float-left pe-4" src="https://docs.pydantic.dev/latest/logo-white.svg" alt="Pydantic logo" onerror="this.src='../img/post/django.jpg'">
 
 Bad data is the silent killer of Python applications — invalid inputs, missing fields, and type mismatches that only surface at runtime. Pydantic eliminates that entire class of bugs by enforcing data contracts at the boundary, using nothing more than Python type annotations you already write.
 

@@ -1,6 +1,6 @@
 ---
-layout: essay
-type: essay
+layout: post
+type: post
 title: "HTTPX: Modern HTTP Client for Python"
 date: 2025-04-16
 published: true
@@ -11,7 +11,7 @@ labels:
   - Async
 ---
 
-<img width="80px" class="rounded float-left pe-4" src="https://www.python-httpx.org/img/logo.svg" alt="HTTPX logo" onerror="this.src='../img/essay/django.jpg'">
+<img width="80px" class="rounded float-left pe-4" src="https://www.python-httpx.org/img/logo.svg" alt="HTTPX logo" onerror="this.src='../img/post/django.jpg'">
 
 ## Introduction
 

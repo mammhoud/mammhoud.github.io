@@ -1,6 +1,6 @@
 ---
-layout: essay
-type: essay
+layout: post
+type: post
 title: "Django-Osoul Repository Documentation: Architecture and Practical Usage"
 date: 2026-05-13
 published: true

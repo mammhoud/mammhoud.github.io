@@ -1,6 +1,6 @@
 ---
-layout: essay
-type: essay
+layout: post
+type: post
 title: "MCP Agent Prompts: Customizing Templates and Project Features Through Structured Requirements"
 date: 2026-07-05
 published: true
@@ -47,7 +47,7 @@ description: Modify the layout structure of a portfolio section
 arguments:
   - name: section
     type: string
-    description: Section identifier (hero, projects, essays, resume)
+    description: Section identifier (hero, projects, posts, resume)
     required: true
   - name: layout_changes
     type: string
@@ -56,8 +56,8 @@ arguments:
 context:
   - _includes/about/about.html      # Hero section template
   - _includes/projects/projects.html
-  - _includes/essays/essays.html
-  - _layouts/essay.html
+  - _includes/blog/blog.html
+  - _layouts/post.html
   - _layouts/project.html
 tools:
   - read_files
@@ -235,7 +235,7 @@ Using the design-polish prompt:
 - Add 2px border to all portfolio__social-tile elements with 12px radius
 - Increase hero title letter-spacing to -0.01em
 - Add a subtle box-shadow transition on portfolio__badge hover
-- Reduce the essay card border-radius to 1rem
+- Reduce the post card border-radius to 1rem
 - Make the navbar-brand bold on scroll
 ```
 

@@ -1,6 +1,6 @@
 ---
-layout: essay
-type: essay
+layout: post
+type: post
 title: "Django-RSeal: Workflow Automation for Django"
 date: 2025-04-19
 published: true
@@ -11,7 +11,7 @@ labels:
   - Architecture
 ---
 
-<img width="80px" class="rounded float-left pe-4" src="https://static.djangoproject.com/img/logos/django-logo-negative.svg" alt="Django-RSeal logo" onerror="this.src='../img/essay/django.jpg'">
+<img width="80px" class="rounded float-left pe-4" src="https://static.djangoproject.com/img/logos/django-logo-negative.svg" alt="Django-RSeal logo" onerror="this.src='../img/post/django.jpg'">
 
 ## Introduction
 

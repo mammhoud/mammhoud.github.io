@@ -1,6 +1,6 @@
 ---
-layout: essay
-type: essay
+layout: post
+type: post
 title: "FastAPI vs Django Ninja: Modern Python API Frameworks"
 date: 2025-04-21
 published: true
@@ -11,7 +11,7 @@ labels:
   - API
 ---
 
-<img width="80px" class="rounded float-left pe-4" src="https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png" alt="FastAPI logo" onerror="this.src='../img/essay/django.jpg'">
+<img width="80px" class="rounded float-left pe-4" src="https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png" alt="FastAPI logo" onerror="this.src='../img/post/django.jpg'">
 
 ## Introduction
 

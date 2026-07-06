@@ -1,6 +1,6 @@
 ---
-layout: essay
-type: essay
+layout: post
+type: post
 title: "Django-Osoul: Foundation Layer for Clean Django Apps"
 date: 2025-04-18
 published: true
@@ -12,7 +12,7 @@ labels:
   - Components
 ---
 
-<img width="80px" class="rounded float-left pe-4" src="https://static.djangoproject.com/img/logos/django-logo-negative.svg" alt="Django-Osoul logo" onerror="this.src='../img/essay/django.jpg'">
+<img width="80px" class="rounded float-left pe-4" src="https://static.djangoproject.com/img/logos/django-logo-negative.svg" alt="Django-Osoul logo" onerror="this.src='../img/post/django.jpg'">
 
 ## What is Django-Osoul?
 

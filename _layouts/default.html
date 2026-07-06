@@ -104,13 +104,13 @@
           if (href === path) {
             isActive = true;
           }
-          // 2) Hash link on homepage — e.g. /#essays matches when hash === '#essays'
+          // 2) Hash link on homepage — e.g. /#blog matches when hash === '#blog'
           else if (path === '/' && href.indexOf('/#') === 0) {
             var linkHash = '#' + href.split('#')[1];
             isActive = (linkHash === hash);
           }
           // 3) Hash link on its standalone page or a sub-page under it
-          //    e.g. /#essays matches page /essays/ and /essays/some-title/
+          //    e.g. /#blog matches page /blog/ and /blog/some-title/
           else if (path !== '/' && href.indexOf('/#') === 0) {
             var section = href.split('#')[1];
             var pageSlug = path.replace(/^\//, '').replace(/\.html$/, '');

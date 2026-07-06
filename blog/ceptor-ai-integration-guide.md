@@ -1,6 +1,6 @@
 ---
-layout: essay
-type: essay
+layout: post
+type: post
 title: "Ceptor AI: Design Enhancement Through MCP Agents and Structured Prompts"
 date: 2026-07-05
 published: true
@@ -83,13 +83,13 @@ right over 1.5 seconds, using the existing lavender-mist color.
 ### 4. Template Layout Modification
 
 ```prompt
-@ceptor-ai Modify the essay card grid on the homepage to use a masonry 
+@ceptor-ai Modify the post card grid on the homepage to use a masonry 
 layout instead of the current flex-wrap. Cards should be 300px minimum 
 width with 1.5rem gaps, and the section eyebrow + title should be 
 center-aligned above the grid.
 ```
 
-**What happens:** Ceptor AI updates `_includes/essays/essays.html` and `_includes/essays/essay-card.html` to replace `flex flex-wrap gap-3` with CSS columns or grid, and adds `text-center` to the title wrapper.
+**What happens:** Ceptor AI updates `_includes/blog/blog.html` and `_includes/blog/blog-card.html` to replace `flex flex-wrap gap-3` with CSS columns or grid, and adds `text-center` to the title wrapper.
 
 ## Feature Prompts with MCP Agents
 
@@ -117,11 +117,11 @@ Beyond visual design, Ceptor AI can implement new features through structured pr
 ### Add a Reading Progress Bar
 
 ```prompt
-@ceptor-ai Add a reading progress bar to essay pages. Requirements:
+@ceptor-ai Add a reading progress bar to post pages. Requirements:
 - A thin (3px) gradient bar fixed at the very top of the viewport
 - Uses the accent sage-to-moss gradient colors
 - Width tracks scroll progress through the article
-- Only visible on pages with layout: essay
+- Only visible on pages with layout: post
 - Smooth animation (transform, not width) for performance
 ```
 

@@ -1,6 +1,6 @@
 ---
-layout: essay
-type: essay
+layout: post
+type: post
 title: "Python Config Management: Dynaconf, Docker & .env — The Complete Guide"
 date: 2025-04-25
 published: true
@@ -12,7 +12,7 @@ labels:
   - DevOps
 ---
 
-<img width="80px" class="rounded float-left pe-4" src="https://www.dynaconf.com/img/logo_400.svg" alt="Dynaconf logo" onerror="this.src='../img/essay/django.jpg'">
+<img width="80px" class="rounded float-left pe-4" src="https://www.dynaconf.com/img/logo_400.svg" alt="Dynaconf logo" onerror="this.src='../img/post/django.jpg'">
 
 ## Introduction
 

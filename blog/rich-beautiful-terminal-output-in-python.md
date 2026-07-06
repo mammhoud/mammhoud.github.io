@@ -1,6 +1,6 @@
 ---
-layout: essay
-type: essay
+layout: post
+type: post
 title: "Rich: Beautiful Terminal Output in Python"
 published: true
 labels:
@@ -9,7 +9,7 @@ labels:
   - CLI
 ---
 
-<img width="80px" class="rounded float-left pe-4" src="https://raw.githubusercontent.com/Textualize/rich/master/imgs/logo.svg" alt="Rich logo" onerror="this.src='../img/essay/django.jpg'">
+<img width="80px" class="rounded float-left pe-4" src="https://raw.githubusercontent.com/Textualize/rich/master/imgs/logo.svg" alt="Rich logo" onerror="this.src='../img/post/django.jpg'">
 
 ## Introduction
 

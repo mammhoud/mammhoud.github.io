@@ -13,7 +13,7 @@ labels:
 summary: "A dynamic CMS website with an admin panel that allows flexible content management, user permissions, and real-time design updates."
 ---
 
-<img class="img-fluid" src="../img/wagtail-djnago.png" alt="Content Driven Website Builder">
+<img class="max-w-full h-auto" src="../img/wagtail-djnago.png" alt="Content Driven Website Builder">
 
 The **Content Driven Website Builder** is a custom CMS developed using **Django** and **Wagtail** that enables businesses to display dynamic content and manage their website with real-time updates.
 

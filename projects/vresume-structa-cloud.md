@@ -14,7 +14,7 @@ labels:
 summary: "A cloud-hosted resume platform for creating, updating, and publishing professional resumes with modern templates and scalable deployment."
 ---
 
-<img class="img-fluid" src="../img/image.jpg" alt="vResume Platform screenshot placeholder">
+<img class="max-w-full h-auto" src="../img/image.jpg" alt="vResume Platform screenshot placeholder">
 
 **vResume** is a cloud-first resume platform available at **https://vresume.structa.cloud**. It is designed to help users build production-ready resumes quickly while keeping the editing workflow simple and reliable.
 

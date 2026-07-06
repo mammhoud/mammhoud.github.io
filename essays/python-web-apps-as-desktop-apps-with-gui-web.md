@@ -9,7 +9,7 @@ labels:
   - Learning
 ---
 
-<img width="100px" class="rounded float-start pe-4" src="../img/essay/web-gui.png" alt="gui-web">
+<img width="100px" class="rounded float-left pe-4" src="../img/essay/web-gui.png" alt="gui-web">
 
 When I first began exploring creativity, I was drawn to design — not just how it looks, but how it makes us think, question, and interact. Back then, I thought design was part of technology but had nothing to do with the distributed systems and client devices I was studying. It felt like two completely different worlds.
 
@@ -25,7 +25,7 @@ My journey is still unfolding. Every tool I use, every project I build, is fuel 
 
 ## A Step Forward: gui-web
 
-<!-- <img width="100px" class="rounded float-start pe-4" src="../img/essay/designs-thumb.jpg"> -->
+<!-- <img width="100px" class="rounded float-left pe-4" src="../img/essay/designs-thumb.jpg"> -->
 
 Recently, I came across a powerful open-source tool that perfectly aligns with this intersection of design, software engineering, and user experience: **gui-web**.
 

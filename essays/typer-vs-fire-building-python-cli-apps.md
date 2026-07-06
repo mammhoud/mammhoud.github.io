@@ -10,7 +10,7 @@ labels:
   - Fire
 ---
 
-<img width="80px" class="rounded float-start pe-4" src="https://typer.tiangolo.com/img/logo-margin/logo-margin-vector.svg" alt="Typer logo" onerror="this.src='../img/essay/django.jpg'">
+<img width="80px" class="rounded float-left pe-4" src="https://typer.tiangolo.com/img/logo-margin/logo-margin-vector.svg" alt="Typer logo" onerror="this.src='../img/essay/django.jpg'">
 
 ## Introduction
 

@@ -13,7 +13,7 @@ labels:
 summary: "An automated web scraping tool that collects real estate property listings, tracks historical transactions, and saves data efficiently for analysis."
 ---
 
-<img class="img-fluid" src="../img/python-selenium.png" alt="Property Website Data Scraper">
+<img class="max-w-full h-auto" src="../img/python-selenium.png" alt="Property Website Data Scraper">
 
 The **Property Website Data Scraper** is an automated Python application developed to scrape real estate listings from well-known property websites.
 

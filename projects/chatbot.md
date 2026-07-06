@@ -13,7 +13,7 @@ labels:
 summary: "An AI chatbot with multi-tenant architecture synchronized with leading chat applications to answer user inquiries and provide feedback surveys."
 ---
 
-<img class="img-fluid" src="../img/django-telegram.webp" alt="Multi Usage Chatbot">
+<img class="max-w-full h-auto" src="../img/django-telegram.webp" alt="Multi Usage Chatbot">
 
 The Multi Usage Chatbot is an AI-powered chatbot developed using **Python** and **Rasa** with a **multi-tenant architecture**. It is integrated with popular chat applications to automatically handle user inquiries and conduct feedback surveys.
 

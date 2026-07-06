@@ -11,7 +11,7 @@ labels:
   - API
 ---
 
-<img width="80px" class="rounded float-start pe-4" src="https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png" alt="FastAPI logo" onerror="this.src='../img/essay/django.jpg'">
+<img width="80px" class="rounded float-left pe-4" src="https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png" alt="FastAPI logo" onerror="this.src='../img/essay/django.jpg'">
 
 ## Introduction
 

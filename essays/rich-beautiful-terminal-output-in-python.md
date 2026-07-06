@@ -9,7 +9,7 @@ labels:
   - CLI
 ---
 
-<img width="80px" class="rounded float-start pe-4" src="https://raw.githubusercontent.com/Textualize/rich/master/imgs/logo.svg" alt="Rich logo" onerror="this.src='../img/essay/django.jpg'">
+<img width="80px" class="rounded float-left pe-4" src="https://raw.githubusercontent.com/Textualize/rich/master/imgs/logo.svg" alt="Rich logo" onerror="this.src='../img/essay/django.jpg'">
 
 ## Introduction
 

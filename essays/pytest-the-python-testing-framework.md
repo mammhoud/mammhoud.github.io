@@ -10,7 +10,7 @@ labels:
   - Testing
 ---
 
-<img width="80px" class="rounded float-start pe-4" src="https://docs.pytest.org/en/stable/_static/pytest_logo_curves.svg" alt="Pytest logo" onerror="this.src='../img/essay/django.jpg'">
+<img width="80px" class="rounded float-left pe-4" src="https://docs.pytest.org/en/stable/_static/pytest_logo_curves.svg" alt="Pytest logo" onerror="this.src='../img/essay/django.jpg'">
 
 ## Introduction
 

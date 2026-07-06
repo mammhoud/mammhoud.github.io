@@ -11,7 +11,7 @@ labels:
   - Architecture
 ---
 
-<img width="80px" class="rounded float-start pe-4" src="https://static.djangoproject.com/img/logos/django-logo-negative.svg" alt="Django-RSeal logo" onerror="this.src='../img/essay/django.jpg'">
+<img width="80px" class="rounded float-left pe-4" src="https://static.djangoproject.com/img/logos/django-logo-negative.svg" alt="Django-RSeal logo" onerror="this.src='../img/essay/django.jpg'">
 
 ## Introduction
 

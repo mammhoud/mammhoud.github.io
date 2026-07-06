@@ -1,6 +1,6 @@
 <div class="w-full md:w-1/2 lg:w-1/3">
   <div class="card h-full portfolio__card portfolio__essay-card">
-    <div class="card-body p-6 flex flex-col h-full">
+    <div class="card-body p-4 md:p-6 flex flex-col h-full">
       <h5 class="card-title text-xl font-semibold">{{ include.page.title }}</h5>
       <p class="card-text text-sm portfolio__text--muted mb-3">{{ include.page.date | date_to_string }}</p>
       <p class="card-text flex-grow">{{ include.page.content | markdownify | strip_html | truncatewords: 40 }}</p>

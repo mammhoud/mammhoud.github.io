@@ -489,6 +489,52 @@
   }
 }
 
+/* ─── See-all link (section footers) ───
+ * Accent-colored link with underline + arrow hover animation.
+ * ─────────────────────────────────────────────────────────── */
+.portfolio__see-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  position: relative;
+  color: var(--portfolio-color-accent);
+  font-weight: 600;
+  font-size: 1.05rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.portfolio__see-all::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--portfolio-color-accent);
+  transition: width 0.25s ease, left 0.25s ease;
+  transform: translateX(-50%);
+}
+
+.portfolio__see-all:hover::after {
+  width: 100%;
+}
+
+.portfolio__see-all:hover {
+  color: var(--portfolio-color-accent-hover);
+}
+
+.portfolio__see-all-arrow {
+  display: inline-block;
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+}
+
+.portfolio__see-all:hover .portfolio__see-all-arrow {
+  transform: translateX(4px);
+}
+
 /* ─── Social items ─── */
 .portfolio__social-item {
   list-style: none;

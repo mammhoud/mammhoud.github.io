@@ -1,35 +1,16 @@
-<div class="py-5 portfolio__surface portfolio__surface--projects" id="projects">
-  <div class="portfolio__vine" aria-hidden="true"></div>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 portfolio__section-content">
-    <div class="flex flex-wrap mb-3">
-      <div class="w-full md:w-1/2">
-        <p class="portfolio__eyebrow mb-2">In bloom</p>
-        <h1 class="text-5xl md:text-6xl text-left portfolio__section-title">Projects</h1>
-      </div>
+<section class="bento-shell portfolio__surface--projects" id="projects">
+  <div class="bento-section-heading bento-section-heading--split portfolio__section-content">
+    <div>
+      <p class="bento-kicker portfolio__eyebrow">Recent Projects</p>
+      <h2 class="portfolio__section-title">Selected work</h2>
     </div>
-
-    <!-- Project grid: responsive with 2 columns on large screens -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6 lg:gap-8">
-      {% assign project_pages = site.pages | where: "type", "project" | sort: "date" | reverse %}
-      {% for page in project_pages %}
-        {% unless page.draft %}
-          {% include projects/project-card.html page=page %}
-        {% endunless %}
-        {% if forloop.index == include.limit %}
-          {% break %}
-        {% endif %}
-      {% endfor %}
-    </div>
-
-    {% if project_pages.size > include.limit %}
-      <p class="text-center pt-8"><a href="{{ site.baseurl}}/projects/" class="portfolio__see-all">
-          <span>See all {{ project_pages.size }} projects</span>
-          <svg class="portfolio__see-all-arrow" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="5" y1="12" x2="19" y2="12"/>
-            <polyline points="12 5 19 12 12 19"/>
-          </svg>
-        </a></p>
-    {% endif %}
-
+    <a href="{{ site.baseurl}}/projects/" class="portfolio__see-all">All Projects</a>
   </div>
-</div>
+  <div class="bento-grid bento-grid--projects">
+    {% assign project_pages = site.pages | where: "type", "project" | sort: "date" | reverse %}
+    {% for page in project_pages %}
+      {% unless page.draft %}{% include projects/project-card.html page=page index=forloop.index %}{% endunless %}
+      {% if forloop.index == include.limit %}{% break %}{% endif %}
+    {% endfor %}
+  </div>
+</section>

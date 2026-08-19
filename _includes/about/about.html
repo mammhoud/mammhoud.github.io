@@ -1,57 +1,64 @@
-<div class="py-5 portfolio__surface portfolio__surface--hero">
-  <div class="portfolio__garden-orb portfolio__garden-orb--moss" aria-hidden="true"></div>
-  <div class="portfolio__garden-orb portfolio__garden-orb--petal" aria-hidden="true"></div>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 motion-safe:animate-fade-in portfolio__hero-content">
-    <div class="flex flex-wrap items-center gap-4">
-      {% if site.data.bio.basics.picture %}
-       <div class="w-full lg:w-1/4 text-center">
-        
-        <img width="300" src="{{ site.data.bio.basics.picture }}" class="block mx-auto rounded-full portfolio__avatar" alt="{{ site.data.bio.basics.name }}">
-      </div> 
-      {% endif %}
-      <div class="w-full lg:w-3/4">
-        <p class="portfolio__eyebrow text-center mb-2">Cultivating thoughtful software</p>
-        <h1 class="text-5xl md:text-6xl text-center portfolio__hero-title">{{ site.data.bio.basics.name }}</h1>
-        <p class="text-lg text-center portfolio__hero-label">{{ site.data.bio.basics.label }}</p>
-        <p class="text-lg m-4 portfolio__summary">{{ site.data.bio.basics.summary }}</p>
-        <hr class="my-4">
-        <p class="text-lg m-0 portfolio__interests">
-          <span class="portfolio__leaf-bullet" aria-hidden="true">✦</span> Interests:
-          {% for interest in site.data.bio.interests %}
-          {{ interest.name }}{% if forloop.last != true %}, {% endif %}
-          {% endfor %}
-        </p>
-        <hr class="my-4">
-        <div class="flex flex-wrap gap-2">
-
-          {% if site.data.bio.basics.website %}
-
-            {% capture url %}{{ site.data.bio.basics.website }}{% endcapture %}
-
-            <div class="w-full sm:w-auto text-center portfolio__social-tile">
-              {% include about/social.html url=url name='house' label='Portfolio' %}
-            </div>
-          {% endif %}
-
+<section class="bento-shell" id="about">
+  <div class="bento-grid bento-grid--hero">
+    <article class="bento-card bento-card--profile portfolio__hero-content">
+      <div class="bento-profile__media">
+        {% if site.data.bio.basics.picture %}
+        <img width="320" src="{{ site.data.bio.basics.picture }}" class="bento-avatar portfolio__avatar" alt="{{ site.data.bio.basics.name }}">
+        {% endif %}
+      </div>
+      <div class="bento-profile__body">
+        <p class="bento-kicker portfolio__eyebrow">Backend developer & AI builder</p>
+        <h1 class="bento-title portfolio__hero-title">{{ site.data.bio.basics.name }}</h1>
+        <p class="bento-role portfolio__hero-label">{{ site.data.bio.basics.label }}</p>
+        <p class="bento-summary portfolio__summary">{{ site.data.bio.basics.summary }}</p>
+        <div class="bento-actions">
+          <a class="portfolio__button bento-button" href="#contact">Let's Talk</a>
           {% if site.data.bio.basics.email %}
-            {% capture url %}mailto:{{ site.data.bio.basics.email }}{% endcapture %}
-            <div class="w-full sm:w-auto text-center portfolio__social-tile">
-              {% include about/social.html url=url name='envelope'  label='Email' %}
-            </div>
+          <a class="portfolio__button portfolio__button--secondary bento-button" href="mailto:{{ site.data.bio.basics.email }}">Copy Email</a>
           {% endif %}
-
-          {% for profile in site.data.bio.basics.profiles %}
-          {% capture url %}{{ profile.url }}{% endcapture %}
-          {% capture name %}{{ profile.network | downcase }}{% endcapture %}
-          {% capture label %}{{ profile.network }}{% endcapture %}
-
-            <div class="w-full sm:w-auto text-center portfolio__social-tile">
-              {% include about/social.html url=url name=name label=label %}
-            </div>
-          {% endfor %}
-
         </div>
       </div>
-    </div>
+    </article>
+
+    <aside class="bento-card bento-card--socials" aria-label="Social links">
+      <p class="bento-kicker">Connect</p>
+      <ul class="bento-social-list">
+        {% if site.data.bio.basics.website %}
+        {% capture url %}{{ site.data.bio.basics.website }}{% endcapture %}
+        {% include about/social.html url=url name='house' label='Portfolio' %}
+        {% endif %}
+        {% if site.data.bio.basics.email %}
+        {% capture url %}mailto:{{ site.data.bio.basics.email }}{% endcapture %}
+        {% include about/social.html url=url name='envelope' label='Email' %}
+        {% endif %}
+        {% for profile in site.data.bio.basics.profiles %}
+        {% capture url %}{{ profile.url }}{% endcapture %}
+        {% capture name %}{{ profile.network | downcase }}{% endcapture %}
+        {% capture label %}{{ profile.network }}{% endcapture %}
+        {% include about/social.html url=url name=name label=label %}
+        {% endfor %}
+      </ul>
+    </aside>
+
+    <aside class="bento-card bento-card--stats">
+      <p class="bento-kicker">Highlights</p>
+      <div class="bento-stat"><strong>{{ site.pages | where: "type", "project" | size }}+</strong><span>Projects</span></div>
+      <div class="bento-stat"><strong>{{ site.pages | where: "type", "post" | size }}+</strong><span>Articles</span></div>
+      <div class="bento-stat"><strong>AI</strong><span>Focused delivery</span></div>
+    </aside>
+
+    <aside class="bento-card bento-card--skills">
+      <div class="bento-section-heading">
+        <p class="bento-kicker">Expert Area</p>
+        <h2>Core toolkit</h2>
+      </div>
+      <div class="bento-chip-cloud portfolio__interests">
+        {% for skill in site.data.bio.skills limit:2 %}
+          {% for keyword in skill.keywords limit:8 %}
+          <span class="portfolio__badge bento-chip">{{ keyword }}</span>
+          {% endfor %}
+        {% endfor %}
+      </div>
+    </aside>
   </div>
-</div>
+</section>

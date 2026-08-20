@@ -1665,6 +1665,39 @@
   transition: transform .3s cubic-bezier(.22, 1, .36, 1), border-color .3s ease, box-shadow .3s ease;
 }
 
+/* ── Spotlight border tracking ──
+ * ::before creates a radial-gradient border glow that follows the cursor.
+ * ::after creates a soft inner glow at the cursor position.
+ * Both driven by --mouse-x / --mouse-y set via JS on mousemove.
+ * Only active on devices with pointer hover (not touch).
+ * ───────────────────────────────────────────────────── */
+.bento-card {
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+}
+
+.bento-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: radial-gradient(
+    340px circle at var(--mouse-x) var(--mouse-y),
+    color-mix(in oklab, var(--bento-lime) 90%, transparent),
+    transparent 55%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+  z-index: 1;
+}
+
 .bento-card::after {
   content: "";
   position: absolute;
@@ -1672,18 +1705,29 @@
   border-radius: inherit;
   pointer-events: none;
   opacity: 0;
-  transition: opacity .3s ease;
-  background: linear-gradient(135deg, transparent 40%, color-mix(in oklab, var(--bento-lime) 6%, transparent));
+  background: radial-gradient(
+    420px circle at var(--mouse-x) var(--mouse-y),
+    color-mix(in oklab, var(--bento-lime) 7%, transparent),
+    transparent 45%
+  );
+  transition: opacity 0.35s ease;
+  z-index: 0;
 }
 
-.bento-card:hover {
-  transform: translateY(-4px);
-  border-color: color-mix(in oklab, var(--bento-lime) 45%, transparent);
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28), 0 0 0 1px color-mix(in oklab, var(--bento-lime) 12%, transparent);
-}
+@media (hover: hover) {
+  .bento-card:hover {
+    transform: translateY(-4px);
+    border-color: color-mix(in oklab, var(--bento-lime) 45%, transparent);
+    box-shadow:
+      0 24px 80px rgba(0, 0, 0, 0.28),
+      0 0 0 1px color-mix(in oklab, var(--bento-lime) 12%, transparent),
+      0 0 40px color-mix(in oklab, var(--bento-lime) 8%, transparent);
+  }
 
-.bento-card:hover::after {
-  opacity: 1;
+  .bento-card:hover::before,
+  .bento-card:hover::after {
+    opacity: 1;
+  }
 }
 
 /* ── Hero profile card ── */

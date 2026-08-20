@@ -364,6 +364,17 @@
     // ---- Hover effects only on devices that support hover (not touch) ----
     var hoverMq = window.matchMedia('(hover: hover)');
     if (hoverMq.matches) {
+      // Spotlight border tracking on bento cards
+      document.querySelectorAll('.bento-card').forEach(function (card) {
+        card.addEventListener('mousemove', function (e) {
+          var rect = card.getBoundingClientRect();
+          var x = ((e.clientX - rect.left) / rect.width) * 100;
+          var y = ((e.clientY - rect.top) / rect.height) * 100;
+          card.style.setProperty('--mouse-x', x + '%');
+          card.style.setProperty('--mouse-y', y + '%');
+        });
+      });
+
       // Social tile hover with GSAP (smoother than CSS transition)
       document.querySelectorAll('.portfolio__social-tile').forEach(function (tile) {
         tile.addEventListener('mouseenter', function () {

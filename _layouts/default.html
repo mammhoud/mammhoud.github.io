@@ -121,17 +121,33 @@
         });
       }
 
-      // Mobile menu: hamburger ↔ X and collapse
+      // Mobile menu: hamburger ↔ X morph and fullscreen overlay
       function toggleMenu(force) {
         if (!toggler || !collapse) return;
         var show = force !== undefined ? force : !collapse.classList.contains('show');
         collapse.classList.toggle('show', show);
-        toggler.classList.toggle('collapsed', !show);
+        toggler.setAttribute('aria-expanded', show ? 'true' : 'false');
+        // Prevent body scroll when mobile menu is open
+        document.body.style.overflow = show ? 'hidden' : '';
       }
 
       // Close menu after clicking a nav link (mobile)
       document.querySelectorAll('.portfolio__navbar .nav-link').forEach(function(link) {
         link.addEventListener('click', function() { toggleMenu(false); });
+      });
+
+      // Close menu when clicking backdrop (mobile overlay)
+      if (collapse) {
+        collapse.addEventListener('click', function(e) {
+          if (e.target === collapse) toggleMenu(false);
+        });
+      }
+
+      // Close on Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && collapse && collapse.classList.contains('show')) {
+          toggleMenu(false);
+        }
       });
 
       if (toggler) {

@@ -1,28 +1,45 @@
-<header class="navbar portfolio__navbar flex flex-wrap items-center justify-between w-full px-4 sm:px-6 py-3 border-b">
-  <a class="navbar-brand font-bold text-lg sm:text-xl" href="{{ '/' | prepend: site.baseurl }}" up-target="#content">{{ site.data.bio.basics.name }}</a>
-  <button class="navbar-toggler border rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-[var(--portfolio-color-focus-ring)]" type="button" aria-controls="portfolioNavbar" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon block w-6 h-0.5 bg-current relative before:block before:w-6 before:h-0.5 before:bg-current before:absolute before:-top-2 after:block after:w-6 after:h-0.5 after:bg-current after:absolute after:top-2"></span>
-  </button>
-  <nav class="navbar-collapse collapse w-full md:flex md:w-auto" id="portfolioNavbar">
-    <ul class="navbar-nav flex flex-col md:flex-row md:items-center gap-2 md:gap-1 lg:gap-2 ml-auto mb-2 md:mb-0">
-      <li class="nav-item"><a class="nav-link link-animated block px-4 py-2.5 font-medium text-[0.95rem] tracking-wide rounded-lg" href="{{ '/#projects' | prepend: site.baseurl }}" up-target="#content">Projects</a></li>
-      <li class="nav-item"><a class="nav-link link-animated block px-4 py-2.5 font-medium text-[0.95rem] tracking-wide rounded-lg" href="{{ '/#blog' | prepend: site.baseurl }}" up-target="#content">Blog Posts</a></li>
-      <li class="nav-item"><a class="nav-link link-animated block px-4 py-2.5 font-medium text-[0.95rem] tracking-wide rounded-lg" href="{{ '/resume.html' | prepend: site.baseurl }}" up-target="#content">Resume</a></li>
-      <li class="nav-item">
-        <button class="portfolio__theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme" title="Toggle light / dark mode">
-          <svg class="portfolio__theme-toggle--sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="12" cy="12" r="5"/>
-            <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-            <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="5.64"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-          </svg>
-          <svg class="portfolio__theme-toggle--moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-          </svg>
-        </button>
-      </li>
-      <li class="nav-item portfolio__nav-cta"><a class="portfolio__button portfolio__download-button" href="{{ '/me.pdf' | prepend: site.baseurl }}" download="Mahmoud-Ezzat-Moustafa-CV.pdf" aria-label="Download Mahmoud Ezzat Moustafa CV as a PDF">Download CV</a></li>
-    </ul>
-  </nav>
+<header class="portfolio__navbar" role="banner">
+  <!-- Outer bezel shell -->
+  <div class="navbar-inner">
+    <a class="navbar-brand" href="{{ '/' | prepend: site.baseurl }}" up-target="#content">
+      <span class="navbar-brand__text">{{ site.data.bio.basics.name }}</span>
+    </a>
+
+    <button class="navbar-toggler" type="button" aria-controls="portfolioNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon">
+        <span></span>
+        <span></span>
+      </span>
+    </button>
+
+    <nav class="navbar-collapse collapse" id="portfolioNavbar" role="navigation">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="{{ '/#projects' | prepend: site.baseurl }}" up-target="#content">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ '/#blog' | prepend: site.baseurl }}" up-target="#content">Blog</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ '/resume.html' | prepend: site.baseurl }}" up-target="#content">Resume</a></li>
+        <li class="nav-item">
+          <button class="portfolio__theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme" title="Toggle light / dark mode">
+            <svg class="theme-icon theme-icon--sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="5"/>
+              <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+              <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="5.64"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+            <svg class="theme-icon theme-icon--moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          </button>
+        </li>
+        <li class="nav-item nav-item--cta">
+          <a class="portfolio__download-button" href="{{ '/me.pdf' | prepend: site.baseurl }}" download="Mahmoud-Ezzat-Moustafa-CV.pdf" aria-label="Download Mahmoud Ezzat Moustafa CV as a PDF">
+            <span class="btn-label">Download CV</span>
+            <span class="btn-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </header>

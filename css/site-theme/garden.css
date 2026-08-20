@@ -415,14 +415,9 @@
   outline-offset: 3px;
 }
 
+/* Download button — see bento section below for premium button-in-button pattern */
 .portfolio__download-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 2.75rem;
-  padding-inline: 1rem;
-  border-radius: 999px;
-  white-space: nowrap;
+  /* All styling handled by bento section */
 }
 
 .portfolio__button--secondary {
@@ -731,189 +726,30 @@
   height: auto;
 }
 
-/* ─── Navbar ───
- * Glassmorphism sticky nav with underline hover effect,
- * current-page indicator, and smooth scroll-shrink.
- * ──────────────────────────────────────────────────── */
+/* ─── Navbar base — see bento section below for premium glass architecture ─── */
 .portfolio__navbar {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  /* Base — light sage gradient; on scroll we layer backdrop blur */
-  background:
-    linear-gradient(90deg, color-mix(in oklab, var(--theme-dew) 94%, white 6%), color-mix(in oklab, var(--theme-sage) 82%, white 18%)) !important;
-  box-shadow: 0 8px 32px color-mix(in oklab, var(--theme-midnight-orchid) 26%, transparent);
-  transition: padding 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease, background 0.3s ease;
+  /* Reset: bento section below defines all navbar styles */
 }
 
+/* Scrolled state — see bento section below for premium styles */
 .portfolio__navbar--scrolled {
-  padding-top: 0.5rem !important;
-  padding-bottom: 0.5rem !important;
-  box-shadow: 0 4px 24px color-mix(in oklab, var(--theme-midnight-orchid) 36%, transparent);
-  backdrop-filter: blur(12px);
-  background:
-    linear-gradient(90deg, color-mix(in oklab, var(--theme-dew) 88%, transparent 12%), color-mix(in oklab, var(--theme-sage) 76%, transparent 24%)) !important;
-}
-
-.portfolio__navbar--scrolled .navbar-brand {
-  font-size: 1.05rem;
-  transition: font-size 0.3s ease;
+  /* Reset old theme overrides — bento section handles final styling */
 }
 
 .portfolio__navbar .navbar-collapse {
   flex-grow: 0;
 }
 
+/* ── Old navbar rules neutralized — premium styles in bento section below ── */
 .portfolio__navbar .nav-link,
-.portfolio__navbar .navbar-brand {
-  color: var(--portfolio-color-nav-text);
-  transition: color 0.2s ease;
-  position: relative;
-}
-
-.portfolio__navbar .navbar-brand {
-  font-weight: 700;
-  font-size: 1.15rem;
-  letter-spacing: -0.01em;
-  transition: font-size 0.3s ease;
-}
-
-/* ── Arrow hover animation ──
- * A → fades and slides in from the right padding area.
- * Works alongside the underline ::after.
- * ─────────────────────────────── */
-.portfolio__navbar .nav-link::before {
-  content: "→";
-  position: absolute;
-  right: 0.6rem;
-  top: 50%;
-  transform: translateY(-50%) translateX(4px);
-  opacity: 0;
-  font-size: 0.8em;
-  line-height: 1;
-  transition: opacity 0.25s ease, transform 0.25s ease;
-  pointer-events: none;
-}
-
-.portfolio__navbar .nav-link:hover::before,
-.portfolio__navbar .nav-link.active::before {
-  opacity: 1;
-  transform: translateY(-50%) translateX(0);
-}
-
-/* ── Underline hover animation ── */
-.portfolio__navbar .nav-link::after {
-  content: "";
-  position: absolute;
-  bottom: 4px;
-  left: 50%;
-  width: 0;
-  height: 2px;
-  border-radius: 1px;
-  background: var(--portfolio-color-nav-hover);
-  transition: width 0.25s ease, left 0.25s ease;
-  transform: translateX(-50%);
-}
-
-.portfolio__navbar .nav-link:hover::after,
-.portfolio__navbar .nav-link.active::after {
-  width: 60%;
-}
-
-.portfolio__navbar .nav-link:hover,
-.portfolio__navbar .navbar-brand:hover {
-  color: var(--portfolio-color-nav-hover);
-}
-
-/* ── Desktop pill background on hover ──
- * Matches the mobile pill effect for consistency across breakpoints.
- * ─────────────────────────────────────────── */
-@media (hover: hover) {
-  .portfolio__navbar .nav-link:not(.active):hover {
-    background: color-mix(in oklab, var(--portfolio-color-accent) 12%, transparent);
-    border-radius: 999px;
-  }
-}
-
-.portfolio__navbar .nav-link.active {
-  background: color-mix(in oklab, var(--portfolio-color-accent) 8%, transparent);
-  border-radius: 999px;
-}
-
-/* Reset background on mobile — handled by the mobile media query block */
-@media (min-width: 768px) {
-  .portfolio__navbar .nav-link {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-    transition: background-color 0.2s ease, color 0.2s ease, border-radius 0.2s ease;
-  }
-}
-
-/* ── Active page indicator ── */
-.portfolio__navbar .nav-link.active {
-  font-weight: 600;
-  color: var(--portfolio-color-nav-hover);
-}
-
+.portfolio__navbar .navbar-brand,
+.portfolio__navbar .nav-link::before,
+.portfolio__navbar .nav-link::after,
+.portfolio__navbar .navbar-toggler,
+.portfolio__navbar .navbar-toggler-icon,
+.portfolio__navbar .portfolio__theme-toggle,
 .portfolio__navbar .portfolio__download-button {
-  margin-inline-start: 0.5rem;
-  min-height: 2.5rem;
-  padding-inline: 1rem;
-}
-
-.portfolio__navbar .portfolio__download-button:hover,
-.portfolio__navbar .portfolio__download-button:focus {
-  color: var(--portfolio-color-accent-text-hover);
-}
-
-/* Adjust toggle placement inside navbar */
-.portfolio__navbar .portfolio__theme-toggle {
-  margin-inline-start: 0.5rem;
-}
-
-.portfolio__navbar .navbar-toggler {
-  border-color: var(--portfolio-color-border);
-  min-width: 44px;
-  min-height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
-}
-
-.portfolio__navbar .navbar-toggler:hover {
-  background: color-mix(in oklab, var(--portfolio-color-accent) 12%, transparent);
-}
-
-.portfolio__navbar .navbar-toggler:focus {
-  box-shadow: 0 0 0 0.2rem color-mix(in oklab, var(--portfolio-color-accent) 35%, transparent);
-}
-
-/* Hamburger → X animation */
-.portfolio__navbar .navbar-toggler-icon {
-  transition: transform 0.3s ease;
-}
-
-.portfolio__navbar .navbar-toggler.collapsed .navbar-toggler-icon {
-  transform: rotate(0deg);
-}
-
-.portfolio__navbar .navbar-toggler:not(.collapsed) .navbar-toggler-icon {
-  transform: rotate(90deg);
-}
-
-.portfolio__navbar .navbar-toggler:not(.collapsed) .navbar-toggler-icon::before {
-  top: 0 !important;
-  transform: rotate(45deg);
-}
-
-.portfolio__navbar .navbar-toggler:not(.collapsed) .navbar-toggler-icon::after {
-  top: 0 !important;
-  transform: rotate(-45deg);
-}
-
-.portfolio__navbar .navbar-toggler:not(.collapsed) .navbar-toggler-icon {
-  background: transparent;
+  /* All handled by bento section below */
 }
 
 /* ─── Contact section ─── */
@@ -951,73 +787,24 @@
   box-shadow: 0 0 6px color-mix(in oklab, var(--theme-sage) 40%, transparent);
 }
 
-/* ─── Theme toggle button ───
- * Dark pill on the light navbar so it always reads clearly.
- * ────────────────────────────────────────────────────── */
+/* Theme toggle — see bento section below for premium fluid rotation styles */
 .portfolio__theme-toggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 999px;
-  border: 1.5px solid color-mix(in oklab, var(--theme-midnight-orchid) 60%, transparent);
-  background: color-mix(in oklab, var(--theme-midnight-orchid) 85%, black 15%);
-  color: var(--theme-sage);
-  cursor: pointer;
-  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
-  margin-inline-start: 0.5rem;
-  box-shadow: 0 2px 8px color-mix(in oklab, var(--theme-midnight-orchid) 28%, transparent);
+  /* All styling handled by bento section */
 }
 
-.portfolio__theme-toggle:hover {
-  background: color-mix(in oklab, var(--theme-midnight-orchid) 100%, black 0%);
-  border-color: color-mix(in oklab, var(--theme-sage) 50%, transparent);
-  color: var(--theme-moss);
-  transform: scale(1.08);
-  box-shadow: 0 4px 14px color-mix(in oklab, var(--theme-midnight-orchid) 40%, transparent);
-}
-
-.light-mode .portfolio__theme-toggle {
-  border: 1.5px solid color-mix(in oklab, var(--theme-amethyst-glow) 35%, transparent);
-  background: color-mix(in oklab, var(--theme-amethyst-glow) 30%, transparent);
-  color: var(--theme-amethyst-glow);
-  box-shadow: 0 2px 8px color-mix(in oklab, var(--theme-amethyst-glow) 12%, transparent);
-}
-
-.light-mode .portfolio__theme-toggle:hover {
-  background: color-mix(in oklab, var(--theme-amethyst-glow) 28%, transparent);
-  border-color: color-mix(in oklab, var(--theme-amethyst-glow) 45%, transparent);
-  color: var(--theme-electric-violet);
-  box-shadow: 0 4px 14px color-mix(in oklab, var(--theme-amethyst-glow) 20%, transparent);
-}
-
+/* Theme toggle — see bento section below for premium styles */
 .portfolio__theme-toggle:focus-visible {
-  outline: 2px solid var(--portfolio-color-focus-ring);
+  outline: 2px solid var(--bento-lime);
   outline-offset: 2px;
 }
 
-/* Sun icon: visible in dark mode (default), hidden in light mode */
-.portfolio__theme-toggle--sun { display: block; }
-.light-mode .portfolio__theme-toggle--sun { display: none; }
-
-/* Moon icon: hidden in dark mode (default), visible in light mode */
-.portfolio__theme-toggle--moon { display: none; }
-.light-mode .portfolio__theme-toggle--moon { display: block; }
-
 /* ─── Footer ─── */
+/* Footer base — see bento section below for premium styles */
 .portfolio__footer {
-  background: color-mix(in oklab, var(--theme-night-leaf) 86%, black 14%);
-  border-color: var(--portfolio-color-border) !important;
+  /* All styling handled by bento section */
 }
 
-.portfolio__footer .nav-link {
-  color: var(--portfolio-color-link);
-}
-
-.portfolio__footer .nav-link:hover {
-  color: var(--portfolio-color-highlight-soft);
-}
+/* Footer nav-link — see bento section below */
 
 /* ─── Resume page ─── */
 .portfolio__resume-page {
@@ -1088,9 +875,16 @@
   display: none;
 }
 
-@media (min-width: 768px) {
+/* Desktop: inline nav */
+@media (min-width: 901px) {
   .navbar-collapse.collapse {
     display: flex !important;
+    position: static !important;
+    background: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 }
 
@@ -1118,59 +912,15 @@
     border-radius: var(--portfolio-card-inner-radius, 0.75rem) var(--portfolio-card-inner-radius, 0.75rem) 0 0;
   }
 
-  .portfolio__navbar .navbar-collapse.collapse {
-    display: block;
-  }
-
-  .portfolio__navbar .navbar-collapse {
-    width: 100%;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.35s ease, opacity 0.35s ease, padding 0.35s ease;
-    opacity: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-
-  .portfolio__navbar .navbar-collapse.show {
-    max-height: 400px;
-    opacity: 1;
-    padding-top: 0.75rem;
-    padding-bottom: 0.5rem;
-  }
-
-  .portfolio__navbar .navbar-nav {
-    gap: 0.15rem;
-    padding-top: 0;
-    text-align: center;
-  }
-
-  .portfolio__navbar .nav-link {
-    min-height: 44px;
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    border-radius: 999px;
-    transition: background-color 0.2s ease, color 0.2s ease;
-  }
-
-  .portfolio__navbar .nav-link::before {
-    display: none;
-  }
-
-  .portfolio__navbar .nav-link:hover,
-  .portfolio__navbar .nav-link.active {
-    background: color-mix(in oklab, var(--portfolio-color-accent) 14%, transparent);
-  }
-
-  .portfolio__navbar .portfolio__theme-toggle {
-    margin-inline: auto;
-  }
-
+  /* Old responsive navbar rules neutralized — bento section handles mobile nav */
+  .portfolio__navbar .navbar-collapse.collapse,
+  .portfolio__navbar .navbar-collapse,
+  .portfolio__navbar .navbar-collapse.show,
+  .portfolio__navbar .navbar-nav,
+  .portfolio__navbar .nav-link,
+  .portfolio__navbar .portfolio__theme-toggle,
   .portfolio__navbar .portfolio__download-button {
-    margin-inline-start: 0;
-    width: 100%;
-    min-height: 44px;
+    /* Handled by bento section below */
   }
 
   .portfolio__resume-hero,
@@ -1237,9 +987,7 @@
 }
 
 /* Footer */
-.light-mode .portfolio__footer {
-  background: color-mix(in oklab, var(--theme-lavender-mist) 60%, white 40%);
-}
+/* Light mode footer — see bento section below */
 
 /* Scrollbar — light palette */
 .light-mode ::-webkit-scrollbar-track {
@@ -1410,88 +1158,442 @@
   color: var(--bento-text);
 }
 
-/* ──────────────────────────────
-   NAVBAR — floating glass pill
-   ────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════
+   NAVBAR — Premium Double-Bezel Glass Architecture
+   Outer shell (subtle border) + Inner core (frosted glass)
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Outer bezel shell ── */
 .portfolio__navbar {
   position: sticky;
-  top: 16px;
+  top: 12px;
   z-index: 20;
-  width: min(1180px, calc(100% - 32px));
-  margin: 16px auto 0;
-  border: 1px solid var(--bento-card-border) !important;
+  width: min(1140px, calc(100% - 24px));
+  margin: 12px auto 0;
   border-radius: 999px;
-  background: color-mix(in oklab, var(--bento-card-bg) 82%, transparent);
-  backdrop-filter: blur(18px);
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.22);
-  padding-inline: 8px !important;
+  padding: 3px;
+  background: color-mix(in oklab, var(--bento-card-border) 50%, transparent);
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--bento-lime) 6%, transparent),
+    0 24px 80px rgba(0, 0, 0, 0.25),
+    0 8px 32px rgba(0, 0, 0, 0.12);
+  transition: top 0.5s cubic-bezier(0.32, 0.72, 0, 1),
+              box-shadow 0.5s cubic-bezier(0.32, 0.72, 0, 1),
+              width 0.5s cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 .portfolio__navbar--scrolled {
-  padding-top: 0.5rem !important;
-  padding-bottom: 0.5rem !important;
+  top: 8px;
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--bento-lime) 10%, transparent),
+    0 32px 100px rgba(0, 0, 0, 0.35),
+    0 12px 40px rgba(0, 0, 0, 0.18);
 }
 
-.navbar-brand,
-.portfolio__navbar .nav-link {
-  color: var(--bento-text) !important;
+/* ── Inner core (frosted glass) ── */
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border-radius: 999px;
+  padding: 6px 8px 6px 16px;
+  background: color-mix(in oklab, var(--bento-card-bg) 78%, transparent);
+  backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  box-shadow: inset 0 1px 0 color-mix(in oklab, white 6%, transparent);
 }
 
-.portfolio__navbar .nav-link.active,
-.portfolio__navbar .nav-link:hover {
-  background: var(--bento-card-bg-soft);
-  color: var(--bento-lime) !important;
-}
-
+/* ── Brand ── */
 .navbar-brand {
-  padding-left: 12px !important;
+  flex-shrink: 0;
+  text-decoration: none;
+  color: var(--bento-text);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+  transition: color 0.4s cubic-bezier(0.32, 0.72, 0, 1);
 }
 
-/* ── Theme toggle in bento style ── */
+.navbar-brand:hover {
+  color: var(--bento-lime);
+}
+
+.navbar-brand__text {
+  display: inline-block;
+  transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.navbar-brand:hover .navbar-brand__text {
+  transform: translateX(2px);
+}
+
+/* ── Nav links ── */
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--bento-muted);
+  text-decoration: none;
+  position: relative;
+  transition: color 0.4s cubic-bezier(0.32, 0.72, 0, 1),
+              background 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.nav-link:hover {
+  color: var(--bento-text);
+  background: color-mix(in oklab, var(--bento-card-bg-soft) 80%, transparent);
+}
+
+.nav-link.active {
+  color: var(--bento-lime);
+  background: color-mix(in oklab, var(--bento-lime) 10%, transparent);
+}
+
+/* Underline reveal on hover */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  width: 0;
+  height: 1.5px;
+  border-radius: 1px;
+  background: var(--bento-lime);
+  transition: width 0.35s cubic-bezier(0.32, 0.72, 0, 1),
+              left 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 50%;
+}
+
+/* ── Hamburger → X morph ── */
+.navbar-toggler {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--bento-text);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.navbar-toggler:hover {
+  background: color-mix(in oklab, var(--bento-card-bg-soft) 80%, transparent);
+}
+
+.navbar-toggler-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 18px;
+  position: relative;
+}
+
+.navbar-toggler-icon span {
+  display: block;
+  width: 100%;
+  height: 1.5px;
+  background: var(--bento-text);
+  border-radius: 999px;
+  transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1),
+              opacity 0.3s ease;
+  transform-origin: center;
+}
+
+/* X morph when open */
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon span:first-child {
+  transform: translateY(3.25px) rotate(45deg);
+}
+
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon span:last-child {
+  transform: translateY(-3.25px) rotate(-45deg);
+}
+
+/* ── Theme Toggle — fluid rotation ── */
 .portfolio__theme-toggle {
-  background: var(--bento-card-bg-soft) !important;
-  border: 1px solid var(--bento-card-border) !important;
-  color: var(--bento-text) !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--bento-card-border);
+  background: var(--bento-card-bg-soft);
+  color: var(--bento-muted);
+  cursor: pointer;
+  flex-shrink: 0;
+  margin-inline: 4px;
+  transition: background 0.4s cubic-bezier(0.32, 0.72, 0, 1),
+              color 0.4s cubic-bezier(0.32, 0.72, 0, 1),
+              border-color 0.4s cubic-bezier(0.32, 0.72, 0, 1),
+              transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  overflow: hidden;
 }
 
 .portfolio__theme-toggle:hover {
-  background: var(--bento-lime) !important;
-  color: var(--bento-page-bg) !important;
+  background: color-mix(in oklab, var(--bento-lime) 15%, transparent);
+  border-color: color-mix(in oklab, var(--bento-lime) 30%, transparent);
+  color: var(--bento-lime);
+  transform: rotate(15deg) scale(1.08);
 }
 
-.light-mode .portfolio__theme-toggle {
-  background: var(--bento-card-bg-soft) !important;
-  border-color: var(--bento-card-border) !important;
-  color: var(--bento-text) !important;
+.portfolio__theme-toggle:active {
+  transform: rotate(180deg) scale(0.92);
+  transition-duration: 0.3s;
 }
 
-.light-mode .portfolio__theme-toggle:hover {
-  background: var(--bento-lime) !important;
-  color: var(--bento-page-bg) !important;
+.theme-icon {
+  position: absolute;
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+              opacity 0.3s ease;
 }
 
-/* ── Download button in bento style ── */
+.theme-icon--sun {
+  display: block;
+  transform: rotate(0deg) scale(1);
+  opacity: 1;
+}
+
+.theme-icon--moon {
+  display: block;
+  transform: rotate(-90deg) scale(0.5);
+  opacity: 0;
+}
+
+.light-mode .theme-icon--sun {
+  transform: rotate(90deg) scale(0.5);
+  opacity: 0;
+}
+
+.light-mode .theme-icon--moon {
+  transform: rotate(0deg) scale(1);
+  opacity: 1;
+}
+
+/* ── Download CTA — Button-in-Button ── */
 .portfolio__download-button {
-  background: var(--bento-lime) !important;
-  border-color: var(--bento-lime) !important;
-  color: var(--bento-page-bg) !important;
-  box-shadow: none !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  padding: 0;
+  border-radius: 999px;
+  background: var(--bento-lime);
+  color: var(--bento-page-bg);
+  border: none;
+  font-weight: 600;
+  font-size: 0.82rem;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  margin-inline-start: 6px;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+  box-shadow: 0 4px 16px color-mix(in oklab, var(--bento-lime) 20%, transparent);
+}
+
+.btn-label {
+  padding: 8px 14px 8px 16px;
+  white-space: nowrap;
+}
+
+.btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: color-mix(in oklab, var(--bento-page-bg) 18%, transparent);
+  flex-shrink: 0;
+  margin: 3px;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background 0.3s ease;
 }
 
 .portfolio__download-button:hover {
-  background: transparent !important;
-  color: var(--bento-lime) !important;
-  border-color: var(--bento-lime) !important;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 28px color-mix(in oklab, var(--bento-lime) 30%, transparent);
+}
+
+.portfolio__download-button:hover .btn-icon {
+  transform: translateY(1px) scale(1.1);
+  background: color-mix(in oklab, var(--bento-page-bg) 28%, transparent);
+}
+
+.portfolio__download-button:active {
+  transform: translateY(0) scale(0.98);
+  transition-duration: 0.15s;
 }
 
 .light-mode .portfolio__download-button {
-  background: var(--bento-lime) !important;
-  color: var(--bento-page-bg) !important;
+  background: var(--bento-lime);
+  color: var(--bento-page-bg);
 }
 
-/* ── Mobile nav ── */
+.light-mode .btn-icon {
+  background: color-mix(in oklab, var(--bento-page-bg) 15%, transparent);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   MOBILE NAV — Full-screen glass overlay with staggered reveal
+   ═══════════════════════════════════════════════════════════ */
 @media (max-width: 900px) {
-  .portfolio__navbar { border-radius: 24px; }
+  .portfolio__navbar {
+    top: 8px;
+    width: calc(100% - 16px);
+    border-radius: 20px;
+    padding: 2px;
+  }
+
+  .navbar-inner {
+    border-radius: 18px;
+    padding: 6px 10px;
+  }
+
+  .navbar-toggler {
+    display: flex;
+  }
+
+  .navbar-collapse {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: color-mix(in oklab, var(--bento-page-bg) 92%, transparent);
+    backdrop-filter: blur(32px) saturate(1.6);
+    -webkit-backdrop-filter: blur(32px) saturate(1.6);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s cubic-bezier(0.32, 0.72, 0, 1),
+                visibility 0.4s;
+  }
+
+  .navbar-collapse.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .nav-link {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    padding: 12px 28px;
+    color: var(--bento-text);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s cubic-bezier(0.32, 0.72, 0, 1),
+                transform 0.4s cubic-bezier(0.32, 0.72, 0, 1),
+                color 0.3s ease, background 0.3s ease;
+  }
+
+  .navbar-collapse.show .nav-link {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Staggered reveal */
+  .navbar-collapse.show .nav-item:nth-child(1) .nav-link { transition-delay: 0.08s; }
+  .navbar-collapse.show .nav-item:nth-child(2) .nav-link { transition-delay: 0.12s; }
+  .navbar-collapse.show .nav-item:nth-child(3) .nav-link { transition-delay: 0.16s; }
+  .navbar-collapse.show .nav-item:nth-child(4) .nav-link { transition-delay: 0.20s; }
+  .navbar-collapse.show .nav-item:nth-child(5) .nav-link { transition-delay: 0.24s; }
+
+  .nav-link::after { display: none; }
+
+  .nav-link:hover, .nav-link.active {
+    color: var(--bento-lime);
+    background: transparent;
+  }
+
+  .nav-item--cta {
+    margin-top: 16px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s cubic-bezier(0.32, 0.72, 0, 1) 0.28s,
+                transform 0.4s cubic-bezier(0.32, 0.72, 0, 1) 0.28s;
+  }
+
+  .navbar-collapse.show .nav-item--cta {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .portfolio__download-button {
+    font-size: 1rem;
+    margin-inline-start: 0;
+  }
+
+  .btn-label {
+    padding: 10px 18px 10px 20px;
+  }
+
+  .btn-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .portfolio__theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.3s ease 0.3s, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s;
+  }
+
+  .navbar-collapse.show .portfolio__theme-toggle {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* Close button inside mobile overlay */
+  .navbar-collapse::before {
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: color-mix(in oklab, var(--bento-card-bg-soft) 60%, transparent);
+    border: 1px solid var(--bento-card-border);
+  }
 }
 
 /* ──────────────────────────────
@@ -2326,24 +2428,111 @@
   color: var(--bento-muted) !important;
 }
 
-/* ──────────────────────────────
-   FOOTER — bento style
-   ────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════
+   FOOTER — Premium Minimal
+   ═══════════════════════════════════════════════════════════ */
 .portfolio__footer {
-  width: min(1180px, calc(100% - 32px));
-  margin: 32px auto;
-  border: 1px solid var(--bento-card-border) !important;
+  width: min(1140px, calc(100% - 24px));
+  margin: 40px auto 24px;
   border-radius: 24px;
-  background: var(--bento-card-bg);
-  padding: 20px 24px;
+  background: color-mix(in oklab, var(--bento-card-bg) 60%, transparent);
+  border: 1px solid color-mix(in oklab, var(--bento-card-border) 60%, transparent);
+  padding: 0;
+  overflow: hidden;
 }
 
-.portfolio__footer .nav-link {
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 28px;
+  position: relative;
+}
+
+/* Gradient top separator */
+.footer-inner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--bento-lime) 20%, transparent), transparent);
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-brand {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--bento-text);
+  letter-spacing: -0.01em;
+}
+
+.footer-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--bento-muted);
+  opacity: 0.5;
+}
+
+.footer-year {
+  font-size: 0.78rem;
   color: var(--bento-muted);
+  font-variant-numeric: tabular-nums;
 }
 
-.portfolio__footer .nav-link:hover {
+.footer-right {
+  display: flex;
+  align-items: center;
+}
+
+.footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--bento-muted);
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 999px;
+  transition: color 0.4s cubic-bezier(0.32, 0.72, 0, 1),
+              background 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.footer-link:hover {
   color: var(--bento-lime);
+  background: color-mix(in oklab, var(--bento-lime) 8%, transparent);
+}
+
+.footer-link__arrow {
+  display: inline-block;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.footer-link:hover .footer-link__arrow {
+  transform: translateX(3px);
+}
+
+/* Light mode footer */
+.light-mode .portfolio__footer {
+  background: color-mix(in oklab, var(--bento-card-bg) 80%, transparent);
+  border-color: color-mix(in oklab, var(--bento-card-border) 50%, transparent);
+}
+
+.light-mode .footer-inner::before {
+  background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--bento-lime) 15%, transparent), transparent);
+}
+
+.light-mode .footer-link:hover {
+  color: var(--bento-lime);
+  background: color-mix(in oklab, var(--bento-lime) 10%, transparent);
 }
 
 /* ──────────────────────────────

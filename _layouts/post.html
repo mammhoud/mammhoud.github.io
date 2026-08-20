@@ -7,7 +7,7 @@ layout: home
 
 <div class="bento-shell">
   <!-- Post header -->
-  <header class="post-header">
+  <header class="post-header" data-reveal="stagger">
     <a href="{{ '/blog/' | prepend: site.baseurl }}" class="post-header__back portfolio__see-all">
       <span class="portfolio__see-all-arrow" aria-hidden="true">&larr;</span>
       All posts
@@ -24,7 +24,7 @@ layout: home
   <!-- Two-column layout: article + sidebar TOC -->
   <div class="post-layout">
     <!-- Main article content -->
-    <article class="post-body bento-card" id="post-content">
+    <article class="post-body bento-card" id="post-content" data-reveal>
       {{ content }}
     </article>
 

@@ -817,6 +817,88 @@
   outline-offset: 2px;
 }
 
+/* ─── Universal Scroll-Reveal Animations ─── */
+/* Elements with [data-reveal] fade + slide up on scroll. */
+/* Uses IntersectionObserver — no GSAP dependency for the reveal itself. */
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  will-change: opacity, transform;
+  transition:
+    opacity 0.7s cubic-bezier(0.32, 0.72, 0, 1),
+    transform 0.7s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered children: [data-reveal="stagger"] animates direct children */
+[data-reveal="stagger"] > * {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.55s cubic-bezier(0.32, 0.72, 0, 1),
+    transform 0.55s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+[data-reveal="stagger"].revealed > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Delay cascade for staggered children — up to 10 children */
+[data-reveal="stagger"].revealed > *:nth-child(1) { transition-delay: 0s; }
+[data-reveal="stagger"].revealed > *:nth-child(2) { transition-delay: 0.07s; }
+[data-reveal="stagger"].revealed > *:nth-child(3) { transition-delay: 0.14s; }
+[data-reveal="stagger"].revealed > *:nth-child(4) { transition-delay: 0.21s; }
+[data-reveal="stagger"].revealed > *:nth-child(5) { transition-delay: 0.28s; }
+[data-reveal="stagger"].revealed > *:nth-child(6) { transition-delay: 0.35s; }
+[data-reveal="stagger"].revealed > *:nth-child(7) { transition-delay: 0.42s; }
+[data-reveal="stagger"].revealed > *:nth-child(8) { transition-delay: 0.49s; }
+[data-reveal="stagger"].revealed > *:nth-child(9) { transition-delay: 0.56s; }
+[data-reveal="stagger"].revealed > *:nth-child(10) { transition-delay: 0.63s; }
+
+/* Variant: slide from left */
+[data-reveal="slide-left"] {
+  transform: translateX(-32px);
+}
+[data-reveal="slide-left"].revealed {
+  transform: translateX(0);
+}
+
+/* Variant: slide from right */
+[data-reveal="slide-right"] {
+  transform: translateX(32px);
+}
+[data-reveal="slide-right"].revealed {
+  transform: translateX(0);
+}
+
+/* Variant: scale up from slightly smaller */
+[data-reveal="scale"] {
+  transform: scale(0.95);
+}
+[data-reveal="scale"].revealed {
+  transform: scale(1);
+}
+
+/* Variant: fade only (no movement) */
+[data-reveal="fade"] {
+  transform: none;
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal],
+  [data-reveal] > * {
+    transition: opacity 0.2s ease !important;
+    transform: none !important;
+  }
+}
+
 /* ─── Footer ─── */
 /* Footer base — see bento section below for premium styles */
 .portfolio__footer {

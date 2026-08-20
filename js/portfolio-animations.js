@@ -336,6 +336,9 @@
 
   // ─── Always-run effects ─────────────────────────────────────────
   function alwaysAnimations() {
+    // ---- Universal scroll-reveal via IntersectionObserver ----
+    initScrollReveal();
+
     // ---- Garden orbs gentle floating ----
     var mossOrb = document.querySelector('.portfolio__garden-orb--moss');
     var petalOrb = document.querySelector('.portfolio__garden-orb--petal');
@@ -411,6 +414,32 @@
         });
       });
     }
+  }
+
+  // ─── Universal Scroll-Reveal (IntersectionObserver) ───────────────
+  function initScrollReveal() {
+    var reveals = document.querySelectorAll('[data-reveal]:not(.revealed)');
+    if (reveals.length === 0) return;
+
+    // Respect prefers-reduced-motion: reveal everything immediately
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      reveals.forEach(function (el) { el.classList.add('revealed'); });
+      return;
+    }
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: '0px 0px -60px 0px', threshold: 0.1 }
+    );
+
+    reveals.forEach(function (el) { observer.observe(el); });
   }
 
   // ─── Boot ────────────────────────────────────────────────────────

@@ -5,49 +5,118 @@ layout: home
 <!-- Reading progress bar -->
 <div class="portfolio__progress-bar" aria-hidden="true"></div>
 
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-  <h1 class="text-5xl md:text-6xl">{{ page.title }}</h1>
-  <span class="date">{{ page.date | date_to_string }}</span>
-  <hr>
-  {{ content }}
+<div class="bento-shell">
+  <!-- Post header -->
+  <header class="post-header">
+    <a href="{{ '/#blog' | prepend: site.baseurl }}" class="post-header__back portfolio__see-all" up-target="#content">
+      <span class="portfolio__see-all-arrow" aria-hidden="true">&larr;</span>
+      All posts
+    </a>
+    <p class="post-header__date">{{ page.date | date: "%B %-d, %Y" }}</p>
+    <h1 class="post-header__title">{{ page.title }}</h1>
+    {% if page.labels %}
+    <div class="post-header__labels">
+      {% for label in page.labels %}<span class="portfolio__badge">{{ label }}</span>{% endfor %}
+    </div>
+    {% endif %}
+  </header>
+
+  <!-- Two-column layout: article + sidebar TOC -->
+  <div class="post-layout">
+    <!-- Main article content -->
+    <article class="post-body bento-card" id="post-content">
+      {{ content }}
+    </article>
+
+    <!-- Sidebar: Table of Contents -->
+    <aside class="post-sidebar" id="post-sidebar">
+      <div class="post-toc bento-card" aria-label="Table of contents">
+        <p class="post-toc__label">On this page</p>
+        <nav class="post-toc__nav" id="post-toc">
+          <!-- Populated by JS from h2/h3 headings -->
+        </nav>
+      </div>
+    </aside>
+  </div>
 </div>
 
 <script>
   (function () {
+    // --- Reading progress bar ---
     var bar = document.querySelector('.portfolio__progress-bar');
-    if (!bar) return;
-
-    var ticking = false;
-
-    function updateBar() {
-      var scrollTop = window.scrollY;
-      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      var progress = docHeight > 0 ? scrollTop / docHeight : 0;
-      bar.style.transform = 'scaleX(' + progress + ')';
-      ticking = false;
-    }
-
-    function onScroll() {
-      if (!ticking) {
-        requestAnimationFrame(updateBar);
-        ticking = true;
+    if (bar) {
+      var ticking = false;
+      function updateBar() {
+        var scrollTop = window.scrollY;
+        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        var progress = docHeight > 0 ? scrollTop / docHeight : 0;
+        bar.style.transform = 'scaleX(' + progress + ')';
+        ticking = false;
       }
+      function onScroll() {
+        if (!ticking) {
+          requestAnimationFrame(updateBar);
+          ticking = true;
+        }
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      updateBar();
     }
 
-    window.addEventListener('scroll', onScroll, { passive: true });
-    updateBar();
+    // --- Table of Contents generation ---
+    var article = document.getElementById('post-content');
+    var tocNav = document.getElementById('post-toc');
+    if (!article || !tocNav) return;
 
-    // Self-cleanup: remove listener when bar is removed from DOM
-    // (handles Unpoly content swaps and other dynamic navigations)
-    var parent = bar.parentElement;
-    if (parent) {
-      var observer = new MutationObserver(function () {
-        if (!document.body.contains(bar)) {
-          window.removeEventListener('scroll', onScroll);
-          observer.disconnect();
+    var headings = article.querySelectorAll('h2, h3');
+    if (headings.length === 0) {
+      var sidebar = document.getElementById('post-sidebar');
+      if (sidebar) sidebar.style.display = 'none';
+      return;
+    }
+
+    var items = [];
+    headings.forEach(function (heading, i) {
+      // Ensure heading has an id
+      if (!heading.id) {
+        heading.id = 'toc-' + i + '-' + heading.textContent
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/(^-|-$)/g, '');
+      }
+
+      var depth = heading.tagName === 'H2' ? 0 : 1;
+      var a = document.createElement('a');
+      a.href = '#' + heading.id;
+      a.className = 'post-toc__link' + (depth === 1 ? ' post-toc__link--sub' : '');
+      a.textContent = heading.textContent;
+      a.setAttribute('data-heading-id', heading.id);
+      tocNav.appendChild(a);
+      items.push({ el: a, id: heading.id });
+    });
+
+    // --- Active heading tracking via IntersectionObserver ---
+    var activeClass = 'post-toc__link--active';
+    var currentActive = null;
+
+    // Create a sentinel above each heading to trigger at ~20% from top
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          var match = items.find(function (item) { return item.id === id; });
+          if (match) {
+            if (currentActive) currentActive.classList.remove(activeClass);
+            match.el.classList.add(activeClass);
+            currentActive = match;
+          }
         }
       });
-      observer.observe(parent, { childList: true });
-    }
+    }, {
+      rootMargin: '-80px 0px -70% 0px',
+      threshold: 0
+    });
+
+    headings.forEach(function (h) { observer.observe(h); });
   })();
 </script>

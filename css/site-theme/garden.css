@@ -731,9 +731,9 @@
   /* Reset: bento section below defines all navbar styles */
 }
 
-/* Scrolled state — see bento section below for premium styles */
+/* Scrolled state handled entirely by GSAP ScrollTrigger */
 .portfolio__navbar--scrolled {
-  /* Reset old theme overrides — bento section handles final styling */
+  /* Intentionally empty — GSAP animates the navbar directly */
 }
 
 .portfolio__navbar .navbar-collapse {
@@ -1177,17 +1177,7 @@
     0 0 0 1px color-mix(in oklab, var(--bento-lime) 6%, transparent),
     0 24px 80px rgba(0, 0, 0, 0.25),
     0 8px 32px rgba(0, 0, 0, 0.12);
-  transition: top 0.5s cubic-bezier(0.32, 0.72, 0, 1),
-              box-shadow 0.5s cubic-bezier(0.32, 0.72, 0, 1),
-              width 0.5s cubic-bezier(0.32, 0.72, 0, 1);
-}
-
-.portfolio__navbar--scrolled {
-  top: 8px;
-  box-shadow:
-    0 0 0 1px color-mix(in oklab, var(--bento-lime) 10%, transparent),
-    0 32px 100px rgba(0, 0, 0, 0.35),
-    0 12px 40px rgba(0, 0, 0, 0.18);
+  /* Transitions removed — GSAP ScrollTrigger handles the shrink animation */
 }
 
 /* ── Inner core (frosted glass) ── */

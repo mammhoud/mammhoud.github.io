@@ -271,6 +271,52 @@
         }
       });
     });
+
+    // ---- Navbar scroll-shrink (desktop only) ----
+    var navbar = document.querySelector('.portfolio__navbar');
+    if (navbar) {
+      var navbarInner = navbar.querySelector('.navbar-inner');
+      var brandText = navbar.querySelector('.navbar-brand');
+
+      var navShrinkTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: document.body,
+          start: 'top top-=50',
+          end: 'top top-=180',
+          scrub: 0.35
+        }
+      });
+
+      // Outer bezel: tighter top, deeper shadow, slimmer padding
+      navShrinkTl.to(navbar, {
+        top: 6,
+        marginTop: 6,
+        paddingTop: 2,
+        paddingBottom: 2,
+        boxShadow: '0 0 0 1px rgba(212,237,176,0.14), 0 36px 120px rgba(0,0,0,0.38), 0 14px 48px rgba(0,0,0,0.20)',
+        duration: 1
+      }, 0);
+
+      // Inner core: slimmer padding for compact feel
+      if (navbarInner) {
+        navShrinkTl.to(navbarInner, {
+          paddingTop: 3,
+          paddingBottom: 3,
+          paddingLeft: 10,
+          paddingRight: 6,
+          duration: 1
+        }, 0);
+      }
+
+      // Brand text: slightly smaller on scroll
+      if (brandText) {
+        navShrinkTl.to(brandText, {
+          fontSize: '0.875rem',
+          letterSpacing: '-0.03em',
+          duration: 1
+        }, 0);
+      }
+    }
   }
 
   // ─── Mobile (simpler, lighter animations) ──────────────────────
@@ -290,33 +336,6 @@
 
   // ─── Always-run effects ─────────────────────────────────────────
   function alwaysAnimations() {
-    // ---- Navbar scroll effect ----
-    var navbar = document.querySelector('.portfolio__navbar');
-    var didScroll = false;
-
-    if (navbar) {
-      // Check initial scroll position
-      if (window.scrollY > 60) {
-        navbar.classList.add('portfolio__navbar--scrolled');
-      }
-
-      // Throttled scroll listener with GSAP ticker for performance
-      gsap.ticker.add(function () {
-        var scrollY = window.scrollY;
-        if (scrollY > 60) {
-          if (!didScroll) {
-            navbar.classList.add('portfolio__navbar--scrolled');
-            didScroll = true;
-          }
-        } else {
-          if (didScroll) {
-            navbar.classList.remove('portfolio__navbar--scrolled');
-            didScroll = false;
-          }
-        }
-      });
-    }
-
     // ---- Garden orbs gentle floating ----
     var mossOrb = document.querySelector('.portfolio__garden-orb--moss');
     var petalOrb = document.querySelector('.portfolio__garden-orb--petal');

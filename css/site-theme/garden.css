@@ -2512,65 +2512,306 @@
 }
 
 /* ──────────────────────────────
-   RESUME PAGE — bento style
+   RESUME PAGE — Premium Bento
    ────────────────────────────── */
-.portfolio__resume-page {
-  background: transparent !important;
-  padding-block: 32px;
+.resume-page {
+  width: min(1140px, calc(100% - 24px));
+  margin: 0 auto;
+  padding: 24px 0 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.portfolio__resume-hero,
-.portfolio__resume-section {
-  background: var(--bento-card-bg) !important;
-  border: 1px solid var(--bento-card-border) !important;
-  border-radius: 24px !important;
-  box-shadow: 0 18px 70px rgba(0, 0, 0, 0.18) !important;
-  padding: clamp(24px, 3vw, 40px);
+/* ── Hero ── */
+.resume-hero {
+  padding: 0 !important;
+  overflow: hidden;
 }
 
-.portfolio__resume-hero {
-  margin-bottom: 24px;
+.resume-hero__grid {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  min-height: 280px;
 }
 
-.portfolio__resume-section {
-  margin-bottom: 20px;
+.resume-hero__main {
+  padding: clamp(28px, 4vw, 48px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.portfolio__resume-section h2 {
+.resume-hero__eyebrow {
+  margin-bottom: 8px;
+}
+
+.resume-hero__name {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  letter-spacing: -0.06em;
+  line-height: 1.05;
   color: var(--bento-text);
-  font-size: clamp(1.8rem, 4vw, 3rem);
-  letter-spacing: -.05em;
+  margin: 0 0 6px;
 }
 
-.portfolio__resume-entry:not(:last-child) {
-  border-bottom-color: var(--bento-card-border) !important;
+.resume-hero__label {
+  font-size: 1.05rem;
+  color: var(--bento-muted);
+  margin: 0 0 24px;
 }
 
-.portfolio__resume-contact-card {
+.resume-hero__actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Contact sidebar */
+.resume-hero__contact {
   background: var(--bento-card-bg-soft) !important;
-  border: 1px solid var(--bento-card-border) !important;
-  border-radius: 20px !important;
-  padding: 16px;
+  border: none !important;
+  border-left: 1px solid var(--bento-card-border) !important;
+  border-radius: 0 !important;
+  padding: clamp(24px, 3vw, 36px) !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.portfolio__resume-contact-card h2 {
+.resume-hero__contact .bento-kicker {
+  margin-bottom: 16px;
+}
+
+.resume-contact-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.resume-contact-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: var(--bento-muted);
+}
+
+.resume-contact-list li svg {
+  flex-shrink: 0;
+  color: var(--bento-lime);
+}
+
+.resume-contact-list li a {
   color: var(--bento-text);
+  text-decoration: none;
+  transition: color 0.25s ease;
 }
 
-.portfolio__resume-contact-list .portfolio__social-link {
-  background: var(--bento-card-bg) !important;
-  border-color: var(--bento-card-border) !important;
-  color: var(--bento-text) !important;
+.resume-contact-list li a:hover {
+  color: var(--bento-lime);
 }
 
-.portfolio__resume-contact-list .portfolio__social-link:hover {
-  background: var(--bento-lime) !important;
-  color: var(--bento-page-bg) !important;
+/* ── Section layout ── */
+.resume-section {
+  padding: 0 !important;
+  overflow: hidden;
 }
 
-.portfolio__resume-meta,
-.portfolio__resume-date {
-  color: var(--bento-muted) !important;
+.resume-section__grid {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+}
+
+.resume-section__label {
+  padding: clamp(24px, 3vw, 36px);
+  border-right: 1px solid var(--bento-card-border);
+  display: flex;
+  align-items: flex-start;
+  padding-top: clamp(28px, 3.5vw, 40px);
+}
+
+.resume-section__label .bento-kicker {
+  font-size: 0.82rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.resume-section__content {
+  padding: clamp(24px, 3vw, 36px);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Entry cards ── */
+.resume-entry {
+  padding: 20px !important;
+  border-radius: 16px !important;
+}
+
+.resume-entry__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+
+.resume-entry__title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--bento-text);
+  margin: 0;
+}
+
+.resume-entry__subtitle {
+  font-size: 0.9rem;
+  color: var(--bento-lime);
+  margin: 3px 0 0;
+  font-weight: 500;
+}
+
+.resume-entry__date {
+  font-size: 0.82rem;
+  color: var(--bento-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.resume-entry__summary {
+  font-size: 0.92rem;
+  color: var(--bento-muted);
+  line-height: 1.65;
+  margin: 0 0 8px;
+}
+
+.resume-entry__highlights {
+  margin: 8px 0 0;
+  padding-left: 1.2em;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.resume-entry__highlights li {
+  font-size: 0.88rem;
+  color: var(--bento-muted);
+  line-height: 1.6;
+}
+
+.resume-entry__courses {
+  margin-top: 12px;
+}
+
+.resume-entry__courses-label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--bento-muted);
+  margin: 0 0 8px;
+}
+
+/* ── Profile prose ── */
+.resume-prose {
+  font-size: 0.95rem;
+  color: var(--bento-muted);
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* ── Skills grid ── */
+.resume-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+}
+
+.resume-skill-card {
+  padding: 18px !important;
+  border-radius: 14px !important;
+}
+
+.resume-skill-card__title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--bento-text);
+  margin: 0 0 10px;
+  letter-spacing: -0.01em;
+}
+
+/* ── Courses grid ── */
+.resume-courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 10px;
+}
+
+.resume-course-card {
+  padding: 14px 18px !important;
+  border-radius: 12px !important;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.resume-course-card__name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--bento-text);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.resume-course-card__source {
+  font-size: 0.78rem;
+  color: var(--bento-lime);
+  margin: 0;
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .resume-hero__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .resume-hero__contact {
+    border-left: none !important;
+    border-top: 1px solid var(--bento-card-border) !important;
+  }
+
+  .resume-section__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .resume-section__label {
+    border-right: none;
+    border-bottom: 1px solid var(--bento-card-border);
+    padding-bottom: 16px;
+  }
+
+  .resume-entry__header {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .resume-entry__date {
+    padding-top: 0;
+  }
+}
+
+/* ── Print ── */
+@media print {
+  .resume-page { padding: 0; gap: 12px; }
+  .resume-hero, .resume-section { box-shadow: none !important; border-color: #ddd !important; }
+  .resume-hero__grid { grid-template-columns: 1fr 240px; }
+  .resume-section__grid { grid-template-columns: 150px 1fr; }
+  .bento-chip { border-color: #ccc; background: #f5f5f5; }
+  .portfolio__download-button, .portfolio__button--secondary { display: none !important; }
 }
 
 /* ═══════════════════════════════════════════════════════════

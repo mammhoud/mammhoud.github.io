@@ -48,16 +48,16 @@
 
   // ─── Desktop ScrollTrigger Animations ───────────────────────────
   function desktopAnimations(ScrollTrigger) {
-    // ---- Hero Section ----
+    // ---- Hero Section (Bento profile card) ----
     var heroContent = document.querySelector('.portfolio__hero-content');
     if (heroContent) {
       var heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
       // Avatar: scale + fade
       heroTl.fromTo(
-        '.portfolio__avatar',
-        { scale: 0.7, opacity: 0 },
-        { scale: 1, opacity: 1, duration: 0.9 },
+        '.bento-avatar',
+        { scale: 0.85, opacity: 0, filter: 'grayscale(0.5)' },
+        { scale: 1, opacity: 1, filter: 'grayscale(0.1)', duration: 0.9 },
         0
       );
 
@@ -97,84 +97,67 @@
         0.8
       );
 
-      // Social tiles staggered
+      // Social links staggered
       heroTl.fromTo(
-        '.portfolio__social-tile',
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.5, stagger: 0.08 },
-        0.95
+        '.portfolio__social-item',
+        { y: 16, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.4, stagger: 0.06 },
+        0.9
+      );
+
+      // Stats staggered
+      heroTl.fromTo(
+        '.bento-stat',
+        { y: 16, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.4, stagger: 0.08 },
+        1.0
       );
     }
 
-    // ---- Section: "In bloom" heading slide-in ----
-    gsap.fromTo(
-      '.portfolio__surface--projects .portfolio__section-title',
-      { x: -40, opacity: 0 },
-      {
-        x: 0,
-        opacity: 1,
-        duration: 0.7,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: '.portfolio__surface--projects',
-          start: 'top 80%',
-          toggleActions: 'play none none none'
-        }
+    // ---- Bento cards: all bento-card elements scroll entrance ----
+    gsap.utils.toArray('.bento-shell').forEach(function (shell) {
+      // Section heading
+      var heading = shell.querySelector('.portfolio__section-title');
+      if (heading) {
+        gsap.fromTo(
+          heading,
+          { x: -40, opacity: 0 },
+          {
+            x: 0,
+            opacity: 1,
+            duration: 0.7,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: shell,
+              start: 'top 80%',
+              toggleActions: 'play none none none'
+            }
+          }
+        );
       }
-    );
 
-    // ---- Section: "Field notes" heading slide-in ----
-    gsap.fromTo(
-      '.portfolio__surface--blog .portfolio__section-title',
-      { x: -40, opacity: 0 },
-      {
-        x: 0,
-        opacity: 1,
-        duration: 0.7,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: '.portfolio__surface--blog',
-          start: 'top 80%',
-          toggleActions: 'play none none none'
-        }
+      // Cards staggered entrance
+      var cards = shell.querySelectorAll('.bento-card');
+      if (cards.length > 0) {
+        gsap.fromTo(
+          cards,
+          { y: 40, opacity: 0, scale: 0.97 },
+          {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            duration: 0.6,
+            stagger: 0.12,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: shell,
+              start: 'top 75%',
+              toggleActions: 'play none none none'
+            }
+          }
+        );
       }
-    );
-
-    // ---- Project cards staggered entrance ----
-    gsap.fromTo(
-      '.portfolio__surface--projects .portfolio__card',
-      { y: 40, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.6,
-        stagger: 0.15,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: '.portfolio__surface--projects',
-          start: 'top 75%',
-          toggleActions: 'play none none none'
-        }
-      }
-    );
-
-    // ---- Post cards staggered entrance ----
-    gsap.fromTo(
-      '.portfolio__surface--blog .portfolio__card',
-      { y: 40, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.6,
-        stagger: 0.1,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: '.portfolio__surface--blog',
-          start: 'top 75%',
-          toggleActions: 'play none none none'
-        }
-      }
-    );
+    });
 
     // ---- Resume sections staggered entrance ----
     gsap.utils.toArray('.portfolio__resume-section').forEach(function (section, i) {
@@ -236,18 +219,18 @@
     }
 
     // ---- Post/project page titles ----
-    gsap.utils.toArray('.portfolio h1:not(.portfolio__hero-title):not(.portfolio__section-title)').forEach(function (title) {
+    gsap.utils.toArray('.portfolio .max-w-7xl h1:not(.portfolio__hero-title):not(.portfolio__section-title)').forEach(function (title) {
       gsap.fromTo(
         title,
-        { y: 20, opacity: 0 },
+        { y: 24, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 0.6,
+          duration: 0.7,
           ease: 'power2.out',
           scrollTrigger: {
             trigger: title,
-            start: 'top 85%',
+            start: 'top 88%',
             toggleActions: 'play none none none'
           }
         }

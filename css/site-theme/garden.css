@@ -1349,7 +1349,11 @@
   }
 }
 
-/* ─── Bentofolio-inspired bento redesign ─── */
+/* ═══════════════════════════════════════════════════════════
+   BENTOFOLIO-INSPIRED BENTO REDESIGN
+   Dark-first, lime-accented, gapless bento grid system.
+   ═══════════════════════════════════════════════════════════ */
+
 :root {
   --bento-page-bg: #0f0f12;
   --bento-card-bg: #19191d;
@@ -1359,6 +1363,7 @@
   --bento-muted: #a7a7ad;
   --bento-lime: #c8ff4d;
   --bento-radius: 28px;
+  --bento-glow: rgba(200, 255, 77, 0.12);
 }
 
 :root.light-mode {
@@ -1369,8 +1374,10 @@
   --bento-text: #141416;
   --bento-muted: #67676d;
   --bento-lime: #7aa600;
+  --bento-glow: rgba(122, 166, 0, 0.08);
 }
 
+/* ── Page background ── */
 .portfolio {
   background:
     radial-gradient(circle at 16% 8%, color-mix(in oklab, var(--bento-lime) 18%, transparent), transparent 24rem),
@@ -1384,6 +1391,28 @@
 .portfolio__vine,
 .portfolio__garden-orb { display: none !important; }
 
+.light-mode .portfolio {
+  background:
+    radial-gradient(circle at 16% 8%, color-mix(in oklab, var(--bento-lime) 10%, transparent), transparent 24rem),
+    radial-gradient(circle at 92% 0%, rgba(110, 96, 255, 0.06), transparent 28rem),
+    var(--bento-page-bg);
+}
+
+/* ── Smooth scrollbar ── */
+.portfolio::-webkit-scrollbar { width: 8px; }
+.portfolio::-webkit-scrollbar-track { background: var(--bento-page-bg); }
+.portfolio::-webkit-scrollbar-thumb { background: var(--bento-card-bg-soft); border-radius: 999px; }
+.portfolio::-webkit-scrollbar-thumb:hover { background: var(--bento-lime); }
+
+/* ── Selection ── */
+.portfolio ::selection {
+  background: color-mix(in oklab, var(--bento-lime) 40%, transparent);
+  color: var(--bento-text);
+}
+
+/* ──────────────────────────────
+   NAVBAR — floating glass pill
+   ────────────────────────────── */
 .portfolio__navbar {
   position: sticky;
   top: 16px;
@@ -1395,23 +1424,123 @@
   background: color-mix(in oklab, var(--bento-card-bg) 82%, transparent);
   backdrop-filter: blur(18px);
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.22);
+  padding-inline: 8px !important;
+}
+
+.portfolio__navbar--scrolled {
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
 }
 
 .navbar-brand,
-.portfolio__navbar .nav-link { color: var(--bento-text) !important; }
-.portfolio__navbar .nav-link.active,
-.portfolio__navbar .nav-link:hover { background: var(--bento-card-bg-soft); color: var(--bento-lime) !important; }
-
-.bento-shell {
-  width: min(1180px, calc(100% - 32px));
-  margin: 24px auto;
+.portfolio__navbar .nav-link {
+  color: var(--bento-text) !important;
 }
 
-.bento-grid { display: grid; gap: 20px; }
-.bento-grid--hero { grid-template-columns: 1.35fr .75fr; grid-template-areas: "profile socials" "profile stats" "skills skills"; }
-.bento-grid--projects,
-.bento-grid--blog { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.portfolio__navbar .nav-link.active,
+.portfolio__navbar .nav-link:hover {
+  background: var(--bento-card-bg-soft);
+  color: var(--bento-lime) !important;
+}
 
+.navbar-brand {
+  padding-left: 12px !important;
+}
+
+/* ── Theme toggle in bento style ── */
+.portfolio__theme-toggle {
+  background: var(--bento-card-bg-soft) !important;
+  border: 1px solid var(--bento-card-border) !important;
+  color: var(--bento-text) !important;
+}
+
+.portfolio__theme-toggle:hover {
+  background: var(--bento-lime) !important;
+  color: var(--bento-page-bg) !important;
+}
+
+.light-mode .portfolio__theme-toggle {
+  background: var(--bento-card-bg-soft) !important;
+  border-color: var(--bento-card-border) !important;
+  color: var(--bento-text) !important;
+}
+
+.light-mode .portfolio__theme-toggle:hover {
+  background: var(--bento-lime) !important;
+  color: var(--bento-page-bg) !important;
+}
+
+/* ── Download button in bento style ── */
+.portfolio__download-button {
+  background: var(--bento-lime) !important;
+  border-color: var(--bento-lime) !important;
+  color: var(--bento-page-bg) !important;
+  box-shadow: none !important;
+}
+
+.portfolio__download-button:hover {
+  background: transparent !important;
+  color: var(--bento-lime) !important;
+  border-color: var(--bento-lime) !important;
+}
+
+.light-mode .portfolio__download-button {
+  background: var(--bento-lime) !important;
+  color: var(--bento-page-bg) !important;
+}
+
+/* ── Mobile nav ── */
+@media (max-width: 900px) {
+  .portfolio__navbar { border-radius: 24px; }
+}
+
+/* ──────────────────────────────
+   BENTO SHELL & GRID
+   ────────────────────────────── */
+.bento-shell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 32px auto;
+  padding-block: 24px;
+}
+
+.bento-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.bento-grid--hero {
+  grid-template-columns: 1.35fr .75fr;
+  grid-template-areas:
+    "profile socials"
+    "profile stats"
+    "skills skills";
+}
+
+.bento-grid--projects,
+.bento-grid--blog {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-flow: dense;
+}
+
+.bento-grid--contact {
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 900px) {
+  .bento-grid--hero {
+    grid-template-columns: 1fr;
+    grid-template-areas: "profile" "socials" "stats" "skills";
+  }
+  .bento-grid--projects,
+  .bento-grid--blog,
+  .bento-grid--contact {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ──────────────────────────────
+   BENTO CARDS
+   ────────────────────────────── */
 .bento-card {
   position: relative;
   overflow: hidden;
@@ -1422,73 +1551,631 @@
   box-shadow: 0 18px 70px rgba(0, 0, 0, 0.18);
   color: var(--bento-text);
   padding: clamp(22px, 3vw, 36px);
-  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  transition: transform .3s cubic-bezier(.22, 1, .36, 1), border-color .3s ease, box-shadow .3s ease;
 }
 
-.bento-card:hover { transform: translateY(-4px); border-color: color-mix(in oklab, var(--bento-lime) 45%, transparent); }
-.bento-card--profile { grid-area: profile; display: grid; grid-template-columns: minmax(190px, .55fr) 1fr; align-items: center; gap: clamp(24px, 4vw, 46px); min-height: 520px; }
+.bento-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .3s ease;
+  background: linear-gradient(135deg, transparent 40%, color-mix(in oklab, var(--bento-lime) 6%, transparent));
+}
+
+.bento-card:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in oklab, var(--bento-lime) 45%, transparent);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28), 0 0 0 1px color-mix(in oklab, var(--bento-lime) 12%, transparent);
+}
+
+.bento-card:hover::after {
+  opacity: 1;
+}
+
+/* ── Hero profile card ── */
+.bento-card--profile {
+  grid-area: profile;
+  display: grid;
+  grid-template-columns: minmax(190px, .55fr) 1fr;
+  align-items: center;
+  gap: clamp(24px, 4vw, 46px);
+  min-height: 520px;
+  padding: clamp(28px, 4vw, 48px);
+}
+
 .bento-card--socials { grid-area: socials; }
 .bento-card--stats { grid-area: stats; display: grid; gap: 18px; }
 .bento-card--skills { grid-area: skills; }
 
-.bento-avatar { width: 100%; max-width: 320px; border-radius: 28px; border: 0; box-shadow: none; filter: grayscale(.1); }
-.bento-title { font-size: clamp(3rem, 7vw, 6.8rem); line-height: .92; letter-spacing: -.07em; margin: 0; text-shadow: none; }
-.bento-role { color: var(--bento-lime); font-size: clamp(1.1rem, 2vw, 1.45rem); margin-top: 18px; }
-.bento-summary { color: var(--bento-muted); max-width: 62ch; margin: 18px 0 0; }
-.bento-kicker { color: var(--bento-muted); font-size: .78rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 12px; }
-.bento-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
-.bento-button { display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; border-radius: 999px; text-decoration: none; }
-
-.bento-social-list { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
-.portfolio__social-item { list-style: none; }
-.portfolio__social-link { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 48px; padding: 0 14px; border-radius: 16px; background: var(--bento-card-bg-soft); color: var(--bento-text); text-decoration: none; }
-.portfolio__social-link:hover { color: var(--bento-page-bg); background: var(--bento-lime); }
-.portfolio__social-icon { width: 20px; height: 20px; }
-
-.bento-stat { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding: 18px; border-radius: 20px; background: var(--bento-card-bg-soft); }
-.bento-stat strong { font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1; color: var(--bento-lime); }
-.bento-stat span { color: var(--bento-muted); text-align: right; }
-
-.bento-section-heading { margin-bottom: 20px; }
-.bento-section-heading h2,
-.bento-section-heading .portfolio__section-title { margin: 0; font-size: clamp(2.4rem, 5vw, 4.8rem); letter-spacing: -.06em; }
-.bento-section-heading--split { display: flex; align-items: end; justify-content: space-between; gap: 18px; }
-.bento-chip-cloud { display: flex; flex-wrap: wrap; gap: 10px; }
-.bento-chip.portfolio__badge { margin: 0; border: 1px solid var(--bento-card-border); background: var(--bento-card-bg-soft); color: var(--bento-text); }
-
-.bento-project,
-.bento-blog { min-height: 100%; display: flex; flex-direction: column; gap: 20px; }
-.bento-project--featured,
-.bento-blog--featured { grid-row: span 2; }
-.bento-project__image { width: 100%; aspect-ratio: 16 / 10; min-height: 0; border-radius: 22px; object-fit: cover; }
-.bento-project__body { display: flex; flex: 1; flex-direction: column; gap: 14px; }
-.bento-project h3,
-.bento-blog h3 { margin: 0; font-size: clamp(1.5rem, 3vw, 2.4rem); letter-spacing: -.04em; }
-.bento-project p,
-.bento-blog p { color: var(--bento-muted); }
-.bento-project .portfolio__button--read,
-.bento-blog .portfolio__button--read { margin-top: auto; align-self: flex-start; }
-
-.portfolio__button { background: var(--bento-lime); border-color: var(--bento-lime); color: var(--bento-page-bg); box-shadow: none; }
-.portfolio__button:hover { background: transparent; color: var(--bento-lime); border-color: var(--bento-lime); }
-.portfolio__button--secondary,
-.portfolio__button--read { background: transparent; color: var(--bento-text); border-color: var(--bento-card-border); }
-.portfolio__see-all { color: var(--bento-lime); }
-.portfolio__footer { width: min(1180px, calc(100% - 32px)); margin: 24px auto; border: 1px solid var(--bento-card-border) !important; border-radius: 24px; background: var(--bento-card-bg); }
-
-@media (max-width: 900px) {
-  .portfolio__navbar { border-radius: 24px; }
-  .bento-grid--hero { grid-template-columns: 1fr; grid-template-areas: "profile" "socials" "stats" "skills"; }
-  .bento-card--profile { grid-template-columns: 1fr; min-height: 0; }
-  .bento-grid--projects,
-  .bento-grid--blog { grid-template-columns: 1fr; }
-  .bento-project--featured,
-  .bento-blog--featured { grid-row: auto; }
-  .bento-section-heading--split { align-items: flex-start; flex-direction: column; }
+/* ── Avatar ── */
+.bento-avatar {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 28px;
+  border: 0;
+  box-shadow: none;
+  filter: grayscale(.1) contrast(1.05);
+  transition: filter .3s ease, transform .3s ease;
 }
 
+.bento-card--profile:hover .bento-avatar {
+  filter: grayscale(0) contrast(1.08);
+  transform: scale(1.02);
+}
+
+/* ── Typography ── */
+.bento-title {
+  font-size: clamp(3rem, 7vw, 6.8rem);
+  line-height: .92;
+  letter-spacing: -.07em;
+  margin: 0;
+  text-shadow: none;
+}
+
+.bento-role {
+  color: var(--bento-lime);
+  font-size: clamp(1.1rem, 2vw, 1.45rem);
+  margin-top: 18px;
+  font-weight: 500;
+}
+
+.bento-summary {
+  color: var(--bento-muted);
+  max-width: 62ch;
+  margin: 18px 0 0;
+  line-height: 1.7;
+}
+
+.bento-kicker {
+  color: var(--bento-muted);
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+/* ── Actions ── */
+.bento-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.bento-button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 22px;
+  border-radius: 999px;
+  text-decoration: none;
+}
+
+/* ── Social list ── */
+.bento-social-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.portfolio__social-item { list-style: none; }
+
+.portfolio__social-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 48px;
+  padding: 0 14px;
+  border-radius: 16px;
+  background: var(--bento-card-bg-soft);
+  color: var(--bento-text);
+  text-decoration: none;
+  transition: background .2s ease, color .2s ease, transform .2s ease;
+}
+
+.portfolio__social-link:hover {
+  color: var(--bento-page-bg);
+  background: var(--bento-lime);
+  transform: translateY(-2px);
+}
+
+.portfolio__social-icon { width: 20px; height: 20px; }
+
+/* ── Stats ── */
+.bento-stat {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px;
+  border-radius: 20px;
+  background: var(--bento-card-bg-soft);
+}
+
+.bento-stat strong {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1;
+  color: var(--bento-lime);
+}
+
+.bento-stat span {
+  color: var(--bento-muted);
+  text-align: right;
+}
+
+/* ── Section headings ── */
+.bento-section-heading {
+  margin-bottom: 24px;
+}
+
+.bento-section-heading h2,
+.bento-section-heading .portfolio__section-title {
+  margin: 0;
+  font-size: clamp(2.4rem, 5vw, 4.8rem);
+  letter-spacing: -.06em;
+}
+
+.bento-section-heading--split {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+/* ── Chips / badges ── */
+.bento-chip-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.bento-chip.portfolio__badge {
+  margin: 0;
+  border: 1px solid var(--bento-card-border);
+  background: var(--bento-card-bg-soft);
+  color: var(--bento-text);
+  font-size: .82rem;
+  padding: .45rem .85rem;
+  border-radius: 999px;
+  transition: background .2s ease, border-color .2s ease, color .2s ease;
+}
+
+.bento-chip.portfolio__badge:hover {
+  background: color-mix(in oklab, var(--bento-lime) 14%, var(--bento-card-bg-soft));
+  border-color: color-mix(in oklab, var(--bento-lime) 40%, transparent);
+}
+
+/* ── Project cards ── */
+.bento-project,
+.bento-blog {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bento-project--featured,
+.bento-blog--featured {
+  grid-row: span 2;
+}
+
+.bento-project__image {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  min-height: 0;
+  border-radius: 22px;
+  object-fit: cover;
+  transition: transform .4s ease, filter .4s ease;
+}
+
+.bento-card:hover .bento-project__image {
+  transform: scale(1.03);
+  filter: brightness(1.08);
+}
+
+.bento-project__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.bento-project h3,
+.bento-blog h3 {
+  margin: 0;
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  letter-spacing: -.04em;
+}
+
+.bento-project p,
+.bento-blog p {
+  color: var(--bento-muted);
+  line-height: 1.65;
+}
+
+.bento-project .portfolio__button--read,
+.bento-blog .portfolio__button--read {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+/* ──────────────────────────────
+   BUTTONS — bento style
+   ────────────────────────────── */
+.portfolio__button {
+  background: var(--bento-lime);
+  border-color: var(--bento-lime);
+  color: var(--bento-page-bg);
+  box-shadow: none;
+  font-weight: 600;
+  transition: background .25s ease, color .25s ease, border-color .25s ease, transform .2s ease;
+}
+
+.portfolio__button:hover {
+  background: transparent;
+  color: var(--bento-lime);
+  border-color: var(--bento-lime);
+  transform: translateY(-2px);
+}
+
+.light-mode .portfolio__button {
+  background: var(--bento-lime);
+  color: var(--bento-page-bg);
+}
+
+.light-mode .portfolio__button:hover {
+  background: transparent;
+  color: var(--bento-lime);
+}
+
+.portfolio__button--secondary {
+  background: transparent;
+  color: var(--bento-text);
+  border-color: var(--bento-card-border);
+}
+
+.portfolio__button--secondary:hover {
+  background: var(--bento-lime);
+  color: var(--bento-page-bg);
+  border-color: var(--bento-lime);
+}
+
+.portfolio__button--read {
+  background: transparent;
+  color: var(--bento-text);
+  border-color: var(--bento-card-border);
+  border-radius: 999px;
+  padding: .6rem 1.2rem;
+  font-size: .9rem;
+}
+
+.portfolio__button--read:hover {
+  background: var(--bento-lime);
+  color: var(--bento-page-bg);
+  border-color: var(--bento-lime);
+}
+
+/* ── See-all link ── */
+.portfolio__see-all {
+  color: var(--bento-lime);
+}
+
+.portfolio__see-all::after {
+  background: var(--bento-lime);
+}
+
+/* ──────────────────────────────
+   CONTACT SECTION
+   ────────────────────────────── */
+.bento-contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.bento-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bento-field label {
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--bento-muted);
+  letter-spacing: .04em;
+}
+
+.bento-field input,
+.bento-field textarea {
+  background: var(--bento-card-bg-soft);
+  border: 1px solid var(--bento-card-border);
+  border-radius: 14px;
+  padding: 14px 16px;
+  color: var(--bento-text);
+  font-size: .95rem;
+  transition: border-color .2s ease, box-shadow .2s ease;
+  outline: none;
+  font-family: inherit;
+}
+
+.bento-field input:focus,
+.bento-field textarea:focus {
+  border-color: var(--bento-lime);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--bento-lime) 16%, transparent);
+}
+
+.bento-field textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.bento-contact__submit {
+  align-self: flex-start;
+}
+
+.bento-contact__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 18px;
+  color: var(--bento-muted);
+  font-size: .9rem;
+}
+
+.bento-contact__meta a {
+  color: var(--bento-lime);
+  text-decoration: none;
+}
+
+.bento-contact__meta a:hover {
+  text-decoration: underline;
+}
+
+.bento-contact__success {
+  padding: 24px;
+  border-radius: 18px;
+  background: color-mix(in oklab, var(--bento-lime) 10%, var(--bento-card-bg));
+  border: 1px solid color-mix(in oklab, var(--bento-lime) 30%, transparent);
+  color: var(--bento-lime);
+  text-align: center;
+}
+
+/* ──────────────────────────────
+   BLOG / POST PAGE LAYOUT
+   ────────────────────────────── */
+.portfolio .max-w-7xl {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding-block: 40px;
+}
+
+.portfolio .max-w-7xl h1 {
+  font-size: clamp(2.4rem, 6vw, 4.5rem);
+  letter-spacing: -.06em;
+  line-height: 1.05;
+  margin-bottom: 12px;
+}
+
+.portfolio .max-w-7xl .date,
+.portfolio .max-w-7xl .portfolio__resume-date {
+  color: var(--bento-muted);
+  font-size: .88rem;
+}
+
+.portfolio .max-w-7xl hr {
+  border: 0;
+  border-top: 1px solid var(--bento-card-border);
+  margin: 24px 0;
+}
+
+.portfolio .max-w-7xl p {
+  color: var(--bento-muted);
+  line-height: 1.75;
+}
+
+.portfolio .max-w-7xl h2 {
+  font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+  letter-spacing: -.04em;
+  margin-top: 40px;
+  margin-bottom: 16px;
+}
+
+.portfolio .max-w-7xl h3 {
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  letter-spacing: -.03em;
+  margin-top: 32px;
+  margin-bottom: 12px;
+}
+
+.portfolio .max-w-7xl ul,
+.portfolio .max-w-7xl ol {
+  color: var(--bento-muted);
+  padding-left: 1.5em;
+}
+
+.portfolio .max-w-7xl li {
+  margin-bottom: 6px;
+}
+
+.portfolio .max-w-7xl a {
+  color: var(--bento-lime);
+}
+
+.portfolio .max-w-7xl code {
+  background: var(--bento-card-bg-soft);
+  border: 1px solid var(--bento-card-border);
+  border-radius: 8px;
+  padding: 2px 6px;
+  font-size: .88em;
+}
+
+.portfolio .max-w-7xl pre {
+  background: var(--bento-card-bg-soft);
+  border: 1px solid var(--bento-card-border);
+  border-radius: 18px;
+  padding: 20px;
+  overflow-x: auto;
+  margin: 20px 0;
+}
+
+.portfolio .max-w-7xl pre code {
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+
+.portfolio .max-w-7xl table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.portfolio .max-w-7xl th,
+.portfolio .max-w-7xl td {
+  padding: 10px 14px;
+  border: 1px solid var(--bento-card-border);
+  text-align: left;
+}
+
+.portfolio .max-w-7xl th {
+  background: var(--bento-card-bg-soft);
+  font-weight: 600;
+  color: var(--bento-text);
+}
+
+.portfolio .max-w-7xl td {
+  color: var(--bento-muted);
+}
+
+/* ── Reading progress bar ── */
+.portfolio__progress-bar {
+  background: var(--bento-lime) !important;
+  box-shadow: 0 0 8px color-mix(in oklab, var(--bento-lime) 40%, transparent) !important;
+}
+
+/* ──────────────────────────────
+   RESUME PAGE — bento style
+   ────────────────────────────── */
+.portfolio__resume-page {
+  background: transparent !important;
+  padding-block: 32px;
+}
+
+.portfolio__resume-hero,
+.portfolio__resume-section {
+  background: var(--bento-card-bg) !important;
+  border: 1px solid var(--bento-card-border) !important;
+  border-radius: 24px !important;
+  box-shadow: 0 18px 70px rgba(0, 0, 0, 0.18) !important;
+  padding: clamp(24px, 3vw, 40px);
+}
+
+.portfolio__resume-hero {
+  margin-bottom: 24px;
+}
+
+.portfolio__resume-section {
+  margin-bottom: 20px;
+}
+
+.portfolio__resume-section h2 {
+  color: var(--bento-text);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  letter-spacing: -.05em;
+}
+
+.portfolio__resume-entry:not(:last-child) {
+  border-bottom-color: var(--bento-card-border) !important;
+}
+
+.portfolio__resume-contact-card {
+  background: var(--bento-card-bg-soft) !important;
+  border: 1px solid var(--bento-card-border) !important;
+  border-radius: 20px !important;
+  padding: 16px;
+}
+
+.portfolio__resume-contact-card h2 {
+  color: var(--bento-text);
+}
+
+.portfolio__resume-contact-list .portfolio__social-link {
+  background: var(--bento-card-bg) !important;
+  border-color: var(--bento-card-border) !important;
+  color: var(--bento-text) !important;
+}
+
+.portfolio__resume-contact-list .portfolio__social-link:hover {
+  background: var(--bento-lime) !important;
+  color: var(--bento-page-bg) !important;
+}
+
+.portfolio__resume-meta,
+.portfolio__resume-date {
+  color: var(--bento-muted) !important;
+}
+
+/* ──────────────────────────────
+   FOOTER — bento style
+   ────────────────────────────── */
+.portfolio__footer {
+  width: min(1180px, calc(100% - 32px));
+  margin: 32px auto;
+  border: 1px solid var(--bento-card-border) !important;
+  border-radius: 24px;
+  background: var(--bento-card-bg);
+  padding: 20px 24px;
+}
+
+.portfolio__footer .nav-link {
+  color: var(--bento-muted);
+}
+
+.portfolio__footer .nav-link:hover {
+  color: var(--bento-lime);
+}
+
+/* ──────────────────────────────
+   404 PAGE
+   ────────────────────────────── */
+.portfolio .py-3,
+.portfolio .py-4,
+.portfolio .py-5 {
+  padding-block: 48px;
+}
+
+/* ──────────────────────────────
+   RESPONSIVE
+   ────────────────────────────── */
 @media (max-width: 640px) {
-  .bento-shell { width: min(100% - 20px, 1180px); margin: 14px auto; }
-  .bento-card { border-radius: 22px; padding: 20px; }
-  .bento-title { font-size: clamp(2.6rem, 16vw, 4.2rem); }
+  .bento-shell {
+    width: min(100% - 20px, 1180px);
+    margin: 14px auto;
+  }
+  .bento-card {
+    border-radius: 22px;
+    padding: 20px;
+  }
+  .bento-title {
+    font-size: clamp(2.6rem, 16vw, 4.2rem);
+  }
+  .bento-project--featured,
+  .bento-blog--featured {
+    grid-row: auto;
+  }
+  .bento-section-heading--split {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .portfolio .max-w-7xl h1 {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
 }

@@ -21,10 +21,10 @@ Django Fusion fills the gaps Django leaves open: component boundaries, applicati
 
 ## Key Features
 
-- **{% comp %} template tag** with `{% prop %}`, `{% slot %}`, `{% var %}`, `{{ props.* }}`, `{{ attrs }}`, and `fragment_name=` for HTMX scoping
+- **comp template tag** with prop, slot, var declarations and HTMX scoping
 - **Routing helpers** — Site, Application, Viewset, ModelViewset (CRUD from one class), RoutableComponent, FragmentComponent
 - **Forms and tables** — FormMixin, TableMixin, FormTableMixin with template-resolution cascade
-- **Component analyzer** — scan templates for `{% comp %}` usage and emit JSON tracking
+- **Component analyzer** — scan templates for comp usage and emit JSON tracking
 - **Allauth auth layer** — adapters, mixins, social signup
 - **Wagtail integration** — StreamField blocks, snippets, viewsets
 - **Health checks** — `/health/`, `/health/db/`, `/health/assets/`
@@ -52,8 +52,8 @@ INSTALLED_APPS = [
 Render your first component:
 
 ```django
-{% load comp %}
-{% comp "components/button.html" label="Save" variant="primary" / %}
+{% raw %}{% load comp %}
+{% comp "components/button.html" label="Save" variant="primary" / %}{% endraw %}
 ```
 
 ## Status

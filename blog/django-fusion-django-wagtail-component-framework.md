@@ -18,7 +18,7 @@ labels:
 
 Django gives you everything you need to build a web application — models, views, templates, admin, authentication — but it does not give you a component system. Every project reinvents the same patterns: partial templates that accept inconsistent arguments, routing logic scattered across `urls.py` files, forms that duplicate table logic, and health checks bolted on as an afterthought.
 
-**Django Fusion** is a Django and Wagtail helper library that fills these gaps. It provides a `{% comp %}` template tag with prop, slot, and var declarations; declarative routing helpers (Site, Application, Viewset, ModelViewset); form and table mixins with template-resolution cascades; an allauth authentication layer; a Wagtail integration layer; and health checks — all designed to work together as a coherent toolkit.
+**Django Fusion** is a Django and Wagtail helper library that fills these gaps. It provides a `{% raw %}{% comp %}{% endraw %}` template tag with prop, slot, and var declarations; declarative routing helpers (Site, Application, Viewset, ModelViewset); form and table mixins with template-resolution cascades; an allauth authentication layer; a Wagtail integration layer; and health checks — all designed to work together as a coherent toolkit.
 
 This is the library that powers Structa Cloud sites. It is available as `pip install django-fusion` and is tested with pytest (63+ tests), hypothesis property-based testing, Django 4.2/5.0, and Python 3.11/3.12.
 
@@ -44,7 +44,7 @@ Django Fusion is organized as a set of Django apps that can be installed indepen
 
 ```
 django_fusion
-├── comp/          # {% comp %} template tag and component system
+├── comp/          # comp template tag and component system
 ├── core/          # Routing helpers, Viewset, ModelViewset
 ├── health/        # Health check endpoints
 ├── analyzer/      # Component usage scanner
@@ -56,36 +56,36 @@ django_fusion
 
 The key design principle is **import from `django_fusion.*` directly**. The former standalone compatibility packages are no longer part of the supported runtime.
 
-## The {% comp %} Template Tag
+## The `{% raw %}{% comp %}{% endraw %}` Template Tag
 
-The `{% comp %}` tag is the centerpiece. It renders a component template with explicit prop declarations, named slots, and local variables — comparable to django-bird or django-cotton, but pure Django template syntax.
+The `{% raw %}{% comp %}{% endraw %}` tag is the centerpiece. It renders a component template with explicit prop declarations, named slots, and local variables — comparable to django-bird or django-cotton, but pure Django template syntax.
 
 ```django
-{% load comp %}
+{% raw %}{% load comp %}
 
 {% comp "components/button.html" label="Save" variant="primary" %}
   {% slot "icon" %}
     <svg><!-- icon markup --></svg>
   {% endslot %}
-{% endcomp %}
+{% endcomp %}{% endraw %}
 ```
 
 Inside `components/button.html`:
 
 ```django
-<button class="btn btn--{{ variant }}">
-  {% if icon %}{{ icon }}{% endif %}
-  {{ label }}
+<button class="btn btn--{% raw %}{{ variant }}{% endraw %}">
+  {% raw %}{% if icon %}{{ icon }}{% endif %}
+  {{ label }}{% endraw %}
 </button>
 ```
 
 ### Prop, Slot, and Var
 
-- **`{% prop %}`** declares a typed input that the parent must provide.
-- **`{% slot %}`** declares a named block that the parent can override.
-- **`{% var %}`** declares a local variable scoped to the component.
-- **`{{ props.* }}`** accesses all props as a dictionary.
-- **`{{ attrs }}`** passes through extra attributes for HTMX scoping.
+- **`{% raw %}{% prop %}{% endraw %}`** declares a typed input that the parent must provide.
+- **`{% raw %}{% slot %}{% endraw %}`** declares a named block that the parent can override.
+- **`{% raw %}{% var %}{% endraw %}`** declares a local variable scoped to the component.
+- **`{% raw %}{{ props.* }}{% endraw %}`** accesses all props as a dictionary.
+- **`{% raw %}{{ attrs }}{% endraw %}`** passes through extra attributes for HTMX scoping.
 - **`fragment_name=`** enables HTMX fragment targeting.
 
 This gives you a component contract that is auditable, testable, and self-documenting.
@@ -135,7 +135,7 @@ class ProductFormTable(FormTableMixin):
 
 For Wagtail-based projects, Django Fusion provides:
 
-- **StreamField blocks** that use the `{% comp %}` tag internally
+- **StreamField blocks** that use the `{% raw %}{% comp %}{% endraw %}` tag internally
 - **Snippet registration** with automatic viewset generation
 - **Viewset classes** that extend Wagtail's built-in viewset with Fusion's routing
 
@@ -216,8 +216,8 @@ INSTALLED_APPS = [
 Render your first component:
 
 ```django
-{% load comp %}
-{% comp "components/button.html" label="Save" variant="primary" / %}
+{% raw %}{% load comp %}
+{% comp "components/button.html" label="Save" variant="primary" / %}{% endraw %}
 ```
 
 The full walkthrough — including middleware ordering and template-tag builtins — is documented under `DF-001 Getting Started` in the repository.
@@ -231,7 +231,7 @@ The complete library documentation is organized under stable `DF-0NN` IDs:
 | DF-001 | Getting started |
 | DF-002 | Architecture overview |
 | DF-003 | Component system (Python) |
-| DF-004 | `{% comp %}` template tag |
+| DF-004 | `{% raw %}{% comp %}{% endraw %}` template tag |
 | DF-005 | Routing and viewsets |
 | DF-006 | Forms and tables |
 | DF-007 | Settings and configuration |
@@ -248,7 +248,7 @@ The complete library documentation is organized under stable `DF-0NN` IDs:
 
 ## Conclusion
 
-Django Fusion is not a rewrite of Django. It is a set of focused helpers that solve the patterns Django leaves to the developer. The `{% comp %}` template tag gives you component boundaries. The routing helpers give you application-level organization. The form-table mixins eliminate duplication. The health checks give you production readiness. And the Wagtail integration keeps your CMS workflow intact.
+Django Fusion is not a rewrite of Django. It is a set of focused helpers that solve the patterns Django leaves to the developer. The `{% raw %}{% comp %}{% endraw %}` template tag gives you component boundaries. The routing helpers give you application-level organization. The form-table mixins eliminate duplication. The health checks give you production readiness. And the Wagtail integration keeps your CMS workflow intact.
 
 If your Django project has grown beyond simple CRUD and you need architectural boundaries without leaving the Django ecosystem, Django Fusion is worth evaluating.
 

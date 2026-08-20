@@ -787,6 +787,25 @@
   box-shadow: 0 0 6px color-mix(in oklab, var(--theme-sage) 40%, transparent);
 }
 
+/* ── Unpoly page-load progress bar ──
+ * Thin animated bar that fills during AJAX navigation.
+ * Positioned above everything with high z-index.
+ * ──────────────────────────────────────── */
+.up-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  z-index: 10000;
+  background: linear-gradient(90deg, var(--bento-lime), var(--theme-moss));
+  transform-origin: left center;
+  transform: scaleX(0);
+  pointer-events: none;
+  will-change: transform;
+  box-shadow: 0 0 8px color-mix(in oklab, var(--bento-lime) 50%, transparent);
+}
+
 /* Theme toggle — see bento section below for premium fluid rotation styles */
 .portfolio__theme-toggle {
   /* All styling handled by bento section */

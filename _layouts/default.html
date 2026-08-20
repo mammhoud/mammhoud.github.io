@@ -60,17 +60,63 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
   <script src="{{ site.baseurl }}/js/portfolio-animations.js" defer></script>
 
+  <!-- Custom page-reveal transition (GSAP-powered) -->
+  <script>
+    up.transition('page-reveal', function (oldFragment, newFragment) {
+      // Kill lingering GSAP tweens on both fragments
+      gsap.killTweensOf(oldFragment);
+      gsap.killTweensOf(newFragment);
+
+      // Set new fragment's entrance state
+      gsap.set(newFragment, {
+        opacity: 0,
+        y: 24,
+        filter: 'blur(8px)'
+      });
+
+      var tl = gsap.timeline();
+
+      // Old fragment: fade up + blur out
+      tl.to(oldFragment, {
+        opacity: 0,
+        y: -14,
+        filter: 'blur(6px)',
+        duration: 0.28,
+        ease: 'power2.in'
+      });
+
+      // New fragment: slide up + deblur (overlap slightly)
+      tl.to(newFragment, {
+        opacity: 1,
+        y: 0,
+        filter: 'blur(0px)',
+        duration: 0.38,
+        ease: 'power3.out'
+      }, '-=0.12');
+
+      // Clean up all inline styles so CSS classes take over
+      tl.call(function () {
+        gsap.set(newFragment, { clearProps: 'all' });
+      });
+
+      return tl;
+    });
+  </script>
+
   <!-- Unpoly configuration -->
   <script>
     document.addEventListener('up:framework:boot', function () {
-      // Set default transition for all up-target links
-      up.link.config.transition = 'fade-in';
+      // Default transition for all up-target links
+      up.link.config.transition = 'page-reveal';
       // Don't follow links that open in new tabs or are download links
       up.link.config.followSelectors.push('a[href*="me.pdf"]');
       // Scroll to top on navigation
       up.viewport.config.scroll = 'top';
     });
   </script>
+
+  <!-- Unpoly progress bar for page loads -->
+  <div class="up-progress-bar" aria-hidden="true"></div>
 
   <!-- Dark mode: no-flash theme detection (runs synchronously before paint) -->
   <script>

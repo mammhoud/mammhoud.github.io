@@ -1713,6 +1713,7 @@
 .bento-grid--blog {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   grid-auto-flow: dense;
+  perspective: 900px;
 }
 
 .bento-grid--contact {
@@ -1996,6 +1997,8 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
 .bento-project--featured,
@@ -2025,6 +2028,13 @@
 }
 
 .bento-project h3,
+/* Override generic card hover lift — GSAP handles tilt + lift for blog cards */
+@media (hover: hover) {
+  .bento-blog:hover {
+    transform: none;
+  }
+}
+
 .bento-blog h3 {
   margin: 0;
   font-size: clamp(1.5rem, 3vw, 2.4rem);

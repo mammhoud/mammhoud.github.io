@@ -378,6 +378,45 @@
         });
       });
 
+      // 3D tilt on blog cards — spring-physics via GSAP
+      document.querySelectorAll('.bento-blog').forEach(function (card) {
+        var maxTilt = 6; // degrees
+        var liftY = -8; // px
+
+        card.addEventListener('mousemove', function (e) {
+          var rect = card.getBoundingClientRect();
+          var centerX = rect.left + rect.width / 2;
+          var centerY = rect.top + rect.height / 2;
+          // Normalized -1 to 1
+          var nx = (e.clientX - centerX) / (rect.width / 2);
+          var ny = (e.clientY - centerY) / (rect.height / 2);
+          // Clamp
+          nx = Math.max(-1, Math.min(1, nx));
+          ny = Math.max(-1, Math.min(1, ny));
+
+          var rotateY = nx * maxTilt;
+          var rotateX = -ny * maxTilt;
+
+          gsap.to(card, {
+            rotateX: rotateX,
+            rotateY: rotateY,
+            y: liftY,
+            duration: 0.4,
+            ease: 'power2.out'
+          });
+        });
+
+        card.addEventListener('mouseleave', function () {
+          gsap.to(card, {
+            rotateX: 0,
+            rotateY: 0,
+            y: 0,
+            duration: 0.6,
+            ease: 'elastic.out(1, 0.5)'
+          });
+        });
+      });
+
       // Social tile hover with GSAP (smoother than CSS transition)
       document.querySelectorAll('.portfolio__social-tile').forEach(function (tile) {
         tile.addEventListener('mouseenter', function () {
